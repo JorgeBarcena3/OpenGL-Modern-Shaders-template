@@ -9,8 +9,8 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef EXAMPLESHAPES_HEADER
-#define EXAMPLESHAPES_HEADER
+#ifndef BASESHAPES_HEADER
+#define BASESHAPES_HEADER
 
 #include <memory>
 #include <vector>
@@ -20,7 +20,7 @@
 namespace exampleShapes
 {
 
-    class ExampleShape
+    class BaseShape
     {
 
     public:

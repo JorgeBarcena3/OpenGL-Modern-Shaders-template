@@ -39,7 +39,7 @@ namespace detail
 
 		for(int i = 0; i < 10; ++i)	
 			f *= f;             // this will overflow before
-								// the forÂ­loop terminates
+								// the for­loop terminates
 		return f;
 	}
 

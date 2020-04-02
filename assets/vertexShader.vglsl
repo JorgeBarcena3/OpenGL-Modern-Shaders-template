@@ -1,16 +1,18 @@
-#version 120
+#version 330
 
-varying vec3 N;
-varying vec4 P;
+uniform mat4 projection_view_matrix;
+
+layout (location = 0) in vec3 vertex_coordinates;
+layout (location = 1) in vec3 vertex_color;
+layout (location = 2) in vec3 normal_vertex;
+layout (location = 3) in vec2 texture_coordinates;
+
+out vec3 front_color;
 
 void main()
-{    
-    // Posicion
-    P = ftransform();    
-    
-    // Normal del punto
-    N = normalize (gl_NormalMatrix * gl_Normal);
-    
-    // Calculate the clip-space position of each vertex
-    gl_Position = ftransform();
+{
+
+   front_color = vertex_color;
+   gl_Position = projection_view_matrix * vec4(vertex_coordinates, 1.0);
+
 }

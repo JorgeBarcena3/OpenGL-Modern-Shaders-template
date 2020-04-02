@@ -11,21 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\code\source\Cube.cpp" />
+    <ClCompile Include="..\..\code\source\ExampleShape\Cube.cpp" />
+    <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
-    <ClCompile Include="..\..\code\source\Sphere.cpp" />
     <ClCompile Include="..\..\code\source\View.cpp" />
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Circle.hpp" />
+    <ClInclude Include="..\..\code\header\exampleShapes\BaseShape.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\ExampleShape.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Sphere.hpp" />
+    <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp" />
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader_Program.hpp" />
@@ -81,7 +80,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\sfml-2.3-vs-2015\include;$(SolutionDir)\..\..\lib\gl\headers;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glew\include;$(SolutionDir)\..\..\lib\cpp-toolkit\headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\sfml-2.3-vs-2015\include;$(SolutionDir)\..\..\lib\gl\headers;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glew\include;$(SolutionDir)\..\..\lib\cpp-toolkit\headers;$(SolutionDir)\..\..\lib\glm</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -99,7 +98,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\sfml-2.3-vs-2015\include;$(SolutionDir)\..\..\lib\gl\headers;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glew\include;$(SolutionDir)\..\..\lib\cpp-toolkit\headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\sfml-2.3-vs-2015\include;$(SolutionDir)\..\..\lib\gl\headers;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glew\include;$(SolutionDir)\..\..\lib\cpp-toolkit\headers;$(SolutionDir)\..\..\lib\glm</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

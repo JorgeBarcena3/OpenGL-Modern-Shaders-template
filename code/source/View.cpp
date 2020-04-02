@@ -14,8 +14,9 @@
 #include <cassert>
 #include "../header/Vertex_Shader.hpp"
 #include "../header/Fragment_Shader.hpp"
-#include "../header/exampleShapes/Cube.hpp"
-#include "../header/exampleShapes/Sphere.hpp"
+#include "../header/exampleShapes/Cylinder.hpp"
+#include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
+#include <glm/gtc/type_ptr.hpp>                 // value_ptr
 
 namespace exampleShapes
 {
@@ -23,27 +24,15 @@ namespace exampleShapes
     using namespace std;
 
     View::View(int width, int height)
-        :
-        angle(0)
     {
-        //Cubos
-        /*shapes.push_back(new Cube("../../assets/tga/wood-crate-1.tga"));
-        shapes.push_back(new Cube("../../assets/tga/wood-crate-2.tga"));*/
-
-        //Esferas
-        shapes.push_back(new Sphere(2,25,40));
 
         resize(width, height);
 
-        glEnable(GL_CULL_FACE);
+        shapes.push_back(new Cylinder(2, 3, 20));
 
-        // Se habilita el backface culling, una luz y materiales básicos:
-
-        glEnable(GL_CULL_FACE);
-        glEnable(GL_LIGHTING);
-        glEnable(GL_LIGHT0);
-        glEnable(GL_COLOR_MATERIAL);
-
+        //glEnable     (GL_CULL_FACE);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glClearColor(0.f, 0.f, 0.f, 1.f);
 
         // Se compilan y se activan los shaders:
 
@@ -53,63 +42,49 @@ namespace exampleShapes
         shaderProgram.link();
         shaderProgram.use();
 
+        projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
+        projection_view_matrix_id = shaderProgram.get_uniform_id("projection_view_matrix");
 
     }
 
     void View::update(float time)
     {
-        angle += 0.5f;
 
-        static int light_direction = 1;
-        static Vector3f ligh_position({-10,5,0});
-
-        ligh_position[0] += 0.01f * light_direction;
-
-        if (ligh_position[0] > 10)
-            light_direction = -1;
-        if(ligh_position[0] < -10)
-            light_direction = 1;
-
-        uploadUniformVariable("time", time);
-        uploadUniformVariable("light_pos", ligh_position);
     }
 
     void View::render()
     {
+
+        static float angle = 0;
+        angle += 0.8f;
+
         glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.5f, 0.5f, 0.5f, 1.f);     
 
-        // Se establece la dirección de la luz:
-
-       
-        // Se inicializan los parámetros relativos a la iluminación:
-
-        float light_direction[4] = { 0.1,0.1,1.0,0.0 };
-
-        glLightfv(GL_LIGHT0, GL_POSITION, light_direction);
-
-        float x = 0; // -2
-
+        //Se renderizan las shapes
         for (auto shape : shapes)
         {
-            glLoadIdentity();
-            glTranslatef(x, 0.f, -15.f); // - 10
-            glRotatef(+angle, 1.f, 2.f, 1.f);
+            // Se rota el cubo y se empuja hacia el fondo:
+
+            glm::mat4 model_view_matrix;
+
+            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(0.f, -0.f, -20.f));
+            model_view_matrix = glm::rotate(model_view_matrix, angle, glm::vec3(1.f, 2.f, 1.f));
+
+            glm::mat4 projection_view_matrix = projection_matrix * model_view_matrix;
+            glUniformMatrix4fv(projection_view_matrix_id, 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 
             shape->render();
 
-            x += 4;
         }
 
     }
 
     void View::resize(int width, int height)
     {
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluPerspective(20, GLdouble(width) / height, 1, 50);
+        // Se establece la configuración básica:
+        projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
         glViewport(0, 0, width, height);
-        glClearColor(0.f, 0.f, 0.f, 1.f);
-        glMatrixMode(GL_MODELVIEW);
     }
 
     bool View::uploadUniformVariable(const char* name, float value)
@@ -125,7 +100,7 @@ namespace exampleShapes
 
         return false;
     }
-    
+
     bool View::uploadUniformVariable(const char* name, Vector3f value)
     {
         GLint id = shaderProgram.get_uniform_id(name);
@@ -134,7 +109,6 @@ namespace exampleShapes
         {
             shaderProgram.set_uniform_value(id, value);
             return true;
-
         }
 
         return false;

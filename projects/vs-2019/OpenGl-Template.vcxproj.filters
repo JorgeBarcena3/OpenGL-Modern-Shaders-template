@@ -28,6 +28,9 @@
     <Filter Include="toolkit\ExampleShapes\base">
       <UniqueIdentifier>{09dde16b-79e7-44e0-9c9f-291a728542bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sources\ExampleShapes">
+      <UniqueIdentifier>{a807a94d-4512-4ff3-a0dd-a25908d7919b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -45,17 +48,14 @@
     <ClCompile Include="..\..\lib\targa\src\targa.c">
       <Filter>targa</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\Cube.cpp">
-      <Filter>toolkit\ExampleShapes</Filter>
+    <ClCompile Include="..\..\code\source\ExampleShape\Cube.cpp">
+      <Filter>sources\ExampleShapes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\Sphere.cpp">
-      <Filter>toolkit\ExampleShapes</Filter>
+    <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp">
+      <Filter>sources\ExampleShapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\code\header\exampleShapes\Circle.hpp">
-      <Filter>toolkit\ExampleShapes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
       <Filter>toolkit\header</Filter>
     </ClInclude>
@@ -80,13 +80,13 @@
     <ClInclude Include="..\..\lib\targa\include\targa.h">
       <Filter>targa</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Sphere.hpp">
-      <Filter>toolkit\ExampleShapes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\ExampleShape.hpp">
+    <ClInclude Include="..\..\code\header\exampleShapes\BaseShape.hpp">
       <Filter>toolkit\ExampleShapes\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp">
+      <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
       <Filter>toolkit\ExampleShapes</Filter>
     </ClInclude>
   </ItemGroup>

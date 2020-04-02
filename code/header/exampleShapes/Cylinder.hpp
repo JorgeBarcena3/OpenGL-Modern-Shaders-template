@@ -1,24 +1,25 @@
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
  *                                                                             *
- *  Started by Ángel on may of 2014                                            *
+ *  Started by Jorge Barcena on March of 2020                                  *
  *                                                                             *
  *  This is free software released into the public domain.                     *
  *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
+ *  j.barcenalumbreras@gmail.com                                               *
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef CUBE_HEADER
-#define CUBE_HEADER
+#ifndef CYLINDER_HEADER
+#define CYLINDER_HEADER
 
 #include <SFML/OpenGL.hpp>
+#include <vector>
 #include "BaseShape.hpp"
 
 namespace exampleShapes
 {
 
-    class Cube : public BaseShape
+    class Cylinder : public BaseShape
     {
     private:
 
@@ -28,27 +29,35 @@ namespace exampleShapes
         {
             COORDINATES_VBO,
             COLORS_VBO,
+            NORMALS_VBO,
+            TEXTURE_VBO,
             INDICES_IBO,
             VBO_COUNT
         };
 
-        // Arrays de datos del cubo base:
-
-        static const GLfloat coordinates[];
-        static const GLfloat colors[];
-        static const GLubyte indices[];
 
     private:
 
         GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
         GLuint vao_id;                  // Id del VAO del cubo
 
+        float radius;
+        float height;
+        float sides;
+
+        std::vector< GLubyte > indices;
+
+
     public:
 
-        Cube();
-        ~Cube();
+        Cylinder(float radius, float height, float sides = 18);
+        ~Cylinder();
 
-        void render();
+        void createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx);
+        void createIndices(std::vector< GLfloat >& coordinates);
+        void createColors(std::vector< GLfloat >& colors, std::vector< GLfloat >& coodinates);
+
+        void render() override;
 
     };
 

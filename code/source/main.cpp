@@ -20,7 +20,10 @@ using namespace exampleShapes;
 
 int main ()
 {
-    Window window(VideoMode(800, 600), "OpenGL + Shaders + textures", Style::Default, ContextSettings(32));
+
+    srand(time(NULL));
+
+    Window window(VideoMode(800, 600), "OpenGL Modern + Shaders + textures", Style::Default, ContextSettings(32));
 
     window.setVerticalSyncEnabled (true);
 

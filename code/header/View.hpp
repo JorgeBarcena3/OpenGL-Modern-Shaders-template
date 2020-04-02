@@ -13,9 +13,10 @@
 #define VIEW_HEADER
 
 #include <GL/glew.h>            // Debe incluirse antes que gl.h
-#include "exampleShapes/ExampleShape.hpp"
+#include "exampleShapes/BaseShape.hpp"
 #include <string>
 #include "Shader_Program.hpp"
+#include <glm/matrix.hpp>
 
 namespace exampleShapes
 {
@@ -29,8 +30,10 @@ namespace exampleShapes
         static const std::string   vertex_shader_code;
         static const std::string fragment_shader_code;
 
-        std::vector< ExampleShape * > shapes;
-        float  angle;
+        GLint  projection_view_matrix_id;
+        glm::mat4 projection_matrix;
+
+        std::vector< BaseShape * > shapes;
 
     public:
 
