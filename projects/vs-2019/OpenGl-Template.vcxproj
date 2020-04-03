@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\code\source\ExampleShape\Cube.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
+    <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
@@ -25,6 +26,7 @@
     <ClInclude Include="..\..\code\header\exampleShapes\BaseShape.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp" />
+    <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp" />
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader_Program.hpp" />

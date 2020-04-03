@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp">
       <Filter>sources\ExampleShapes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp">
+      <Filter>sources\ExampleShapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
@@ -87,6 +90,9 @@
       <Filter>toolkit\ExampleShapes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
+      <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp">
       <Filter>toolkit\ExampleShapes</Filter>
     </ClInclude>
   </ItemGroup>

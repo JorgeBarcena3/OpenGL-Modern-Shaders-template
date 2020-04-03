@@ -15,6 +15,7 @@
 #include "../header/Vertex_Shader.hpp"
 #include "../header/Fragment_Shader.hpp"
 #include "../header/exampleShapes/Cylinder.hpp"
+#include "../header/exampleShapes/Malla.hpp"
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 #include <glm/gtc/type_ptr.hpp>                 // value_ptr
 
@@ -28,7 +29,8 @@ namespace exampleShapes
 
         resize(width, height);
 
-        shapes.push_back(new Cylinder(2, 3, 20));
+        //shapes.push_back(new Cylinder(2, 3, 20));
+        shapes.push_back(new Malla(6,1));
 
         //glEnable     (GL_CULL_FACE);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -68,8 +70,8 @@ namespace exampleShapes
 
             glm::mat4 model_view_matrix;
 
-            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(0.f, -0.f, -20.f));
-            model_view_matrix = glm::rotate(model_view_matrix, angle, glm::vec3(1.f, 2.f, 1.f));
+            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(-3.f, 3.f, -20.f));
+            model_view_matrix = glm::rotate(model_view_matrix, 90.f, glm::vec3(1.f, 0.f, 0.f));
 
             glm::mat4 projection_view_matrix = projection_matrix * model_view_matrix;
             glUniformMatrix4fv(projection_view_matrix_id, 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
