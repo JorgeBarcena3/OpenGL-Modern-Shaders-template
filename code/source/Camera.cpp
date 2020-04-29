@@ -26,6 +26,7 @@ OpenGLRender3D::Camera::Camera(int width, int height)
 
 void OpenGLRender3D::Camera::update(float time)
 {
+    transform.setRotation( glm::vec3(0, 0, -0.1));
 }
 
 void OpenGLRender3D::Camera::render()

@@ -263,15 +263,14 @@ namespace OpenGLRender3D
     void Malla::update()
     {
         static float angle = 0;
-        angle += 0.8f;
+        angle += 0.0f;
 
         transform.setRotation(glm::vec3(angle, 0, 0));
     }
 
     void Malla::render()
     {
-
-
+        
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 

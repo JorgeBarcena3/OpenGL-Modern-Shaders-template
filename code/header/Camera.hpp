@@ -25,6 +25,11 @@ namespace OpenGLRender3D
 
     class Camera
     {
+
+    public:
+
+        Transform transform;
+
     private:
 
         static const std::string   vertex_shader_code;
@@ -32,6 +37,9 @@ namespace OpenGLRender3D
 
         GLint  projection_view_matrix_id;
         glm::mat4 projection_matrix;
+
+        Shader_Program shaderProgram;
+
 
     public:
 
@@ -50,14 +58,12 @@ namespace OpenGLRender3D
 
         const glm::mat4 getProjectionMatrix()
         {
+            projection_matrix *= transform.getInverseMatrix();
             return projection_matrix;
         };
+                
 
-        
 
-    private:
-
-        Shader_Program shaderProgram;
     };
 
 }

@@ -30,7 +30,7 @@ namespace OpenGLRender3D
     private:
 
         // Matriz de coordenadas de modelo
-        glm::mat4 model_view_matrix;
+        glm::mat4 trasnform_matrix;
 
         glm::vec3 position;
 
@@ -40,7 +40,7 @@ namespace OpenGLRender3D
 
     public:
 
-        Transform(glm::vec3 _position = glm::vec3(0, 0, -20), glm::vec3 _rotation = glm::vec3(0, 0, 0), glm::vec3 _scale = glm::vec3(1,1,1))
+        Transform(glm::vec3 _position = glm::vec3(0, 0, 0), glm::vec3 _rotation = glm::vec3(0, 0, 0), glm::vec3 _scale = glm::vec3(1,1,1))
         {
             position = _position;
             rotation = _rotation;
@@ -80,20 +80,25 @@ namespace OpenGLRender3D
         glm::mat4 getModelViewMatrix()
         {
 
-            model_view_matrix = glm::mat4();
+            trasnform_matrix = glm::mat4();
 
             // Lo empujamos para atras
-            model_view_matrix = glm::translate(model_view_matrix, position);
+            trasnform_matrix = glm::translate(trasnform_matrix, position);
 
             // Lo rotamos
-            model_view_matrix = glm::rotate(model_view_matrix, rotation[0], glm::vec3(1.f, 0.f, 0.f));
-            model_view_matrix = glm::rotate(model_view_matrix, rotation[1], glm::vec3(0.f, 1.f, 0.f));
-            model_view_matrix = glm::rotate(model_view_matrix, rotation[2], glm::vec3(0.f, 0.f, 1.f));
+            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[0], glm::vec3(1.f, 0.f, 0.f));
+            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[1], glm::vec3(0.f, 1.f, 0.f));
+            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[2], glm::vec3(0.f, 0.f, 1.f));
 
             // Lo escalamos
-            model_view_matrix = glm::scale(model_view_matrix, scale);
+            trasnform_matrix = glm::scale(trasnform_matrix, scale);
 
-            return model_view_matrix;
+            return trasnform_matrix;
+        }
+
+        inline glm::mat4 getInverseMatrix()
+        {
+            return glm::inverse(getModelViewMatrix());
         }
 
 
