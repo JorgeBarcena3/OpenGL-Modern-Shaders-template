@@ -23,7 +23,7 @@ namespace exampleShapes
 
     using namespace shaderToolkit;
 
-    class View
+    class Scene
     {
     private:
 
@@ -37,7 +37,7 @@ namespace exampleShapes
 
     public:
 
-        View(int width, int height);
+        Scene(int width, int height);
 
         void   update(float time);
         void   render();

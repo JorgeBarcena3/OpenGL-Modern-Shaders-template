@@ -10,7 +10,7 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <cassert>
-#include "../header/View.hpp"
+#include "../header/Scene.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/System/Time.hpp>
@@ -35,7 +35,7 @@ int main ()
 
     // Una vez se ha inicializado GLEW se puede crear una instancia de View:
 
-    View view(800, 600);
+    Scene myScene(800, 600);
 
     // Se ejecuta el bucle principal:
 
@@ -61,15 +61,15 @@ int main ()
                 {
                     Vector2u window_size = window.getSize ();
 
-                    view.resize (window_size.x, window_size.y);
+                    myScene.resize (window_size.x, window_size.y);
 
                     break;
                 }
             }
         }
 
-        view.update (clock.getElapsedTime().asSeconds());
-        view.render ();
+        myScene.update (clock.getElapsedTime().asSeconds());
+        myScene.render ();
 
         window.display ();
     }

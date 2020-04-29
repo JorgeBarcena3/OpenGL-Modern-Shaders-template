@@ -9,7 +9,7 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include "../header/View.hpp"
+#include "../header/Scene.hpp"
 #include <iostream>
 #include <cassert>
 #include "../header/Vertex_Shader.hpp"
@@ -24,7 +24,7 @@ namespace exampleShapes
 
     using namespace std;
 
-    View::View(int width, int height)
+    Scene::Scene(int width, int height)
     {
 
         resize(width, height);
@@ -49,12 +49,12 @@ namespace exampleShapes
 
     }
 
-    void View::update(float time)
+    void Scene::update(float time)
     {
 
     }
 
-    void View::render()
+    void Scene::render()
     {
 
         static float angle = 0;
@@ -82,14 +82,14 @@ namespace exampleShapes
 
     }
 
-    void View::resize(int width, int height)
+    void Scene::resize(int width, int height)
     {
         // Se establece la configuración básica:
         projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
         glViewport(0, 0, width, height);
     }
 
-    bool View::uploadUniformVariable(const char* name, float value)
+    bool Scene::uploadUniformVariable(const char* name, float value)
     {
         GLint id = shaderProgram.get_uniform_id(name);
 
@@ -103,7 +103,7 @@ namespace exampleShapes
         return false;
     }
 
-    bool View::uploadUniformVariable(const char* name, Vector3f value)
+    bool Scene::uploadUniformVariable(const char* name, Vector3f value)
     {
         GLint id = shaderProgram.get_uniform_id(name);
 

@@ -17,7 +17,7 @@
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
-    <ClCompile Include="..\..\code\source\View.cpp" />
+    <ClCompile Include="..\..\code\source\Scene.cpp" />
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +31,7 @@
     <ClInclude Include="..\..\code\header\Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader_Program.hpp" />
     <ClInclude Include="..\..\code\header\Vertex_Shader.hpp" />
-    <ClInclude Include="..\..\code\header\View.hpp" />
+    <ClInclude Include="..\..\code\header\Scene.hpp" />
     <ClInclude Include="..\..\lib\targa\include\targa.h" />
   </ItemGroup>
   <ItemGroup>

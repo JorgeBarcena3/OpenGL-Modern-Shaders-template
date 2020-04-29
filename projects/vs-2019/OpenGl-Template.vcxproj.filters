@@ -42,9 +42,6 @@
     <ClCompile Include="..\..\code\source\Shader_Program.cpp">
       <Filter>toolkit\source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\View.cpp">
-      <Filter>sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\targa\src\targa.c">
       <Filter>targa</Filter>
     </ClCompile>
@@ -56,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp">
       <Filter>sources\ExampleShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Scene.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +77,6 @@
     <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\View.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\lib\targa\include\targa.h">
       <Filter>targa</Filter>
     </ClInclude>
@@ -94,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp">
       <Filter>toolkit\ExampleShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Scene.hpp">
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
