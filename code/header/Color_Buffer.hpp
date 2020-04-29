@@ -12,7 +12,7 @@
 #ifndef COLOR_BUFFER_HEADER
 #define COLOR_BUFFER_HEADER
 
-    namespace exampleShapes
+    namespace example
     {
 
         class Color_Buffer
@@ -54,7 +54,6 @@
             virtual void set_color      (int r, int  g, int b) = 0;
             virtual void set_pixel      (int x, int  y) = 0;
             virtual void set_pixel      (size_t offset) = 0;
-            virtual void gl_draw_pixels (int raster_x, int raster_y) const = 0;
 
         };
 

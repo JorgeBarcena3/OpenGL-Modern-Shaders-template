@@ -12,7 +12,7 @@ out vec3 front_color;
 void main()
 {
 
-   front_color = vertex_color;
+   front_color = vec3(vertex_coordinates.y);//vec3( (texture_coordinates.y + texture_coordinates.x ) / 2) ;
    gl_Position = projection_view_matrix * vec4(vertex_coordinates, 1.0);
 
 }

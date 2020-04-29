@@ -30,7 +30,7 @@ namespace exampleShapes
         resize(width, height);
 
         //shapes.push_back(new Cylinder(2, 3, 20));
-        shapes.push_back(new Malla(6,1));
+        shapes.push_back(new Malla(5, 5, 32 , "../../assets/height_map/Volcan.tga"));
 
         //glEnable     (GL_CULL_FACE);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -61,7 +61,7 @@ namespace exampleShapes
         angle += 0.8f;
 
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.5f, 0.5f, 0.5f, 1.f);     
+        glClearColor(0.5f, 0.5f, 0.5f, 1.f);
 
         //Se renderizan las shapes
         for (auto shape : shapes)
@@ -70,8 +70,8 @@ namespace exampleShapes
 
             glm::mat4 model_view_matrix;
 
-            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(-3.f, 3.f, -20.f));
-            model_view_matrix = glm::rotate(model_view_matrix, 90.f, glm::vec3(1.f, 0.f, 0.f));
+            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(0, 0, -20.f));
+            model_view_matrix = glm::rotate(model_view_matrix, angle,  glm::vec3(1.f, 0.f, 0.f));
 
             glm::mat4 projection_view_matrix = projection_matrix * model_view_matrix;
             glUniformMatrix4fv(projection_view_matrix_id, 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
