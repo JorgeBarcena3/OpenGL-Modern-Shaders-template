@@ -40,16 +40,21 @@ namespace OpenGLRender3D
 
         Shader_Program shaderProgram;
 
+        Scene* scene;
+
 
     public:
 
-        Camera(int width, int height);
+        Camera(int width, int height, Scene& scene);
 
         void   update(float time);
         void   render();
         void   resize(int width, int height);
         bool   uploadUniformVariable(const char* name, float value);
         bool   uploadUniformVariable(const char* name, Vector3f value);
+
+        void moveCamera(glm::vec4 movement);
+        void rotateCamera(glm::vec2 mousePos);
 
         const GLint getProjectionMatrixId()
         {
@@ -58,10 +63,9 @@ namespace OpenGLRender3D
 
         const glm::mat4 getProjectionMatrix()
         {
-            projection_matrix *= transform.getInverseMatrix();
             return projection_matrix;
         };
-                
+
 
 
     };

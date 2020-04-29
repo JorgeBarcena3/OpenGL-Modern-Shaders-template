@@ -30,7 +30,7 @@ namespace OpenGLRender3D
     private:
 
         // Matriz de coordenadas de modelo
-        glm::mat4 trasnform_matrix;
+        glm::mat4 transform_matrix;
 
         glm::vec3 position;
 
@@ -80,25 +80,26 @@ namespace OpenGLRender3D
         glm::mat4 getModelViewMatrix()
         {
 
-            trasnform_matrix = glm::mat4();
+            transform_matrix = glm::mat4();
 
             // Lo empujamos para atras
-            trasnform_matrix = glm::translate(trasnform_matrix, position);
+            transform_matrix = glm::translate(transform_matrix, position);
 
             // Lo rotamos
-            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[0], glm::vec3(1.f, 0.f, 0.f));
-            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[1], glm::vec3(0.f, 1.f, 0.f));
-            trasnform_matrix = glm::rotate(trasnform_matrix, rotation[2], glm::vec3(0.f, 0.f, 1.f));
+            transform_matrix = glm::rotate(transform_matrix, glm::radians(rotation[0]), glm::vec3(1.f, 0.f, 0.f));
+            transform_matrix = glm::rotate(transform_matrix, glm::radians(rotation[1]), glm::vec3(0.f, 1.f, 0.f));
+            transform_matrix = glm::rotate(transform_matrix, glm::radians(rotation[2]), glm::vec3(0.f, 0.f, 1.f));
 
             // Lo escalamos
-            trasnform_matrix = glm::scale(trasnform_matrix, scale);
+            transform_matrix = glm::scale(transform_matrix, scale);
 
-            return trasnform_matrix;
+
+            return transform_matrix;
         }
 
         inline glm::mat4 getInverseMatrix()
         {
-            return glm::inverse(getModelViewMatrix());
+            return glm::inverse(transform_matrix);
         }
 
 

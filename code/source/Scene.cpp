@@ -15,6 +15,7 @@
 #include "../header/exampleShapes/Cylinder.hpp"
 #include "../header/exampleShapes/Malla.hpp"
 #include "../header/Camera.hpp"
+#include <SFML/Window/Mouse.hpp>
 
 
 namespace OpenGLRender3D
@@ -24,14 +25,15 @@ namespace OpenGLRender3D
 
     Scene::Scene(int width, int height)
     {
-        camera = new OpenGLRender3D::Camera(width, height);
-
-        shapes.push_back(new OpenGLRender3D::Malla(5, 5, 32, *this, "../../assets/height_map/Volcan.tga"));
+        camera = new OpenGLRender3D::Camera(width, height, *this);
+        window_size = glm::vec2(width, height);
+        shapes.push_back(new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
 
     }
 
     void Scene::update(float time)
     {
+        cleanActionsPool();
 
         camera->update(time);
 
@@ -52,6 +54,86 @@ namespace OpenGLRender3D
             shape->render();
         }
 
+    }
+
+    void Scene::cleanActionsPool()
+    {
+        for each (auto action in actionsPool)
+        {
+            if (action.first == "Mover Camara")
+            {
+                camera->moveCamera(action.second);
+            }
+        }
+
+
+        actionsPool.clear();
+    }
+
+    bool Scene::manageInput(sf::Window& window)
+    {
+        sf::Event event;
+
+        window.setTitle(sf::String(std::to_string(sf::Mouse::getPosition(window).x)));
+
+        while (window.pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case sf::Event::Closed:
+            {
+                return false;
+                break;
+            }
+
+            case sf::Event::Resized:
+            {
+                sf::Vector2u window_size = window.getSize();
+
+                getMainCamera()->resize(window_size.x, window_size.y);
+
+                break;
+            }
+
+            case sf::Event::KeyPressed:
+            {
+                if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0, -0.1, 0));
+                }
+                else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0, +0.1, 0));
+                }
+                else if (event.key.code == sf::Keyboard::Space)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0.1f, 0, 0));
+                }
+                else if (event.key.code == sf::Keyboard::LControl)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, -0.1f, 0, 0));
+                }
+                else if (event.key.code == sf::Keyboard::A)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(-0.1f, 0.f, 0, 0));
+                }
+                else if (event.key.code == sf::Keyboard::D)
+                {
+                    actionsPool.emplace("Mover Camara", glm::vec4(+0.1f, 0, 0, 0));
+                }
+            }
+            }
+        }
+
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            sf::Vector2i pos = sf::Mouse::getPosition(window);
+            glm::vec2 pos_glm = glm::vec2({ pos.x, pos.y });
+            camera->rotateCamera(pos_glm);
+        }
+
+
+        return true;
     }
 
     Camera* Scene::getMainCamera()

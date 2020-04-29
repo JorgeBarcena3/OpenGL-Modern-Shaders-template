@@ -14,8 +14,10 @@
 
 #include <GL/glew.h>            // Debe incluirse antes que gl.h
 #include <string>
+#include <map>
 #include <glm/matrix.hpp>
 #include <vector>
+#include <SFML/Window.hpp>  
 
 namespace OpenGLRender3D
 {
@@ -31,6 +33,7 @@ namespace OpenGLRender3D
 
         Camera* camera;
         std::vector< BaseModel3D* > shapes;
+        glm::vec2 window_size;
 
     public:
 
@@ -38,8 +41,20 @@ namespace OpenGLRender3D
 
         void   update(float time);
         void   render();
+        void   cleanActionsPool();
+
+        bool manageInput(sf::Window& wd);
 
         Camera* getMainCamera();
+
+        inline glm::vec2 getWindowSize()
+        {
+            return window_size;
+        }
+
+    private:
+
+        std::map<std::string, glm::vec4> actionsPool;
 
     };
 

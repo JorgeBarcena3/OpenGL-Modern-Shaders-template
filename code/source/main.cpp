@@ -19,18 +19,18 @@
 using namespace sf;
 using namespace OpenGLRender3D;
 
-int main ()
+int main()
 {
 
     srand(time(NULL));
 
     Window window(VideoMode(800, 600), "OpenGL Modern + Shaders + textures", Style::Default, ContextSettings(32));
 
-    window.setVerticalSyncEnabled (true);
+    window.setVerticalSyncEnabled(true);
 
     // Una vez se ha creado el contexto de OpenGL ya se puede inicializar Glew:
 
-    GLenum glew_initialization =  glewInit ();
+    GLenum glew_initialization = glewInit();
 
     assert(glew_initialization == GLEW_OK);
 
@@ -46,35 +46,14 @@ int main ()
 
     do
     {
-        Event event;
+        Event event;     
 
-        while (window.pollEvent (event))
-        {
-            switch (event.type)
-            {
-                case Event::Closed:
-                {
-                    running = false;
-                    break;
-                }
+        running = myScene.manageInput(window);
+        myScene.update(clock.getElapsedTime().asSeconds());
+        myScene.render();
 
-                case Event::Resized:
-                {
-                    Vector2u window_size = window.getSize ();
-
-                    //myScene.getMainCamera().resize (window_size.x, window_size.y);
-
-                    break;
-                }
-            }
-        }
-
-        myScene.update (clock.getElapsedTime().asSeconds());
-        myScene.render ();
-
-        window.display ();
-    }
-    while (running);
+        window.display();
+    } while (running);
 
     return (EXIT_SUCCESS);
 }
