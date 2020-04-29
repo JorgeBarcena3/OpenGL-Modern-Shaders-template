@@ -14,12 +14,12 @@
 
 #include <SFML/OpenGL.hpp>
 #include <vector>
-#include "BaseShape.hpp"
+#include "BaseModel3D.hpp"
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    class Cylinder : public BaseShape
+    class Cylinder : public BaseModel3D
     {
     private:
 

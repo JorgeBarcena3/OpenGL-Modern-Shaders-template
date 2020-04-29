@@ -11,12 +11,13 @@
 
 #include <cassert>
 #include "../header/Scene.hpp"
+#include "../header/Camera.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/System/Time.hpp>
 
 using namespace sf;
-using namespace exampleShapes;
+using namespace OpenGLRender3D;
 
 int main ()
 {
@@ -61,7 +62,7 @@ int main ()
                 {
                     Vector2u window_size = window.getSize ();
 
-                    myScene.resize (window_size.x, window_size.y);
+                    //myScene.getMainCamera().resize (window_size.x, window_size.y);
 
                     break;
                 }

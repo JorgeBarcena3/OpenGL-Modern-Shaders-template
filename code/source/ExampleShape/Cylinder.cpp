@@ -17,7 +17,7 @@
 
 #define PI2 2.0 * 3.141592
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
     Cylinder::Cylinder(float _radius, float _height, float _sides)

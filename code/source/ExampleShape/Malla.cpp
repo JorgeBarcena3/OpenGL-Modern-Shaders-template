@@ -15,23 +15,29 @@
 #include <cmath>
 #include <glm/vec3.hpp>
 #include "../../header/Color_Buffer_Rgba8888.hpp"
+#include "../../header/Camera.hpp";
+#include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
+#include <glm/gtc/type_ptr.hpp>                 // value_ptr
 
 extern "C"
 {
 #include <targa.h>
+
 }
 
 #define PI2 2.0 * 3.141592
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    Malla::Malla(float _width, float _height, int _vertex_count, std::string path)
+    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, std::string path)
     {
 
+        transform = Transform(glm::vec3(0,0,-20), glm::vec3(0,0,0), glm::vec3(1,1,1));
         width = _width;
         height = _height;
         vertex_count = _vertex_count;
+        scene = &_scene;
 
         std::vector< GLfloat > coordinates;
         std::vector< GLfloat > normals;
@@ -173,7 +179,6 @@ namespace exampleShapes
         }
     }
 
-
     void Malla::createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx)
     {
 
@@ -254,15 +259,28 @@ namespace exampleShapes
             colors[i + 2] = (1);
         }
     }
+          
+    void Malla::update()
+    {
+        static float angle = 0;
+        angle += 0.8f;
 
+        transform.setRotation(glm::vec3(angle, 0, 0));
+    }
 
     void Malla::render()
     {
+
+
+        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * transform.getModelViewMatrix();
+        glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
+
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
 
         glBindVertexArray(vao_id);
         glDrawElements(GL_TRIANGLES, indices.size() * sizeof(GLuint), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
     }
+
 
 }

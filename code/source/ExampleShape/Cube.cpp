@@ -12,8 +12,9 @@
 #include <GL/glew.h>            // Debe incluirse antes que gl.h
 #include "../../header/exampleShapes/Cube.hpp"
 #include <SFML/OpenGL.hpp>
+#include <glm\gtc\type_ptr.hpp>
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
     const GLfloat Cube::coordinates[] =
@@ -101,6 +102,10 @@ namespace exampleShapes
 
     void Cube::render ()
     {
+
+
+
+
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
 
         glBindVertexArray (vao_id);

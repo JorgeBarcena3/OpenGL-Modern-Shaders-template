@@ -9,31 +9,28 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef VIEW_HEADER
-#define VIEW_HEADER
+#ifndef SCENE_HEADER
+#define SCENE_HEADER
 
 #include <GL/glew.h>            // Debe incluirse antes que gl.h
-#include "exampleShapes/BaseShape.hpp"
 #include <string>
-#include "Shader_Program.hpp"
 #include <glm/matrix.hpp>
+#include <vector>
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    using namespace shaderToolkit;
+    class Camera;
+    class BaseModel3D;
 
     class Scene
     {
+
     private:
 
-        static const std::string   vertex_shader_code;
-        static const std::string fragment_shader_code;
 
-        GLint  projection_view_matrix_id;
-        glm::mat4 projection_matrix;
-
-        std::vector< BaseShape * > shapes;
+        Camera* camera;
+        std::vector< BaseModel3D* > shapes;
 
     public:
 
@@ -41,13 +38,9 @@ namespace exampleShapes
 
         void   update(float time);
         void   render();
-        void   resize(int width, int height);
-        bool   uploadUniformVariable(const char * name, float value);
-        bool   uploadUniformVariable(const char* name, Vector3f value);
 
-    private:
+        Camera* getMainCamera();
 
-        Shader_Program shaderProgram;
     };
 
 }

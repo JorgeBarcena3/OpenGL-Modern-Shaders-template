@@ -15,12 +15,12 @@
 #include <SFML/OpenGL.hpp>
 #include <vector>
 #include <string>
-#include "BaseShape.hpp"
+#include "BaseModel3D.hpp"
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    class Malla : public BaseShape
+    class Malla : public BaseModel3D
     {
     private:
 
@@ -51,7 +51,7 @@ namespace exampleShapes
 
     public:
 
-        Malla(float width, float height, int vertex_count, std::string path = "");
+        Malla(float width, float height, int vertex_count, Scene& scene, std::string path = "");
         ~Malla();
 
         void setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& tx, std::string path);
@@ -60,6 +60,10 @@ namespace exampleShapes
         void createColors(std::vector< GLfloat >& colors, std::vector< GLfloat >& coodinates);
 
         void render() override;
+
+
+        // Heredado vía BaseShape
+        virtual void update() override;
 
     };
 

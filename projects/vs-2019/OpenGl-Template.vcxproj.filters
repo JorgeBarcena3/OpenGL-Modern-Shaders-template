@@ -57,6 +57,9 @@
     <ClCompile Include="..\..\code\source\Scene.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\Camera.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
@@ -80,9 +83,6 @@
     <ClInclude Include="..\..\lib\targa\include\targa.h">
       <Filter>targa</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\BaseShape.hpp">
-      <Filter>toolkit\ExampleShapes\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp">
       <Filter>toolkit\ExampleShapes</Filter>
     </ClInclude>
@@ -93,6 +93,15 @@
       <Filter>toolkit\ExampleShapes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Scene.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Camera.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\BaseModel3D.hpp">
+      <Filter>toolkit\ExampleShapes\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Transform.hpp">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

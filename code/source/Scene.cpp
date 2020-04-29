@@ -12,108 +12,52 @@
 #include "../header/Scene.hpp"
 #include <iostream>
 #include <cassert>
-#include "../header/Vertex_Shader.hpp"
-#include "../header/Fragment_Shader.hpp"
 #include "../header/exampleShapes/Cylinder.hpp"
 #include "../header/exampleShapes/Malla.hpp"
-#include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
-#include <glm/gtc/type_ptr.hpp>                 // value_ptr
+#include "../header/Camera.hpp"
 
-namespace exampleShapes
+
+namespace OpenGLRender3D
 {
 
     using namespace std;
 
     Scene::Scene(int width, int height)
     {
+        camera = new OpenGLRender3D::Camera(width, height);
 
-        resize(width, height);
-
-        //shapes.push_back(new Cylinder(2, 3, 20));
-        shapes.push_back(new Malla(5, 5, 32 , "../../assets/height_map/Volcan.tga"));
-
-        //glEnable     (GL_CULL_FACE);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glClearColor(0.f, 0.f, 0.f, 1.f);
-
-        // Se compilan y se activan los shaders:
-
-        shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file("../../assets/vertexShader.vglsl")));
-        shaderProgram.attach(Fragment_Shader(Shader::Source_Code::from_file("../../assets/fragmentShader.fglsl")));
-
-        shaderProgram.link();
-        shaderProgram.use();
-
-        projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
-        projection_view_matrix_id = shaderProgram.get_uniform_id("projection_view_matrix");
+        shapes.push_back(new OpenGLRender3D::Malla(5, 5, 32, *this, "../../assets/height_map/Volcan.tga"));
 
     }
 
     void Scene::update(float time)
     {
 
+        camera->update(time);
+
+        for (auto shape : shapes)
+        {
+            shape->update();
+        }
     }
 
     void Scene::render()
     {
 
-        static float angle = 0;
-        angle += 0.8f;
-
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+        camera->render();
 
         //Se renderizan las shapes
         for (auto shape : shapes)
         {
-            // Se rota el cubo y se empuja hacia el fondo:
-
-            glm::mat4 model_view_matrix;
-
-            model_view_matrix = glm::translate(model_view_matrix, glm::vec3(0, 0, -20.f));
-            model_view_matrix = glm::rotate(model_view_matrix, angle,  glm::vec3(1.f, 0.f, 0.f));
-
-            glm::mat4 projection_view_matrix = projection_matrix * model_view_matrix;
-            glUniformMatrix4fv(projection_view_matrix_id, 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
-
             shape->render();
-
         }
 
     }
 
-    void Scene::resize(int width, int height)
+    Camera* Scene::getMainCamera()
     {
-        // Se establece la configuración básica:
-        projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
-        glViewport(0, 0, width, height);
-    }
+        return camera;
+    };
 
-    bool Scene::uploadUniformVariable(const char* name, float value)
-    {
-        GLint id = shaderProgram.get_uniform_id(name);
-
-        if (id != -1)
-        {
-            shaderProgram.set_uniform_value(id, value);
-            return true;
-
-        }
-
-        return false;
-    }
-
-    bool Scene::uploadUniformVariable(const char* name, Vector3f value)
-    {
-        GLint id = shaderProgram.get_uniform_id(name);
-
-        if (id != -1)
-        {
-            shaderProgram.set_uniform_value(id, value);
-            return true;
-        }
-
-        return false;
-    }
 
 }

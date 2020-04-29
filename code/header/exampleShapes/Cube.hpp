@@ -13,12 +13,12 @@
 #define CUBE_HEADER
 
 #include <SFML/OpenGL.hpp>
-#include "BaseShape.hpp"
+#include "BaseModel3D.hpp"
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    class Cube : public BaseShape
+    class Cube : public BaseModel3D
     {
     private:
 

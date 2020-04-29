@@ -16,16 +16,25 @@
 #include <vector>
 #include <cmath>
 #include <SFML/OpenGL.hpp>
+#include "../Scene.hpp"
+#include "../Transform.hpp"
 
-namespace exampleShapes
+namespace OpenGLRender3D
 {
 
-    class BaseShape
+    class BaseModel3D
     {
 
     public:
-        
+
+        Transform transform;
+
+        Scene * scene;
+
         virtual void render() = 0;
+
+        virtual void update() = 0;
+
 
     };
 
