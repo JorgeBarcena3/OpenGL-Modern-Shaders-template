@@ -89,8 +89,7 @@ namespace OpenGLRender3D
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-        transform.setScale(glm::vec3(40,40,40));
-
+        transform.setScale(glm::vec3(5, 5, 5));
     }
 
     Skybox::~Skybox()
@@ -104,25 +103,22 @@ namespace OpenGLRender3D
 
     void Skybox::update()
     {
-        transform.setPosition(scene->getMainCamera()->transform.getPosition() + (glm::vec3(0, 0, -0.5f)));
+        transform.setPosition(scene->getMainCamera()->transform.getPosition() + (glm::vec3(0, 0, -2.5f)));
     }
 
     void Skybox::render()
     {
 
+
+        glDepthMask(GL_FALSE);
         shaderProgram.use();
-
-        glDisable(GL_DEPTH_TEST);
-        glEnable(GL_CULL_FACE);
-
+        
         texture->bind();
 
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() * transform.getModelViewMatrix();
         //glUniformMatrix4fv(model_view_matrix_id, 1, GL_FALSE, glm::value_ptr(model_view_matrix));
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 
-        // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
-        glDepthMask(GL_FALSE);
 
         glBindVertexArray(vao_id);
         glDrawArrays(GL_TRIANGLES, 0, 36);

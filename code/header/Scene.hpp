@@ -56,6 +56,12 @@ namespace OpenGLRender3D
         {
             return window_size;
         }
+        
+        void setWindowSize(int width, int height)
+        {
+
+            window_size = glm::vec2(width, height);
+        }
 
     private:
 

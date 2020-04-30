@@ -7,13 +7,11 @@
 
 OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 {
-    resize(width, height);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glClearColor(0.f, 0.f, 0.f, 1.f);
-    glEnable(GL_DEPTH_TEST);
-
 
     scene = &_scene;
+
+    resize(width, height);
+
     // Se compilan y se activan los shaders:
 
     shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file("../../assets/vertexShader.vglsl")));
@@ -21,7 +19,6 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     shaderProgram.link();
 
-    projection_matrix = glm::perspective(20.f, GLfloat(width) / height, 1.f, 50.f);
     projection_view_matrix_id = shaderProgram.get_uniform_id("projection_view_matrix");
 
 }
@@ -35,34 +32,34 @@ void OpenGLRender3D::Camera::update(float time)
 
     transform.getModelViewMatrix();
 
-
 }
 
 void OpenGLRender3D::Camera::render()
 {
 
     shaderProgram.use();
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glEnable(GL_DEPTH_TEST);
 
 }
 
 void OpenGLRender3D::Camera::resize(int width, int height)
 {
-    // Se establece la configuración básica:
-    projection_matrix = glm::perspective(glm::radians(90.f), GLfloat(width) / height, 1.f, 200.f);
+    scene->setWindowSize(width, height);
+    projection_matrix = glm::perspective(40.f, GLfloat(width) / height, 1.f, 100.f);
     glViewport(0, 0, width, height);
 }
 
 void OpenGLRender3D::Camera::moveCamera(glm::vec3 direction)
 {
-    transform.setPosition(transform.getPosition() + (glm::vec3(direction) * 0.2f));
+    transform.setPosition(transform.getPosition() + (glm::vec3(direction)));
 }
 
 void OpenGLRender3D::Camera::rotateCamera(glm::vec2 mousePos)
 {
 
     float dead_zone = 100;
-    float speed_rot = 10;
+    float speed_rot = 20;
 
     // X rotation
     float center_x = (scene->getWindowSize().x) / 2;
@@ -71,15 +68,19 @@ void OpenGLRender3D::Camera::rotateCamera(glm::vec2 mousePos)
     float rotation = distanceToCenter > dead_zone ? -speed_rot : distanceToCenter < -dead_zone ? +speed_rot : 0;
 
     if (rotation != 0)
-        transform.setRotation(transform.getRotation() + glm::vec3(0, rotation, 0));
+    {
 
+        transform.setRotation(transform.getRotation() + (transform.getUpVector() * glm::vec3(0, rotation, 0)));
+
+
+    }
     else
     {
         float center_y = (scene->getWindowSize().y) / 2;
         distanceToCenter = (mousePos.y - (center_y));
 
         rotation = distanceToCenter > dead_zone ? -speed_rot : distanceToCenter < -dead_zone ? speed_rot : 0;
-        transform.setRotation(transform.getRotation() + glm::vec3(rotation, 0, 0));
+        transform.setRotation(transform.getRotation() + (transform.getRightVector() * glm::vec3(rotation, 0, 0)));
     }
 
 }

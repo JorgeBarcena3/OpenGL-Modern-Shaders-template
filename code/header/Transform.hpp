@@ -38,7 +38,7 @@ namespace OpenGLRender3D
 
     public:
 
-        Transform(glm::vec3 _position = glm::vec3(0, 0, 0), glm::vec3 _rotation = glm::vec3(0, 0, 0), glm::vec3 _scale = glm::vec3(1,1,1))
+        Transform(glm::vec3 _position = glm::vec3(0, 0, 0), glm::vec3 _rotation = glm::vec3(0, 0, 0), glm::vec3 _scale = glm::vec3(1, 1, 1))
         {
             position = _position;
             rotation = _rotation;
@@ -102,10 +102,23 @@ namespace OpenGLRender3D
 
         inline glm::vec3 getFordwardVector()
         {
-            glm::mat4 inverted = glm::inverse(transform_matrix);
-            glm::vec3 forward = glm::normalize(glm::vec3(inverted[2]));
 
-            return forward;
+            glm::vec4 a = transform_matrix * glm::vec4(0, 0, -1, 0);
+            return glm::vec3(a[0], a[1], a[2]);
+        }
+
+        inline glm::vec3 getRightVector()
+        {
+
+            glm::vec4 a = transform_matrix * glm::vec4(1, 0, 0, 0);
+            return glm::vec3(a[0], a[1], a[2]);
+        }
+        
+        inline glm::vec3 getUpVector()
+        {
+
+            glm::vec4 a = transform_matrix * glm::vec4(0, 1, 0, 0);
+            return glm::vec3(a[0], a[1], a[2]);
         }
 
 

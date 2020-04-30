@@ -38,7 +38,6 @@ namespace OpenGLRender3D
 
     void Scene::update(float time)
     {
-        cleanActionsPool();
 
         camera->update(time);
         skybox->update();
@@ -48,6 +47,9 @@ namespace OpenGLRender3D
         {
             shape->update();
         }
+
+        cleanActionsPool();
+
     }
 
     void Scene::render()
@@ -112,11 +114,11 @@ namespace OpenGLRender3D
             {
                 if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
                 {
-                    actionsPool.emplace("Mover Camara", -camera->transform.getFordwardVector());
+                    actionsPool.emplace("Mover Camara", camera->transform.getFordwardVector());
                 }
                 else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
                 {
-                    actionsPool.emplace("Mover Camara", camera->transform.getFordwardVector());
+                    actionsPool.emplace("Mover Camara", -camera->transform.getFordwardVector());
                 }
                 else if (event.key.code == sf::Keyboard::Space)
                 {
@@ -128,11 +130,11 @@ namespace OpenGLRender3D
                 }
                 else if (event.key.code == sf::Keyboard::A)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(-1.f, 0.f, 0, 0));
+                    actionsPool.emplace("Mover Camara", -camera->transform.getRightVector());
                 }
                 else if (event.key.code == sf::Keyboard::D)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(+1.f, 0, 0, 0));
+                    actionsPool.emplace("Mover Camara", camera->transform.getRightVector());
                 }
             }
             }
