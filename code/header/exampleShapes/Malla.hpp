@@ -24,23 +24,6 @@ namespace OpenGLRender3D
     {
     private:
 
-        // Índices para indexar el array vbo_ids:
-
-        enum
-        {
-            COORDINATES_VBO,
-            COLORS_VBO,
-            NORMALS_VBO,
-            INDICES_IBO,
-            TEXTURE_COORD,
-            VBO_COUNT
-        };
-
-
-    private:
-
-        GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
-        GLuint vao_id;                  // Id del VAO del cubo
 
         float width;
         float height;

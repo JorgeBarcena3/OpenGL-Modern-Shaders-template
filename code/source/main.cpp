@@ -22,7 +22,7 @@ using namespace OpenGLRender3D;
 int main()
 {
 
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     Window window(VideoMode(800, 600), "OpenGL Modern + Shaders + textures", Style::Default, ContextSettings(32));
 
@@ -46,7 +46,6 @@ int main()
 
     do
     {
-        Event event;     
 
         running = myScene.manageInput(window);
         myScene.update(clock.getElapsedTime().asSeconds());

@@ -12,26 +12,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\Camera.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\Cube.cpp" />
+    <ClCompile Include="..\..\code\source\Cubemap.cpp" />
+    <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
     <ClCompile Include="..\..\code\source\Scene.cpp" />
+    <ClCompile Include="..\..\code\source\Texture.cpp" />
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Camera.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp" />
+    <ClInclude Include="..\..\code\header\Cubemap.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\BaseModel3D.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Cube.hpp" />
+    <ClInclude Include="..\..\code\header\exampleShapes\Skybox.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp" />
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader_Program.hpp" />
+    <ClInclude Include="..\..\code\header\Texture.hpp" />
     <ClInclude Include="..\..\code\header\Transform.hpp" />
     <ClInclude Include="..\..\code\header\Vertex_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Scene.hpp" />
@@ -39,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\fragmentShader.fglsl" />
+    <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
+    <None Include="..\..\assets\skybox\vertexShader.vglsl" />
     <None Include="..\..\assets\vertexShader.vglsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

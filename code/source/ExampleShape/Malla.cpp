@@ -123,7 +123,7 @@ namespace OpenGLRender3D
 
     void Malla::setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& tx, std::string path)
     {
-        std::shared_ptr< example::Color_Buffer_Rgba8888 > texture;
+        std::shared_ptr< Color_buffers::Color_Buffer_Rgba8888 > texture;
 
 
         tga_image loaded_image;
@@ -132,7 +132,7 @@ namespace OpenGLRender3D
         {
             // Si se ha podido cargar la imagen desde el archivo, se crea un búfer para una textura:
 
-            texture.reset(new example::Color_Buffer_Rgba8888(loaded_image.width, loaded_image.height));
+            texture.reset(new Color_buffers::Color_Buffer_Rgba8888(loaded_image.width, loaded_image.height));
 
             // Se convierte el formato de píxel de la imagen cargada a RGBA8888:
 
@@ -141,9 +141,9 @@ namespace OpenGLRender3D
 
             // Se copian los pixels del búfer de la imagen cargada al búfer de la textura:
 
-            example::Color_Buffer_Rgba8888::Color* loaded_image_pixels = reinterpret_cast<example::Color_Buffer_Rgba8888::Color*>(loaded_image.image_data);
-            example::Color_Buffer_Rgba8888::Color* loaded_image_pixels_end = loaded_image_pixels + loaded_image.width * loaded_image.height;
-            example::Color_Buffer_Rgba8888::Color* image_buffer_pixels = texture->colors();
+            Color_buffers::Color_Buffer_Rgba8888::Color* loaded_image_pixels = reinterpret_cast<Color_buffers::Color_Buffer_Rgba8888::Color*>(loaded_image.image_data);
+            Color_buffers::Color_Buffer_Rgba8888::Color* loaded_image_pixels_end = loaded_image_pixels + loaded_image.width * loaded_image.height;
+            Color_buffers::Color_Buffer_Rgba8888::Color* image_buffer_pixels = texture->colors();
 
             while (loaded_image_pixels < loaded_image_pixels_end)
             {
@@ -164,8 +164,8 @@ namespace OpenGLRender3D
         // Cuanto mas alto mas blanco
         for (size_t i = 0; i < coordinates.size(); i += 3)
         {
-            int pixel_x = texture->get_width() * tx[texture_index];
-            int pixel_y = texture->get_height() * tx[texture_index + 1];
+            int pixel_x = (int)(texture->get_width() *  tx[texture_index]    );
+            int pixel_y = (int)(texture->get_height() * tx[texture_index + 1]);
 
             auto pixel = texture->colors()[texture->offset_at(pixel_x, pixel_y)];
 
@@ -230,10 +230,10 @@ namespace OpenGLRender3D
         int vertex_triangles = ( (vertex_count - 1) * (vertex_count - 1) * 2 );
 
 
-        GLuint offset = 0;
-        for (GLuint i = 0; i < vertex_count - 1; ++i)
+        int offset = 0;
+        for (int i = 0; i < vertex_count - 1; ++i)
         {
-            for (GLuint j = 0; j < vertex_count - 1; ++j)
+            for (int j = 0; j < vertex_count - 1; ++j)
             {
                 indices.push_back(i * vertex_count + j);
                 indices.push_back(i * vertex_count + j + 1);
@@ -270,7 +270,7 @@ namespace OpenGLRender3D
 
     void Malla::render()
     {
-        
+
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() *  transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 

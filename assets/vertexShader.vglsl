@@ -7,7 +7,7 @@ layout (location = 1) in vec3 vertex_color;
 layout (location = 2) in vec3 normal_vertex;
 layout (location = 3) in vec2 texture_coordinates;
 
-out vec3 front_color;
+out vec3 front_color;;
 
 void main()
 {

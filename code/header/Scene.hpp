@@ -23,6 +23,7 @@ namespace OpenGLRender3D
 {
 
     class Camera;
+    class Skybox;
     class BaseModel3D;
 
     class Scene
@@ -31,9 +32,13 @@ namespace OpenGLRender3D
     private:
 
 
-        Camera* camera;
+        Camera * camera;
+
         std::vector< BaseModel3D* > shapes;
+
         glm::vec2 window_size;
+
+        Skybox * skybox;
 
     public:
 
@@ -54,7 +59,7 @@ namespace OpenGLRender3D
 
     private:
 
-        std::map<std::string, glm::vec4> actionsPool;
+        std::map<std::string, glm::vec3> actionsPool;
 
     };
 

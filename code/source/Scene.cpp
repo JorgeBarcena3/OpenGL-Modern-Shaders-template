@@ -15,6 +15,7 @@
 #include "../header/exampleShapes/Cylinder.hpp"
 #include "../header/exampleShapes/Malla.hpp"
 #include "../header/Camera.hpp"
+#include "../header/exampleShapes/Skybox.hpp"
 #include <SFML/Window/Mouse.hpp>
 
 
@@ -26,7 +27,11 @@ namespace OpenGLRender3D
     Scene::Scene(int width, int height)
     {
         camera = new OpenGLRender3D::Camera(width, height, *this);
+
+        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/sky-cube-map-", *this);
+
         window_size = glm::vec2(width, height);
+
         shapes.push_back(new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
 
     }
@@ -36,6 +41,8 @@ namespace OpenGLRender3D
         cleanActionsPool();
 
         camera->update(time);
+        skybox->update();
+
 
         for (auto shape : shapes)
         {
@@ -45,6 +52,12 @@ namespace OpenGLRender3D
 
     void Scene::render()
     {
+
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+
+        skybox->render();
 
         camera->render();
 
@@ -99,27 +112,27 @@ namespace OpenGLRender3D
             {
                 if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0, -0.1, 0));
+                    actionsPool.emplace("Mover Camara", -camera->transform.getFordwardVector());
                 }
                 else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0, +0.1, 0));
+                    actionsPool.emplace("Mover Camara", camera->transform.getFordwardVector());
                 }
                 else if (event.key.code == sf::Keyboard::Space)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, 0.1f, 0, 0));
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, 1.0f, 0, 0));
                 }
                 else if (event.key.code == sf::Keyboard::LControl)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, -0.1f, 0, 0));
+                    actionsPool.emplace("Mover Camara", glm::vec4(0, -1.0f, 0, 0));
                 }
                 else if (event.key.code == sf::Keyboard::A)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(-0.1f, 0.f, 0, 0));
+                    actionsPool.emplace("Mover Camara", glm::vec4(-1.f, 0.f, 0, 0));
                 }
                 else if (event.key.code == sf::Keyboard::D)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(+0.1f, 0, 0, 0));
+                    actionsPool.emplace("Mover Camara", glm::vec4(+1.f, 0, 0, 0));
                 }
             }
             }

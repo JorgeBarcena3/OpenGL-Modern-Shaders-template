@@ -23,8 +23,6 @@
 namespace OpenGLRender3D
 {
 
-    using namespace shaderToolkit;
-
     class Transform
     {
     private:
@@ -100,6 +98,14 @@ namespace OpenGLRender3D
         inline glm::mat4 getInverseMatrix()
         {
             return glm::inverse(transform_matrix);
+        }
+
+        inline glm::vec3 getFordwardVector()
+        {
+            glm::mat4 inverted = glm::inverse(transform_matrix);
+            glm::vec3 forward = glm::normalize(glm::vec3(inverted[2]));
+
+            return forward;
         }
 
 

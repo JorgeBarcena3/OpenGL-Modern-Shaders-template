@@ -32,9 +32,6 @@ namespace OpenGLRender3D
 
     private:
 
-        static const std::string   vertex_shader_code;
-        static const std::string fragment_shader_code;
-
         GLint  projection_view_matrix_id;
         glm::mat4 projection_matrix;
 
@@ -50,10 +47,8 @@ namespace OpenGLRender3D
         void   update(float time);
         void   render();
         void   resize(int width, int height);
-        bool   uploadUniformVariable(const char* name, float value);
-        bool   uploadUniformVariable(const char* name, Vector3f value);
 
-        void moveCamera(glm::vec4 movement);
+        void moveCamera(glm::vec3 movement);
         void rotateCamera(glm::vec2 mousePos);
 
         const GLint getProjectionMatrixId()

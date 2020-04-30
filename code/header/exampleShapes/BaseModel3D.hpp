@@ -22,14 +22,40 @@
 namespace OpenGLRender3D
 {
 
+    class Texture;
+
     class BaseModel3D
     {
+
+    protected:
+
+
+        // Índices para indexar el array vbo_ids:
+
+        enum
+        {
+            COORDINATES_VBO,
+            COLORS_VBO,
+            NORMALS_VBO,
+            TEXTURE_VBO,
+            INDICES_IBO,
+            TEXTURE_COORD,
+            VBO_COUNT
+        };
+
+
+    protected:
+
+        GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
+        GLuint vao_id;                  // Id del VAO del cubo
 
     public:
 
         Transform transform;
 
-        Scene * scene;
+        Scene* scene;
+
+        Texture * texture;
 
         virtual void render() = 0;
 
