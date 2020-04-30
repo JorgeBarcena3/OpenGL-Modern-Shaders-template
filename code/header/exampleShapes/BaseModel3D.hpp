@@ -59,11 +59,14 @@ namespace OpenGLRender3D
 
         Scene* scene;
 
-
         virtual void render() = 0;
 
         virtual void update() = 0;
 
+        void setParent(Transform* _transform)
+        {
+            transform.addParent(_transform);
+        }
 
     };
 

@@ -11,11 +11,7 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, const char* path)
 {
     scene = &_scene;
 
-    loadObj(path);
-
-    transform.setPosition(glm::vec3(0, 0, -25));
-    transform.setScale(glm::vec3(0.5f, 0.5f, 0.5f));
-    transform.setRotation(glm::vec3(90.f, 0, 0));
+    loadObj(path); 
 
 }
 

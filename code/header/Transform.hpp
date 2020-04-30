@@ -25,6 +25,10 @@ namespace OpenGLRender3D
 
     class Transform
     {
+    public:
+
+        Transform * parent;
+
     private:
 
         // Matriz de coordenadas de modelo
@@ -43,6 +47,7 @@ namespace OpenGLRender3D
             position = _position;
             rotation = _rotation;
             scale = _scale;
+            parent = nullptr;
 
         }
 
@@ -91,6 +96,11 @@ namespace OpenGLRender3D
             // Lo escalamos
             transform_matrix = glm::scale(transform_matrix, scale);
 
+            if (parent != nullptr)
+            {
+                transform_matrix = parent->getModelViewMatrix() * transform_matrix;
+            }
+
 
             return transform_matrix;
         }
@@ -121,7 +131,12 @@ namespace OpenGLRender3D
             return glm::vec3(a[0], a[1], a[2]);
         }
 
+        inline void addParent(Transform* transform)
+        {
+            parent = (transform);
+        }
 
+        
     };
 
 }

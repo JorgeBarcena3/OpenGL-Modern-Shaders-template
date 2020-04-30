@@ -27,14 +27,27 @@ namespace OpenGLRender3D
 
     Scene::Scene(int width, int height)
     {
+
+        scene_Node = new Transform();
+
         camera = new OpenGLRender3D::Camera(width, height, *this);
 
         skybox = new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this);
 
         window_size = glm::vec2(width, height);
 
-        shapes.push_back(new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));// , "../../assets/models/skull/Skull.tga"));
-        shapes.push_back(new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
+        enetities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
+        getEntity("Terreno")->setParent(scene_Node);
+
+        enetities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -25));
+        getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0)); 
+        getEntity("Calavera")->setParent(scene_Node);
+        
+        enetities.emplace("Calavera_hija", new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera_hija")->setParent(& (getEntity("Calavera")->transform) );
+        getEntity("Calavera_hija")->transform.setPosition(glm::vec3(20, 0, 0));
 
     }
 
@@ -45,9 +58,9 @@ namespace OpenGLRender3D
         skybox->update();
 
 
-        for (auto shape : shapes)
+        for (auto shape : enetities)
         {
-            shape->update();
+            shape.second->update();
         }
 
         cleanActionsPool();
@@ -66,9 +79,9 @@ namespace OpenGLRender3D
         camera->render();
 
         //Se renderizan las shapes
-        for (auto shape : shapes)
+        for (auto shape : enetities)
         {
-            shape->render();
+            shape.second->render();
         }
 
     }

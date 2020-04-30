@@ -52,7 +52,7 @@ void OpenGLRender3D::Camera::resize(int width, int height)
 
 void OpenGLRender3D::Camera::moveCamera(glm::vec3 direction)
 {
-    transform.setPosition(transform.getPosition() + (glm::vec3(direction)));
+    transform.setPosition(transform.getPosition() + (glm::vec3(direction)   ));
 }
 
 void OpenGLRender3D::Camera::rotateCamera(glm::vec2 mousePos)

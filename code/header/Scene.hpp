@@ -25,6 +25,7 @@ namespace OpenGLRender3D
     class Camera;
     class Skybox;
     class BaseModel3D;
+    class Transform;
 
     class Scene
     {
@@ -34,11 +35,13 @@ namespace OpenGLRender3D
 
         Camera * camera;
 
-        std::vector< BaseModel3D* > shapes;
+        std::map<std::string,  BaseModel3D* > enetities;
 
         glm::vec2 window_size;
 
         Skybox * skybox;
+
+        Transform * scene_Node;
 
     public:
 
@@ -61,6 +64,11 @@ namespace OpenGLRender3D
         {
 
             window_size = glm::vec2(width, height);
+        }
+
+        BaseModel3D * getEntity(std::string name)
+        {
+            return enetities[name];
         }
 
     private:
