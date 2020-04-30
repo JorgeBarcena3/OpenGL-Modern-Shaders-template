@@ -16,8 +16,15 @@
 #include <SFML/OpenGL.hpp>
 #include <SFML/System/Time.hpp>
 
+
+extern "C" {
+    _declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+}
+
+
 using namespace sf;
 using namespace OpenGLRender3D;
+
 
 int main()
 {
@@ -28,13 +35,8 @@ int main()
 
     window.setVerticalSyncEnabled(true);
 
-    // Una vez se ha creado el contexto de OpenGL ya se puede inicializar Glew:
-
-    GLenum glew_initialization = glewInit();
-
-    assert(glew_initialization == GLEW_OK);
-
-    // Una vez se ha inicializado GLEW se puede crear una instancia de View:
+    if (!gladLoadGL())
+        throw std::exception("No se ha podido cargar el contexto de OpenGL");
 
     Scene myScene(800, 600);
 
@@ -52,6 +54,7 @@ int main()
         myScene.render();
 
         window.display();
+
     } while (running);
 
     return (EXIT_SUCCESS);

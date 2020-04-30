@@ -46,6 +46,9 @@
     <Filter Include="shaders\Skybox">
       <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GLAD">
+      <UniqueIdentifier>{31955f75-a69e-4421-90ce-12dfb268063f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -80,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="..\..\code\source\Cubemap.cpp">
       <Filter>sources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Texture2D.cpp">
+      <Filter>sources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\glad\src\glad.c">
+      <Filter>GLAD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +138,9 @@
       <Filter>headers\Texture\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Cubemap.hpp">
+      <Filter>headers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Texture2D.hpp">
       <Filter>headers\Texture</Filter>
     </ClInclude>
   </ItemGroup>

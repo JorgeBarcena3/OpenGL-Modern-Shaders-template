@@ -9,7 +9,7 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <GL/glew.h>            // Debe incluirse antes que gl.h
+#include <glad/glad.h>
 #include "../../header/exampleShapes/Cylinder.hpp"
 #include <SFML/OpenGL.hpp>
 #include <cmath>

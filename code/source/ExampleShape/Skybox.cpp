@@ -9,7 +9,7 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <GL/glew.h>            // Debe incluirse antes que gl.h
+#include <glad/glad.h>
 #include "../../header/exampleShapes/Skybox.hpp"
 #include "../../header/Cubemap.hpp"
 #include "../../header/Camera.hpp"
@@ -89,7 +89,7 @@ namespace OpenGLRender3D
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-
+        transform.setScale(glm::vec3(40,40,40));
 
     }
 
@@ -104,7 +104,7 @@ namespace OpenGLRender3D
 
     void Skybox::update()
     {
-        transform.setPosition(scene->getMainCamera()->transform.getPosition() + (glm::vec3(0, 0, -1.f)));
+        transform.setPosition(scene->getMainCamera()->transform.getPosition() + (glm::vec3(0, 0, -0.5f)));
     }
 
     void Skybox::render()
@@ -129,6 +129,9 @@ namespace OpenGLRender3D
         glBindVertexArray(0);
 
         glDepthMask(GL_TRUE);
+
+        shaderProgram.disable();
+
     }
 
 }

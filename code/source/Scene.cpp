@@ -28,7 +28,7 @@ namespace OpenGLRender3D
     {
         camera = new OpenGLRender3D::Camera(width, height, *this);
 
-        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/sky-cube-map-", *this);
+        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this);
 
         window_size = glm::vec2(width, height);
 

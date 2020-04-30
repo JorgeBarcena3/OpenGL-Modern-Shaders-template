@@ -12,7 +12,7 @@
 #ifndef CUBEMAP_HEADER
 #define CUBEMAP_HEADER
 
-#include <GL/glew.h>            // Debe incluirse antes que gl.h
+#include <glad/glad.h>
 #include "Texture.hpp"
 
 namespace OpenGLRender3D

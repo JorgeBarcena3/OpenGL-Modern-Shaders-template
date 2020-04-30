@@ -12,7 +12,7 @@
 #ifndef SCENE_HEADER
 #define SCENE_HEADER
 
-#include <GL/glew.h>            // Debe incluirse antes que gl.h
+#include <glad/glad.h>
 #include <string>
 #include <map>
 #include <glm/matrix.hpp>

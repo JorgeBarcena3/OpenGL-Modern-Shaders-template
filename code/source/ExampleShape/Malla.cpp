@@ -9,12 +9,13 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <GL/glew.h>            // Debe incluirse antes que gl.h
+#include <glad/glad.h>
 #include "../../header/exampleShapes/Malla.hpp"
 #include <SFML/OpenGL.hpp>
 #include <cmath>
 #include <glm/vec3.hpp>
 #include "../../header/Color_Buffer_Rgba8888.hpp"
+#include "../../header/Texture2D.hpp"
 #include "../../header/Camera.hpp";
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 #include <glm/gtc/type_ptr.hpp>                 // value_ptr
@@ -30,9 +31,9 @@ extern "C"
 namespace OpenGLRender3D
 {
 
-    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, std::string path)
+    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, std::string path, std::string tx_path)
     {
-
+        texture = new Texture2D(tx_path);
         transform = Transform(glm::vec3(0,0,-20), glm::vec3(0,0,0), glm::vec3(1,1,1));
         width = _width;
         height = _height;
@@ -55,6 +56,7 @@ namespace OpenGLRender3D
 
         createVertices(coordinates, normals, tx);
         createColors(colors, coordinates);
+
         if (!path.empty())
         {
             setHeightCoordinates(coordinates, tx, path);
@@ -270,6 +272,9 @@ namespace OpenGLRender3D
 
     void Malla::render()
     {
+
+        if (texture->is_ok())
+            texture->bind();
 
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() *  transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
