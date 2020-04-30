@@ -51,10 +51,7 @@ namespace OpenGLRender3D
             return texture_is_loaded;
         }
 
-        bool bind() const
-        {
-            return texture_is_loaded ? glBindTexture(GL_TEXTURE_CUBE_MAP, texture_id), true : false;
-        }
+        virtual bool bind() const = 0;
 
     };
 

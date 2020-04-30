@@ -23,8 +23,11 @@ namespace OpenGLRender3D
 
     public:
 
-        Texture2D(const std::string& path);
-        
+        Texture2D(const std::string& path);        
+
+        // Heredado vía Texture
+        virtual bool bind() const override;
+
     };
 
 }

@@ -80,7 +80,7 @@ void OpenGLRender3D::Camera::rotateCamera(glm::vec2 mousePos)
         distanceToCenter = (mousePos.y - (center_y));
 
         rotation = distanceToCenter > dead_zone ? -speed_rot : distanceToCenter < -dead_zone ? speed_rot : 0;
-        transform.setRotation(transform.getRotation() + (transform.getRightVector() * glm::vec3(rotation, 0, 0)));
+        transform.setRotation(transform.getRotation() + (transform.getRightVector() * glm::vec3(rotation, rotation, rotation)));
     }
 
 }

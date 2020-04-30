@@ -12,7 +12,6 @@
 #ifndef CYLINDER_HEADER
 #define CYLINDER_HEADER
 
-#include <SFML/OpenGL.hpp>
 #include <vector>
 #include "BaseModel3D.hpp"
 
@@ -27,7 +26,6 @@ namespace OpenGLRender3D
         float height;
         float sides;
 
-        std::vector< GLubyte > indices;
 
 
     public:

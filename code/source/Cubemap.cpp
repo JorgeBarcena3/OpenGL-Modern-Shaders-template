@@ -68,3 +68,8 @@ OpenGLRender3D::Cubemap::Cubemap(const std::string& path)
 
     texture_is_loaded = true;
 }
+
+bool OpenGLRender3D::Cubemap::bind() const
+{
+    return texture_is_loaded ? glBindTexture(GL_TEXTURE_CUBE_MAP, texture_id), true : false;
+}

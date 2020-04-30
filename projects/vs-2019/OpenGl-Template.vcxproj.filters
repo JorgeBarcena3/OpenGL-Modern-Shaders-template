@@ -22,12 +22,6 @@
     <Filter Include="tools\header">
       <UniqueIdentifier>{2c799136-1120-4e75-b89f-f57a5d24a111}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tools\3DModels">
-      <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tools\3DModels\base">
-      <UniqueIdentifier>{09dde16b-79e7-44e0-9c9f-291a728542bc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sources\3DModels">
       <UniqueIdentifier>{a807a94d-4512-4ff3-a0dd-a25908d7919b}</UniqueIdentifier>
     </Filter>
@@ -48,6 +42,15 @@
     </Filter>
     <Filter Include="GLAD">
       <UniqueIdentifier>{31955f75-a69e-4421-90ce-12dfb268063f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels">
+      <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels\base">
+      <UniqueIdentifier>{09dde16b-79e7-44e0-9c9f-291a728542bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels\OBJ_Model">
+      <UniqueIdentifier>{40ff5d9b-a1d3-44bf-a43f-a1ad80814a25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +93,12 @@
     <ClCompile Include="..\..\lib\glad\src\glad.c">
       <Filter>GLAD</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Mesh.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
@@ -114,10 +123,10 @@
       <Filter>targa</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
-      <Filter>tools\3DModels</Filter>
+      <Filter>headers\3DModels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp">
-      <Filter>tools\3DModels</Filter>
+      <Filter>headers\3DModels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Scene.hpp">
       <Filter>headers</Filter>
@@ -126,13 +135,13 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\BaseModel3D.hpp">
-      <Filter>tools\3DModels\base</Filter>
+      <Filter>headers\3DModels\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Transform.hpp">
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Skybox.hpp">
-      <Filter>tools\3DModels</Filter>
+      <Filter>headers\3DModels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Texture.hpp">
       <Filter>headers\Texture\Base</Filter>
@@ -142,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\Texture2D.hpp">
       <Filter>headers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Model3D.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

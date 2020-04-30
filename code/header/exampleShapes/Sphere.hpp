@@ -12,7 +12,6 @@
 #ifndef SPHERE_HEADER
 #define SPHERE_HEADER
 
-#include <SFML/OpenGL.hpp>
 #include <vector>
 #include "BaseShape.hpp"
 
@@ -21,27 +20,10 @@ namespace exampleShapes
 
     class Sphere : public BaseShape
     {
-    private:
-
-        // Índices para indexar el array vbo_ids:
-
-        enum
-        {
-            COORDINATES_VBO,
-            COLORS_VBO,
-            NORMALS_VBO,
-            TEXTURE_VBO,
-            INDICES_IBO,
-            VBO_COUNT
-        };
-
 
     private:
 
-        GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
-        GLuint vao_id;                  // Id del VAO del cubo
-
-        std::vector< GLubyte > indices;
+    
 
         // Características de la aproximación a la esfera:
 

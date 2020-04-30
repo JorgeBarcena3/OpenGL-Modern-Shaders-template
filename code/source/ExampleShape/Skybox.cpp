@@ -64,7 +64,7 @@ namespace OpenGLRender3D
     Skybox::Skybox(const std::string& path, Scene& _scene)
     {
         scene = &_scene;
-        texture = new Cubemap(path);
+        textures_factory.push_back( new Cubemap(path) );
 
 
         shaderProgram.attach(shaderToolkit::Vertex_Shader(shaderToolkit::Shader::Source_Code::from_file("../../assets/skybox/vertexShader.vglsl")));
@@ -113,7 +113,7 @@ namespace OpenGLRender3D
         glDepthMask(GL_FALSE);
         shaderProgram.use();
         
-        texture->bind();
+        textures_factory[0]->bind();
 
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() * transform.getModelViewMatrix();
         //glUniformMatrix4fv(model_view_matrix_id, 1, GL_FALSE, glm::value_ptr(model_view_matrix));

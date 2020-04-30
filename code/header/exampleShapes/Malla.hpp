@@ -27,9 +27,7 @@ namespace OpenGLRender3D
 
         float width;
         float height;
-        int vertex_count;
-
-        std::vector< GLuint > indices;
+        int vertex_count;     
 
 
     public:

@@ -33,7 +33,7 @@ namespace OpenGLRender3D
 
     Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, std::string path, std::string tx_path)
     {
-        texture = new Texture2D(tx_path);
+        textures_factory .push_back( new Texture2D(tx_path) );
         transform = Transform(glm::vec3(0,0,-20), glm::vec3(0,0,0), glm::vec3(1,1,1));
         width = _width;
         height = _height;
@@ -273,8 +273,8 @@ namespace OpenGLRender3D
     void Malla::render()
     {
 
-        if (texture->is_ok())
-            texture->bind();
+        if (textures_factory[0]->is_ok())
+            textures_factory[0]->bind();
 
         glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() *  transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));

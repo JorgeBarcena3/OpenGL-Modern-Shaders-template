@@ -25,6 +25,10 @@ namespace OpenGLRender3D
 
         Cubemap(const std::string& path);
         
+
+        // Heredado vía Texture
+        virtual bool bind() const override;
+
     };
 
 }

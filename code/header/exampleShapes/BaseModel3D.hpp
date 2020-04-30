@@ -15,7 +15,6 @@
 #include <memory>
 #include <vector>
 #include <cmath>
-#include <SFML/OpenGL.hpp>
 #include "../Scene.hpp"
 #include "../Transform.hpp"
 
@@ -49,13 +48,17 @@ namespace OpenGLRender3D
         GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
         GLuint vao_id;                  // Id del VAO del cubo
 
+        std::vector< GLuint > indices;
+
+        std::vector<Texture*> textures_factory;
+
+
     public:
 
         Transform transform;
 
         Scene* scene;
 
-        Texture * texture;
 
         virtual void render() = 0;
 

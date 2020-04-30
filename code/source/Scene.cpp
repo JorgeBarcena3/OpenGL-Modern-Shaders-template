@@ -14,6 +14,7 @@
 #include <cassert>
 #include "../header/exampleShapes/Cylinder.hpp"
 #include "../header/exampleShapes/Malla.hpp"
+#include "../header/exampleShapes/Model3D.hpp"
 #include "../header/Camera.hpp"
 #include "../header/exampleShapes/Skybox.hpp"
 #include <SFML/Window/Mouse.hpp>
@@ -32,6 +33,7 @@ namespace OpenGLRender3D
 
         window_size = glm::vec2(width, height);
 
+        shapes.push_back(new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));// , "../../assets/models/skull/Skull.tga"));
         shapes.push_back(new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
 
     }
