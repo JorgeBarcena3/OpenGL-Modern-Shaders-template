@@ -16,9 +16,11 @@
 #define OGL_SHADER_PROGRAM_HEADER
 
 #include <cassert>
-#include "Shader.hpp"
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 #include <glm/gtc/type_ptr.hpp>                 // value_ptr
+
+#include "Shader.hpp"
+
 
 namespace shaderToolkit
 {

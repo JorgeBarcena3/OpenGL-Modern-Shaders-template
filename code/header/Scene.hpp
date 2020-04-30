@@ -9,15 +9,20 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+
+#define GLM_FORCE_RADIANS
+
 #ifndef SCENE_HEADER
 #define SCENE_HEADER
 
+
+#include <SFML/Window.hpp>  
 #include <glad/glad.h>
 #include <string>
-#include <map>
 #include <glm/matrix.hpp>
 #include <vector>
-#include <SFML/Window.hpp>  
+#include <map>
+
 
 namespace OpenGLRender3D
 {

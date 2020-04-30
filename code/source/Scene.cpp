@@ -9,15 +9,16 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include "../header/Scene.hpp"
 #include <iostream>
 #include <cassert>
-#include "../header/exampleShapes/Cylinder.hpp"
+#include <SFML/Window/Mouse.hpp>
+
+#include "../header/Scene.hpp"
 #include "../header/exampleShapes/Malla.hpp"
 #include "../header/exampleShapes/Model3D.hpp"
 #include "../header/Camera.hpp"
 #include "../header/exampleShapes/Skybox.hpp"
-#include <SFML/Window/Mouse.hpp>
+#include "../header/exampleShapes/Cylinder.hpp" 
 
 
 namespace OpenGLRender3D
@@ -42,12 +43,13 @@ namespace OpenGLRender3D
         enetities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
         getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -25));
         getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0)); 
+        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera")->setParent(scene_Node);
-        
-        enetities.emplace("Calavera_hija", new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera_hija")->setParent(& (getEntity("Calavera")->transform) );
-        getEntity("Calavera_hija")->transform.setPosition(glm::vec3(20, 0, 0));
+
+        enetities.emplace("Cilindro", new OpenGLRender3D::Cylinder(1, 2, *this, 18));
+        getEntity("Cilindro")->setParent(&(getEntity("Calavera")->transform));
+        getEntity("Cilindro")->transform.setPosition(glm::vec3(-2, 0, 0));
+        getEntity("Cilindro")->transform.setScale(glm::vec3(5,5,5));
 
     }
 

@@ -9,14 +9,17 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#define GLM_FORCE_RADIANS
+
 #ifndef CAMERA_HEADER
 #define CAMERA_HEADER
 
-#include <glad/glad.h>
-#include "exampleShapes/BaseModel3D.hpp"
 #include <string>
-#include "Shader_Program.hpp"
 #include <glm/matrix.hpp>
+
+#include "Shader_Program.hpp"
+#include "exampleShapes/BaseModel3D.hpp"
+
 
 namespace OpenGLRender3D
 {

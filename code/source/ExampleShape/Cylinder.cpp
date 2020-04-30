@@ -9,20 +9,26 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <glad/glad.h>
-#include "../../header/exampleShapes/Cylinder.hpp"
-#include <SFML/OpenGL.hpp>
+
+
 #include <cmath>
 #include <glm/vec3.hpp>
 
-#define PI2 2.0 * 3.141592
+#include "../../header/exampleShapes/Cylinder.hpp"
+#include "../../header/Texture2D.hpp"
+#include "../../header/Scene.hpp"
+#include "../../header/Camera.hpp"
+
+
+#define PI2 2.0f * 3.141592f
 
 namespace OpenGLRender3D
 {
 
-    Cylinder::Cylinder(float _radius, float _height, float _sides)
+    Cylinder::Cylinder(float _radius, float _height, Scene& _scene, float _sides, std::string tx_path)
     {
-
+        scene = &_scene;
+        textures_factory.push_back(new Texture2D(tx_path));
         radius = _radius;
         height = _height;
         sides = _sides;
@@ -91,7 +97,7 @@ namespace OpenGLRender3D
         createIndices(coordinates);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_ids[INDICES_IBO]);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLubyte), &indices[0], GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
         glBindVertexArray(0);
     }
@@ -103,6 +109,7 @@ namespace OpenGLRender3D
         glDeleteVertexArrays(1, &vao_id);
         glDeleteBuffers(VBO_COUNT, vbo_ids);
     }
+
 
     void Cylinder::createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx)
     {
@@ -162,7 +169,7 @@ namespace OpenGLRender3D
 
         int numVerticesAnillo = (coordinates.size()) / 3;
 
-        int i = 0;
+        GLuint i = 0;
 
         for (i = 0; i < numVerticesAnillo - 2; i += 2)
         {
@@ -200,14 +207,24 @@ namespace OpenGLRender3D
             colors[i + 2] = (1);
         }
     }
-
     void Cylinder::render()
     {
+
+        if (textures_factory[0]->is_ok())
+            textures_factory[0]->bind();
+
+        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() * transform.getModelViewMatrix();
+        glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
+
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
 
         glBindVertexArray(vao_id);
-        glDrawElements(GL_TRIANGLES, indices.size() * sizeof(GLubyte), GL_UNSIGNED_BYTE, 0);
+        glDrawElements(GL_TRIANGLES, indices.size() * sizeof(GLuint), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
+    }
+
+    void Cylinder::update()
+    {
     }
 
 }

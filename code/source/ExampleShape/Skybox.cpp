@@ -9,14 +9,14 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <glad/glad.h>
+
+#include <glm\gtc\type_ptr.hpp>
+
+#include "../../header/Vertex_Shader.hpp"
+#include "../../header/Fragment_Shader.hpp"
 #include "../../header/exampleShapes/Skybox.hpp"
 #include "../../header/Cubemap.hpp"
 #include "../../header/Camera.hpp"
-#include <SFML/OpenGL.hpp>
-#include <glm\gtc\type_ptr.hpp>
-#include "../../header/Vertex_Shader.hpp"
-#include "../../header/Fragment_Shader.hpp"
 
 namespace OpenGLRender3D
 {

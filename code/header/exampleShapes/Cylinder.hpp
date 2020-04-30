@@ -27,10 +27,9 @@ namespace OpenGLRender3D
         float sides;
 
 
-
     public:
 
-        Cylinder(float radius, float height, float sides = 18);
+        Cylinder(float radius, float height, Scene& _scene, float sides = 18, std::string tx_path = "../../assets/default/texture.tga");
         ~Cylinder();
 
         void createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx);
@@ -38,6 +37,9 @@ namespace OpenGLRender3D
         void createColors(std::vector< GLfloat >& colors, std::vector< GLfloat >& coodinates);
 
         void render() override;
+
+        // Heredado vía BaseModel3D
+        virtual void update() override;
 
     };
 

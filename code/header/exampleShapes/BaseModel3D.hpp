@@ -15,6 +15,7 @@
 #include <memory>
 #include <vector>
 #include <cmath>
+
 #include "../Scene.hpp"
 #include "../Transform.hpp"
 
@@ -38,7 +39,6 @@ namespace OpenGLRender3D
             NORMALS_VBO,
             TEXTURE_VBO,
             INDICES_IBO,
-            TEXTURE_COORD,
             VBO_COUNT
         };
 

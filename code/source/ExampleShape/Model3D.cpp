@@ -74,14 +74,14 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 
             mat.specular_texname = "default";
             textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
-            mat.specular_texname = textures_factory.size() - 1;
+            mat.specular_tex_id = textures_factory.size() - 1;
 
             materials.push_back(mat);
         }
         else
         {
             //Añadimos los materiales si los hay
-            for (int m = 0; m < materals.size(); m++)
+            for (size_t m = 0; m < materals.size(); m++)
             {
 
                 Material mat;
@@ -106,7 +106,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
                     if (!mat.specular_texname.empty())
                     {
                         textures_factory.push_back(new Texture2D(mtlPath + "/" + mat.specular_texname));
-                        mat.specular_texname = textures_factory.size() - 1;
+                        mat.specular_tex_id = textures_factory.size() - 1;
                     }
                 }
                 else
@@ -117,7 +117,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 
                     mat.specular_texname = "default";
                     textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
-                    mat.specular_texname = textures_factory.size() - 1;
+                    mat.specular_tex_id = textures_factory.size() - 1;
                 }
 
                 materials.push_back(mat);
@@ -130,7 +130,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 
         // En cada mesh añadimos los indices de sus vertices
         // Tambien guardamos los triangulos que forman sus caras
-        for (int s = 0; s < shapes.size(); s++)
+        for (size_t s = 0; s < shapes.size(); s++)
         {
 
             int indice_count = shapes[s].mesh.indices.size();
@@ -224,7 +224,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
     ** DATOS DE TEXTURA **
     **********************/
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[TEXTURE_COORD]);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[TEXTURE_VBO]);
     glBufferData(GL_ARRAY_BUFFER, tx.size() * sizeof(GLfloat), &tx[0], GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(3);
@@ -246,7 +246,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 void OpenGLRender3D::Model3D::update()
 {
     static float angle = 0;
-    angle -= 10;
+    angle -= 1;
 
     transform.setRotation(glm::vec3(angle, 0, 0));
 

@@ -12,12 +12,12 @@
 #ifndef TRANSFORM_HEADER
 #define TRANSFORM_HEADER
 
-#include <glad/glad.h>
-#include "exampleShapes/BaseModel3D.hpp"
 #include <string>
-#include "Shader_Program.hpp"
 #include <glm/matrix.hpp>
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
+
+#include "exampleShapes/BaseModel3D.hpp"
+#include "Shader_Program.hpp"
 
 
 namespace OpenGLRender3D

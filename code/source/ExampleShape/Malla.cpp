@@ -9,16 +9,17 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <glad/glad.h>
-#include "../../header/exampleShapes/Malla.hpp"
-#include <SFML/OpenGL.hpp>
+#define GLM_FORCE_RADIANS
+
 #include <cmath>
 #include <glm/vec3.hpp>
-#include "../../header/Color_Buffer_Rgba8888.hpp"
-#include "../../header/Texture2D.hpp"
-#include "../../header/Camera.hpp";
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 #include <glm/gtc/type_ptr.hpp>                 // value_ptr
+
+#include "../../header/exampleShapes/Malla.hpp"
+#include "../../header/Color_Buffer_Rgba8888.hpp"
+#include "../../header/Texture2D.hpp"
+#include "../../header/Camera.hpp"
 
 extern "C"
 {
@@ -97,7 +98,7 @@ namespace OpenGLRender3D
         ** DATOS DE TEXTURA **
         **********************/
 
-        glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[TEXTURE_COORD]);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[TEXTURE_VBO]);
         glBufferData(GL_ARRAY_BUFFER, tx.size() * sizeof(GLfloat), &tx[0], GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(3);

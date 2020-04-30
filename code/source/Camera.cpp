@@ -46,7 +46,7 @@ void OpenGLRender3D::Camera::render()
 void OpenGLRender3D::Camera::resize(int width, int height)
 {
     scene->setWindowSize(width, height);
-    projection_matrix = glm::perspective(40.f, GLfloat(width) / height, 1.f, 100.f);
+    projection_matrix = glm::perspective(glm::radians(40.f), GLfloat(width) / height, 1.f, 100.f);
     glViewport(0, 0, width, height);
 }
 
@@ -59,7 +59,7 @@ void OpenGLRender3D::Camera::rotateCamera(glm::vec2 mousePos)
 {
 
     float dead_zone = 100;
-    float speed_rot = 20;
+    float speed_rot = 0.5f;
 
     // X rotation
     float center_x = (scene->getWindowSize().x) / 2;

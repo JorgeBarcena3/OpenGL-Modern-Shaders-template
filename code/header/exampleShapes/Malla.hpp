@@ -9,10 +9,10 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+
 #ifndef MALLA_HEADER
 #define MALLA_HEADER
 
-#include <SFML/OpenGL.hpp>
 #include <vector>
 #include <string>
 #include "BaseModel3D.hpp"

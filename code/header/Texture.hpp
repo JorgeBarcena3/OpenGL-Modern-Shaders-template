@@ -12,12 +12,14 @@
 #ifndef TEXTURE_HEADER
 #define TEXTURE_HEADER
 
-#include <glad/glad.h>
-#include "exampleShapes/BaseModel3D.hpp"
+
 #include <string>
-#include "Shader_Program.hpp"
 #include <glm/matrix.hpp>
+
+#include "exampleShapes/BaseModel3D.hpp"
+#include "Shader_Program.hpp"
 #include "Color_Buffer_Rgba8888.hpp"
+
 
 namespace OpenGLRender3D
 {

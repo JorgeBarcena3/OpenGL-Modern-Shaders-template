@@ -12,51 +12,51 @@
 #ifndef COLOR_BUFFER_HEADER
 #define COLOR_BUFFER_HEADER
 
-    namespace Color_buffers
+namespace Color_buffers
+{
+
+    class Color_Buffer
     {
+    protected:
 
-        class Color_Buffer
-        {
-        protected:
+        size_t width;
+        size_t height;
 
-            size_t width;
-            size_t height;
+    public:
 
-        public:
-
-            Color_Buffer(size_t width, size_t height)
+        Color_Buffer(size_t width, size_t height)
             :
-                width (width ),
-                height(height)
-            {
-            }
+            width(width),
+            height(height)
+        {
+        }
 
-        public:
+    public:
 
-            size_t get_width () const
-            {
-                return (width);
-            }
+        size_t get_width() const
+        {
+            return (width);
+        }
 
-            size_t get_height () const
-            {
-                return (height);
-            }
+        size_t get_height() const
+        {
+            return (height);
+        }
 
-            int offset_at (int x, int y) const
-            {
-                return (y * width + x);
-            }
+        int offset_at(int x, int y) const
+        {
+            return (y * width + x);
+        }
 
-        public:
+    public:
 
-            virtual int  bits_per_color () const = 0;
-            virtual void set_color      (int r, int  g, int b) = 0;
-            virtual void set_pixel      (int x, int  y) = 0;
-            virtual void set_pixel      (size_t offset) = 0;
+        virtual int  bits_per_color() const = 0;
+        virtual void set_color(int r, int  g, int b) = 0;
+        virtual void set_pixel(int x, int  y) = 0;
+        virtual void set_pixel(size_t offset) = 0;
 
-        };
+    };
 
-    }
+}
 
 #endif

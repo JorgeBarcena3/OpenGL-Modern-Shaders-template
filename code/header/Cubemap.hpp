@@ -12,8 +12,8 @@
 #ifndef CUBEMAP_HEADER
 #define CUBEMAP_HEADER
 
-#include <glad/glad.h>
 #include "Texture.hpp"
+#include <glad/glad.h>
 
 namespace OpenGLRender3D
 {

@@ -9,17 +9,13 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <SFML/Window.hpp>
+#include <SFML/System/Time.hpp>
 #include <cassert>
+
 #include "../header/Scene.hpp"
 #include "../header/Camera.hpp"
-#include <SFML/Window.hpp>
-#include <SFML/OpenGL.hpp>
-#include <SFML/System/Time.hpp>
 
-
-extern "C" {
-    _declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
-}
 
 
 using namespace sf;

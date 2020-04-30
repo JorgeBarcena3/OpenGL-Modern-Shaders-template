@@ -12,7 +12,6 @@
 #ifndef CUBE_HEADER
 #define CUBE_HEADER
 
-#include <SFML/OpenGL.hpp>
 #include "BaseModel3D.hpp"
 
 namespace OpenGLRender3D
