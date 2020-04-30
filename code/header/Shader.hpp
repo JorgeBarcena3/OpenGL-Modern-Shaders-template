@@ -17,12 +17,11 @@
 
 #include <string>
 #include <glad/glad.h>
-#include <Non_Copyable.hpp>
 
 namespace shaderToolkit
 {
 
-    class Shader : Non_Copyable
+    class Shader 
     {
     public:
 
