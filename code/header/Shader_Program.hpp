@@ -12,8 +12,8 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef OGL_SHADER_PROGRAM_HEADER
-#define OGL_SHADER_PROGRAM_HEADER
+#ifndef SHADER_PROGRAM_HEADER
+#define SHADER_PROGRAM_HEADER
 
 #include <cassert>
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
@@ -22,7 +22,7 @@
 #include "Shader.hpp"
 
 
-namespace shaderToolkit
+namespace ShaderProgramHelper
 {
 
 

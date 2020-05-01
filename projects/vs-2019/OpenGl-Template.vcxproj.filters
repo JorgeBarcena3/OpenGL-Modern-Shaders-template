@@ -10,9 +10,6 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{e311bd5c-a6d5-47f9-946d-4cc30e0d82e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="targa">
-      <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tools">
       <UniqueIdentifier>{ca98fbe4-7fde-4b4f-b22c-829779bf2bd3}</UniqueIdentifier>
     </Filter>
@@ -40,9 +37,6 @@
     <Filter Include="shaders\Skybox">
       <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GLAD">
-      <UniqueIdentifier>{31955f75-a69e-4421-90ce-12dfb268063f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="headers\3DModels">
       <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
     </Filter>
@@ -51,6 +45,15 @@
     </Filter>
     <Filter Include="headers\3DModels\OBJ_Model">
       <UniqueIdentifier>{40ff5d9b-a1d3-44bf-a43f-a1ad80814a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES">
+      <UniqueIdentifier>{6cb743d9-cd29-469c-a920-531eca477dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES\GLAD">
+      <UniqueIdentifier>{31955f75-a69e-4421-90ce-12dfb268063f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES\targa">
+      <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +67,7 @@
       <Filter>tools\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\targa\src\targa.c">
-      <Filter>targa</Filter>
+      <Filter>LIBRARIES\targa</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp">
       <Filter>sources\3DModels</Filter>
@@ -91,7 +94,7 @@
       <Filter>sources\Textures</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\glad\src\glad.c">
-      <Filter>GLAD</Filter>
+      <Filter>LIBRARIES\GLAD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp">
       <Filter>sources\3DModels</Filter>
@@ -120,7 +123,7 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lib\targa\include\targa.h">
-      <Filter>targa</Filter>
+      <Filter>LIBRARIES\targa</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
       <Filter>headers\3DModels</Filter>

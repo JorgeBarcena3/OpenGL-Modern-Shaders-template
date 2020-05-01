@@ -22,7 +22,7 @@ namespace OpenGLRender3D
  
     private:
 
-         shaderToolkit::Shader_Program shaderProgram;
+         ShaderProgramHelper::Shader_Program shaderProgram;
 
     public:
 

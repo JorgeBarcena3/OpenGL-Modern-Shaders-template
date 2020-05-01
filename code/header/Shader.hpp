@@ -12,13 +12,13 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef OGL_SHADER_HEADER
-#define OGL_SHADER_HEADER
+#ifndef SHADER_HEADER
+#define SHADER_HEADER
 
 #include <string>
 #include <glad/glad.h>
 
-namespace shaderToolkit
+namespace ShaderProgramHelper
 {
 
     class Shader 

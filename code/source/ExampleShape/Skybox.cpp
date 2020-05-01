@@ -66,8 +66,8 @@ namespace OpenGLRender3D
         textures_factory.push_back( new Cubemap(path) );
 
 
-        shaderProgram.attach(shaderToolkit::Vertex_Shader(shaderToolkit::Shader::Source_Code::from_file("../../assets/skybox/vertexShader.vglsl")));
-        shaderProgram.attach(shaderToolkit::Fragment_Shader(shaderToolkit::Shader::Source_Code::from_file("../../assets/skybox/fragmentShader.fglsl")));
+        shaderProgram.attach(ShaderProgramHelper::Vertex_Shader(ShaderProgramHelper::Shader::Source_Code::from_file("../../assets/skybox/vertexShader.vglsl")));
+        shaderProgram.attach(ShaderProgramHelper::Fragment_Shader(ShaderProgramHelper::Shader::Source_Code::from_file("../../assets/skybox/fragmentShader.fglsl")));
 
         shaderProgram.link();
 

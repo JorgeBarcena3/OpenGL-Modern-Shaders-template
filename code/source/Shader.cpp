@@ -16,7 +16,7 @@
 #include <fstream>
 #include "../header/Shader.hpp"
 
-namespace shaderToolkit
+namespace ShaderProgramHelper
 {
 
     Shader::Source_Code Shader::Source_Code::from_file (const std::string & file_path)

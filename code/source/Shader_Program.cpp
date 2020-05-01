@@ -14,7 +14,7 @@
 
 #include "../header/Shader_Program.hpp"
 
-namespace shaderToolkit
+namespace ShaderProgramHelper
 {
 
     bool Shader_Program::link ()

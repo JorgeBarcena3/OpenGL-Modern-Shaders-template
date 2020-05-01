@@ -24,7 +24,7 @@
 namespace OpenGLRender3D
 {
 
-    using namespace shaderToolkit;
+    using namespace ShaderProgramHelper;
 
     class Camera
     {

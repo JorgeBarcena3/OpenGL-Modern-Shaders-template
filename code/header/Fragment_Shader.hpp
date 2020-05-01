@@ -12,26 +12,26 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef OGL_FRAGMENT_SHADER_HEADER
-#define OGL_FRAGMENT_SHADER_HEADER
+#ifndef FRAGMENT_SHADER_HEADER
+#define FRAGMENT_SHADER_HEADER
 
-    #include "Shader.hpp"
+#include "Shader.hpp"
 
-    namespace shaderToolkit
+namespace ShaderProgramHelper
+{
+
+    class Fragment_Shader : public Shader
     {
+    public:
 
-        class Fragment_Shader : public Shader
-        {
-        public:
-
-            Fragment_Shader(const Source_Code & source_code)
+        Fragment_Shader(const Source_Code& source_code)
             :
-                Shader(source_code, GL_FRAGMENT_SHADER)
-            {
-            }
+            Shader(source_code, GL_FRAGMENT_SHADER)
+        {
+        }
 
-        };
+    };
 
-    }
+}
 
 #endif
