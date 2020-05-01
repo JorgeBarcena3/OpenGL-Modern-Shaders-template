@@ -33,6 +33,7 @@ namespace OpenGLRender3D
     class Transform;
     class DirectionalLight;
     class PointLight;
+    class Light;
 
     class Scene
     {
@@ -52,8 +53,7 @@ namespace OpenGLRender3D
 
         Skybox * skybox;
 
-        std::map<std::string, PointLight * > pointlights;
-        std::map<std::string, DirectionalLight * > directionalLight;
+        std::map<std::string, Light * > lights;
 
         Transform * scene_Node;
 
@@ -83,6 +83,17 @@ namespace OpenGLRender3D
         BaseModel3D * getEntity(std::string name)
         {
             return entities[name];
+        }
+
+        Light* getLight(std::string name)
+        {
+
+            auto it = lights.find(name);
+
+            if (it != lights.end())
+                return lights[name];           
+
+            return nullptr;
         }
 
     private:

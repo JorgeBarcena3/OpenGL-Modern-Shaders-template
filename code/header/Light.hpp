@@ -94,6 +94,11 @@ namespace OpenGLRender3D
             setUniformVariables(shader);
         }
 
+        Scene* getScene()
+        {
+            return scene;
+        }
+
         virtual void setUniformVariables(ShaderProgramHelper::Shader_Program& shader) = 0;
 
         virtual void getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId) = 0;

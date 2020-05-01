@@ -14,12 +14,19 @@
 #include <cassert>
 
 #include "../header/Scene.hpp"
-#include "../header/Camera.hpp"
+#include "../header/PointLight.hpp"
 
 
 
 using namespace sf;
 using namespace OpenGLRender3D;
+
+void movement(Light* me, float time)
+{
+    PointLight* point = (PointLight*)me;
+
+    point->setPosition(point->getScene()->getMainCamera()->transform.getPosition());
+}
 
 
 int main()
@@ -35,6 +42,9 @@ int main()
         throw std::exception("No se ha podido cargar el contexto de OpenGL");
 
     Scene myScene(800, 600);
+
+    myScene.getLight("Sun")->setUpdateFunction(movement);
+    myScene.getEntity("Calavera")->transform.setRotation(glm::vec3(-90, 0, 0));
 
     // Se ejecuta el bucle principal:
 

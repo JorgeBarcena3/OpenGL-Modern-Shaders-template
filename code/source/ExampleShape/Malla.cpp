@@ -33,11 +33,11 @@ extern "C"
 namespace OpenGLRender3D
 {
 
-    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) : 
+    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) :
         BaseModel3D(op, _scene)
     {
-        textures_factory .push_back( new Texture2D(tx_path) );
-        transform = Transform(glm::vec3(0,0,-20), glm::vec3(0,0,0), glm::vec3(1,1,1));
+        textures_factory.push_back(new Texture2D(tx_path));
+        transform = Transform(glm::vec3(0, 0, -20), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
         width = _width;
         height = _height;
         vertex_count = _vertex_count;
@@ -61,7 +61,7 @@ namespace OpenGLRender3D
 
         if (!path.empty())
         {
-            setHeightCoordinates(coordinates, tx, path);
+            setHeightCoordinates(coordinates, normals, tx, path);
         }
 
 
@@ -127,7 +127,7 @@ namespace OpenGLRender3D
         glDeleteBuffers(VBO_COUNT, vbo_ids);
     }
 
-    void Malla::setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& tx, std::string path)
+    void Malla::setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx, std::string path)
     {
         std::shared_ptr< Color_buffers::Color_Buffer_Rgba8888 > texture;
 
@@ -169,7 +169,7 @@ namespace OpenGLRender3D
         // Cuanto mas alto mas blanco
         for (size_t i = 0; i < coordinates.size(); i += 3)
         {
-            int pixel_x = (int)(texture->get_width() *  tx[texture_index]    );
+            int pixel_x = (int)(texture->get_width() * tx[texture_index]);
             int pixel_y = (int)(texture->get_height() * tx[texture_index + 1]);
 
             auto pixel = texture->colors()[texture->offset_at(pixel_x, pixel_y)];
@@ -182,6 +182,36 @@ namespace OpenGLRender3D
 
             texture_index += 2;
         }
+
+        // COMPROBAMOS LAS NORMALES
+
+        int normalOffset = 0;
+        normals.clear();
+
+        for (GLint y = 0; y < vertex_count; ++y)
+        {
+            for (GLint x = 0; x < vertex_count; ++x)
+            {
+                GLfloat R = getHeight(x == (vertex_count - 1) ? x : x + 1, y, coordinates);
+                GLfloat L = getHeight(x == 0 ? 0 : x - 1, y, coordinates);
+                GLfloat B = getHeight(x, y == 0 ? 0 : y - 1, coordinates);
+                GLfloat T = getHeight(x, y == (vertex_count - 1) ? y : y + 1, coordinates);
+
+                glm::vec3 normal = glm::normalize(glm::vec3(L - R, T - B, 2));
+                normals.push_back(normal.x);// );
+                normals.push_back(normal.y);//normal.y );
+                normals.push_back(normal.z);// );
+
+                normalOffset += 3;
+
+
+            }
+        }
+    }
+
+    GLfloat Malla::getHeight(int x, int y, const std::vector< GLfloat >& coordinates)
+    {
+        return coordinates[((y * vertex_count + x) * 3) + 1];
     }
 
     void Malla::createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx)
@@ -215,7 +245,7 @@ namespace OpenGLRender3D
                 coordinates.push_back(z);
 
                 normals.push_back(0); // x
-                normals.push_back(1); // y
+                normals.push_back(-1); // y
                 normals.push_back(0); // z
 
                 tx.push_back(j * du);
@@ -232,7 +262,7 @@ namespace OpenGLRender3D
         GLfloat offset_y = 1;
         GLfloat offset_x = 0;
         int index = 0;
-        int vertex_triangles = ( (vertex_count - 1) * (vertex_count - 1) * 2 );
+        int vertex_triangles = ((vertex_count - 1) * (vertex_count - 1) * 2);
 
 
         int offset = 0;
@@ -264,7 +294,7 @@ namespace OpenGLRender3D
             colors[i + 2] = (1);
         }
     }
-      
+
 
     void Malla::render()
     {

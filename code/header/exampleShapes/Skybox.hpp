@@ -24,6 +24,8 @@ namespace OpenGLRender3D
 
          ShaderProgramHelper::Shader_Program shaderProgram;
 
+         GLint matrix_id;
+
     public:
 
         Skybox(const std::string& path, Scene& scene, OpenGLRender3D::OPACITYMODEL op = OpenGLRender3D::OPACITYMODEL::OPAQUE);

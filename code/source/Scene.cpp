@@ -48,17 +48,12 @@ namespace OpenGLRender3D
 
         skybox->update(time);
 
-        for (auto light : directionalLight)
-        {
-            light.second->update(time);
-        }
-        
-        for (auto light : pointlights)
-        {
-            light.second->update(time);
-        }
-
         camera->update(time);
+
+        for (auto light : lights)
+        {
+            light.second->update(time);
+        }
 
         for (auto shape : entities)
         {
@@ -193,40 +188,40 @@ namespace OpenGLRender3D
     {
         int index = 0;
 
-        directionalLight.emplace("Directional Light",new DirectionalLight(glm::vec3(1, 1, -1), *this));
+        lights.emplace("Sun", new PointLight(glm::vec3(-1, 1, -1), *this));
 
-        directionalLight["Directional Light"]->setEneabled(0);
-        directionalLight["Directional Light"]->setColor(glm::vec3(1,1,1));
-        directionalLight["Directional Light"]->setAmbientColor(glm::vec3(0.05f));
-        directionalLight["Directional Light"]->setdiffuseColor(glm::vec3(0.7f));
-        directionalLight["Directional Light"]->setSpecularColor(glm::vec3(0.25f));
-        directionalLight["Directional Light"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
-        directionalLight["Directional Light"]->setUniformVariables(camera->getShaderProgram());
+        lights["Sun"]->setEneabled(1);
+        lights["Sun"]->setColor(glm::vec3(1, 0, 0));
+        lights["Sun"]->setIntensity(glm::vec3(2));
+        lights["Sun"]->setAmbientColor(glm::vec3(0.25f));
+        lights["Sun"]->setdiffuseColor(glm::vec3(0.5f));
+        lights["Sun"]->setSpecularColor(glm::vec3(0.25f));
+        lights["Sun"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
+        lights["Sun"]->setUniformVariables(camera->getShaderProgram());
 
         index = 0;
 
-        pointlights.emplace("Point Light 1", new PointLight(glm::vec3(-15, 0, -15), *this));
-        pointlights["Point Light 1"]->setEneabled(1);
-        pointlights["Point Light 1"]->setIntensity(glm::vec3(2.f));
-        pointlights["Point Light 1"]->setColor(glm::vec3(0,1,0));
-        pointlights["Point Light 1"]->setAmbientColor(glm::vec3(0.25f));
-        pointlights["Point Light 1"]->setdiffuseColor(glm::vec3(0.5f));
-        pointlights["Point Light 1"]->setSpecularColor(glm::vec3(0.25f));
-        pointlights["Point Light 1"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
-        pointlights["Point Light 1"]->setUniformVariables(camera->getShaderProgram());
+        lights.emplace("Point Light 1", new DirectionalLight(glm::vec3(-1, 2, -1), *this));
+        lights["Point Light 1"]->setEneabled(1);
+        lights["Point Light 1"]->setIntensity(glm::vec3(2));
+        lights["Point Light 1"]->setColor(glm::vec3(1, 1, 1));
+        lights["Point Light 1"]->setAmbientColor(glm::vec3(0.1f));
+        lights["Point Light 1"]->setdiffuseColor(glm::vec3(0.9f));
+        lights["Point Light 1"]->setSpecularColor(glm::vec3(0.f));
+        lights["Point Light 1"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
+        lights["Point Light 1"]->setUniformVariables(camera->getShaderProgram());
 
 
     }
 
     void Scene::configureEntities()
     {
-        //entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 512, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/height_map/Volcan.tga"));
-        //getEntity("Terreno")->setParent(scene_Node);
+        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/default/tx_colors.tga"));
+        getEntity("Terreno")->setParent(scene_Node);
 
         entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
         getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -15));
         getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera")->setParent(scene_Node);
 
         /*    entities.emplace("Calavera1", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
@@ -245,13 +240,13 @@ namespace OpenGLRender3D
             getEntity("Calavera3")->transform.setPosition(glm::vec3(0, 5, -20));
             getEntity("Calavera3")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
             getEntity("Calavera3")->transform.setRotation(glm::vec3(90.f, 0, 0));
-            getEntity("Calavera3")->setParent(scene_Node);
+            getEntity("Calavera3")->setParent(scene_Node);*/
 
-            entities.emplace("Calavera4", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-            getEntity("Calavera4")->transform.setPosition(glm::vec3(0, 0, -25));
-            getEntity("Calavera4")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-            getEntity("Calavera4")->transform.setRotation(glm::vec3(90.f, 0, 0));
-            getEntity("Calavera4")->setParent(scene_Node);*/
+            //entities.emplace("Calavera4", new OpenGLRender3D::Cylinder(1, 2, *this, OPACITYMODEL::TRANSLUCID, 18, "../../assets/default/texture_alpha.tga"));
+            //getEntity("Calavera4")->transform.setPosition(glm::vec3(0, 0, -5));
+            //getEntity("Calavera4")->transform.setScale(glm::vec3(1));
+            //getEntity("Calavera4")->transform.setRotation(glm::vec3(0, 0, 0));
+            //getEntity("Calavera4")->setParent(scene_Node);
 
 
         orderEntitiesTransparency();

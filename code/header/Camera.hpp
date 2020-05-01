@@ -73,6 +73,7 @@ namespace OpenGLRender3D
     private:
 
         GLint  projection_view_matrix_id;
+        GLint  cameraposition_id;
 
         glm::mat4 projection_matrix;
 
