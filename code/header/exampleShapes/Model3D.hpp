@@ -58,14 +58,6 @@ namespace OpenGLRender3D {
         std::vector< Material > materials;
 
 
-    public:
-
-
-        /*
-        * Funcion que se ejecutara en el update
-        */
-        std::function<void(Model3D*)> updateFunction;
-
 
     public:
 
@@ -77,17 +69,11 @@ namespace OpenGLRender3D {
         /*
         * Destructor del modelo 3D
         */
-        ~Model3D();
-
-        /*
-        * Determina cual será la funcion de update del modelo
-        */
-        void setUpdateFunction(std::function<void(Model3D*)> UpdateFunction);
+        ~Model3D();     
 
         // Heredado vía BaseModel3D
         virtual void render() override;
 
-        virtual void update(float time) override;
 
 
     private:

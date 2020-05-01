@@ -229,8 +229,5 @@ namespace OpenGLRender3D
         glBindVertexArray(0);
     }
 
-    void Cylinder::update(float time)
-    {
-    }
 
 }

@@ -28,11 +28,20 @@ namespace OpenGLRender3D
 
     public:
 
-        DirectionalLight(glm::vec3 _direction) : direction(_direction), Light()
+        DirectionalLight(glm::vec3 _direction, Scene& scene) : direction(glm::normalize(_direction)), Light(scene)
         {
 
         }
 
+        void setDirection(glm::vec3 _direction)
+        {
+            direction = _direction;
+        }
+
+        glm::vec3 getDirection()
+        {
+            return direction;
+        }
 
         // Heredado vía Light
         virtual void setUniformVariables(ShaderProgramHelper::Shader_Program& shader) override;

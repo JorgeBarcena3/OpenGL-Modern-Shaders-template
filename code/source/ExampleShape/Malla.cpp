@@ -264,14 +264,7 @@ namespace OpenGLRender3D
             colors[i + 2] = (1);
         }
     }
-          
-    void Malla::update(float time)
-    {
-        static float angle = 0;
-        angle += 0.0f;
-
-        transform.setRotation(glm::vec3(angle, 0, 0));
-    }
+      
 
     void Malla::render()
     {

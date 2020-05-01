@@ -14,6 +14,7 @@
 
 #include <memory>
 #include <vector>
+#include <functional>
 #include <cmath>
 
 #include "../Scene.hpp"
@@ -64,6 +65,12 @@ namespace OpenGLRender3D
 
         GLint modelMatrixTransformationId;
 
+        /*
+       * Funcion que se ejecutara en el update
+       */
+        std::function<void(BaseModel3D*, float time)> updateFunction;
+
+
 
     public:
 
@@ -75,11 +82,23 @@ namespace OpenGLRender3D
 
         Transform transform;
 
-        Scene * scene;
+        Scene* scene;
 
         virtual void render() = 0;
 
-        virtual void update(float time) = 0;
+        virtual void update(float time) 
+        {
+            if (updateFunction)
+                updateFunction(this, time);
+        }
+
+        /*
+        * Determina cual será la funcion de update del modelo
+        */
+        void setUpdateFunction(std::function<void(BaseModel3D*, float time)> UpdateFunction)
+        {
+            updateFunction = UpdateFunction;
+        }
 
         void setParent(Transform* _transform)
         {

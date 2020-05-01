@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp" />
+    <ClCompile Include="..\..\code\source\Light.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Mesh.cpp" />
     <ClCompile Include="..\..\code\source\PointLight.cpp" />

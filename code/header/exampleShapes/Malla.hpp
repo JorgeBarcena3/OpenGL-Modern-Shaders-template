@@ -43,9 +43,6 @@ namespace OpenGLRender3D
         void render() override;
 
 
-        // Heredado vía BaseShape
-        virtual void update(float time) override;
-
     };
 
 }

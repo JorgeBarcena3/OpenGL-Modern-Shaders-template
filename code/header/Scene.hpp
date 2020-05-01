@@ -52,8 +52,8 @@ namespace OpenGLRender3D
 
         Skybox * skybox;
 
-        std::vector<PointLight * > pointlights;
-        std::vector<DirectionalLight * > directionalLight;
+        std::map<std::string, PointLight * > pointlights;
+        std::map<std::string, DirectionalLight * > directionalLight;
 
         Transform * scene_Node;
 

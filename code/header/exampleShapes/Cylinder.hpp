@@ -38,8 +38,6 @@ namespace OpenGLRender3D
 
         void render() override;
 
-        // Heredado vía BaseModel3D
-        virtual void update(float time) override;
 
     };
 

@@ -2,6 +2,7 @@
 
 uniform mat4 camera_matrix;
 uniform mat4 modelMatrix;
+uniform vec3 camera_pos;
 
 layout (location = 0) in vec3 vertex_coordinates;
 layout (location = 1) in vec3 vertex_color;
@@ -11,13 +12,15 @@ layout (location = 3) in vec2 texture_coordinates;
 out vec2 tx_coord;
 out vec3 normal_vec;
 out vec3 vertex_pos;
+out vec3 camera_position;
 
 void main()
 {
 
    normal_vec = normal_vertex;
    tx_coord = texture_coordinates;
-   vertex_pos = vertex_coordinates;
+   vertex_pos = vec3(modelMatrix * vec4(vertex_coordinates, 1.0));
+   camera_position = camera_pos;
 
    gl_Position = camera_matrix * modelMatrix * vec4(vertex_coordinates, 1.0);
 

@@ -26,11 +26,6 @@ OpenGLRender3D::Model3D::~Model3D()
     glDeleteBuffers(VBO_COUNT, vbo_ids);
 }
 
-void OpenGLRender3D::Model3D::setUpdateFunction(std::function<void(Model3D*)> _updateFunction)
-{
-    updateFunction = _updateFunction;
-}
-
 void OpenGLRender3D::Model3D::loadObj(const char* path)
 {
 
@@ -244,17 +239,6 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
     glBindVertexArray(0);
 
 
-}
-
-void OpenGLRender3D::Model3D::update(float time)
-{
-    static float angle = 0;
-    angle -= 1;
-
-    transform.setRotation(glm::vec3(angle, 0, 0));
-
-    if (updateFunction)
-        updateFunction(this);
 }
 
 void OpenGLRender3D::Model3D::render()

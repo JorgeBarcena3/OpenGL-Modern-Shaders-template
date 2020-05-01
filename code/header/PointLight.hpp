@@ -29,9 +29,19 @@ namespace OpenGLRender3D
 
     public:
 
-        PointLight(glm::vec3 pos) : position(pos), Light()
+        PointLight(glm::vec3 pos, Scene& scene) : position(pos), Light(scene)
         {
                 
+        }
+
+        void setPosition(glm::vec3 _direction)
+        {
+            position = _direction;
+        }
+
+        glm::vec3 getPosition()
+        {
+            return position;
         }
         
         // Heredado vía Light

@@ -61,7 +61,7 @@
     <Filter Include="shaders\camera">
       <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders\skyboc">
+    <Filter Include="shaders\skybox">
       <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -115,6 +115,9 @@
       <Filter>sources\Light</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\source\DirectionalLight.cpp">
+      <Filter>sources\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Light.cpp">
       <Filter>sources\Light</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,10 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\skybox\vertexShader.vglsl">
-      <Filter>shaders\skyboc</Filter>
+      <Filter>shaders\skybox</Filter>
     </None>
     <None Include="..\..\assets\skybox\fragmentShader.fglsl">
-      <Filter>shaders\skyboc</Filter>
+      <Filter>shaders\skybox</Filter>
     </None>
     <None Include="..\..\assets\camera\vertexShader.vglsl">
       <Filter>shaders\camera</Filter>
