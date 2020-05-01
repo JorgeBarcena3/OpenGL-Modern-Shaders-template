@@ -17,6 +17,8 @@
 #include "../header/exampleShapes/Malla.hpp"
 #include "../header/exampleShapes/Model3D.hpp"
 #include "../header/Camera.hpp"
+#include "../header/DirectionalLight.hpp"
+#include "../header/PointLight.hpp"
 #include "../header/exampleShapes/Skybox.hpp"
 #include "../header/exampleShapes/Cylinder.hpp" 
 
@@ -70,7 +72,7 @@ namespace OpenGLRender3D
         getEntity("Calavera4")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera4")->setParent(scene_Node);
 
-
+        Directionallights.push_back(new DirectionalLight(glm::vec3(0,0,-1)));
 
         orderEntitiesTransparency();
 

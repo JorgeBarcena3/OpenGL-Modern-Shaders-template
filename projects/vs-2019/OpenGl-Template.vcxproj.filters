@@ -61,6 +61,9 @@
     <Filter Include="headers\Light">
       <UniqueIdentifier>{3ac227f0-09c1-4c2a-8bd3-0c37023fdc28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sources\Light">
+      <UniqueIdentifier>{4e0ce583-100a-4c5f-b1a7-a4c1b307fb78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -107,6 +110,12 @@
     </ClCompile>
     <ClCompile Include="..\..\code\source\Mesh.cpp">
       <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\PointLight.cpp">
+      <Filter>sources\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\DirectionalLight.cpp">
+      <Filter>sources\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

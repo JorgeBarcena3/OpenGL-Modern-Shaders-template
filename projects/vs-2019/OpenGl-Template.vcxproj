@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\code\source\Camera.cpp" />
     <ClCompile Include="..\..\code\source\Cubemap.cpp" />
+    <ClCompile Include="..\..\code\source\DirectionalLight.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\Mesh.cpp" />
+    <ClCompile Include="..\..\code\source\PointLight.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
     <ClCompile Include="..\..\code\source\Scene.cpp" />

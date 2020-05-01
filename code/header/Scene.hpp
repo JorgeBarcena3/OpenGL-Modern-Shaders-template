@@ -31,6 +31,8 @@ namespace OpenGLRender3D
     class Skybox;
     class BaseModel3D;
     class Transform;
+    class DirectionalLight;
+    class PointLight;
 
     class Scene
     {
@@ -49,6 +51,9 @@ namespace OpenGLRender3D
         glm::vec2 window_size;
 
         Skybox * skybox;
+
+        std::vector<PointLight * > Pointlights;
+        std::vector<DirectionalLight * > Directionallights;
 
         Transform * scene_Node;
 
