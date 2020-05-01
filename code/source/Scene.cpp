@@ -33,23 +33,24 @@ namespace OpenGLRender3D
 
         camera = new OpenGLRender3D::Camera(width, height, *this);
 
-        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this);
+        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this, OPACITYMODEL::OPAQUE);
 
         window_size = glm::vec2(width, height);
 
-        enetities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, "../../assets/height_map/Volcan.tga"));
+        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, OPACITYMODEL::TRANSPARENT, "../../assets/height_map/Volcan.tga"));
         getEntity("Terreno")->setParent(scene_Node);
 
-        enetities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
         getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -25));
         getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
         getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera")->setParent(scene_Node);
 
-        enetities.emplace("Cilindro", new OpenGLRender3D::Cylinder(1, 2, *this, 18));
-        getEntity("Cilindro")->setParent(&(getEntity("Calavera")->transform));
-        getEntity("Cilindro")->transform.setPosition(glm::vec3(-2, 0, 0));
-        getEntity("Cilindro")->transform.setScale(glm::vec3(5,5,5));
+        /*entities.emplace("Cilindro", new OpenGLRender3D::Malla(10,10,100, *this, OPACITYMODEL::TRANSPARENT, "", "../../assets/default/texture_alpha.tga"));
+        getEntity("Cilindro")->transform.setPosition(glm::vec3(0, 0, -10));
+        getEntity("Cilindro")->transform.setScale(glm::vec3(1));*/
+
+        orderEntitiesTransparency();
 
     }
 
@@ -60,7 +61,7 @@ namespace OpenGLRender3D
         skybox->update();
 
 
-        for (auto shape : enetities)
+        for (auto shape : entities)
         {
             shape.second->update();
         }
@@ -80,11 +81,24 @@ namespace OpenGLRender3D
 
         camera->render();
 
-        //Se renderizan las shapes
-        for (auto shape : enetities)
+        //Se renderizan las entidades opacas
+        for (auto entity : opaque)
         {
-            shape.second->render();
+            entity->render();
         }
+
+        //Se renderizan las entidades translucidas
+        orderEnetitesByDistanceCamera(translucid);
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        for (auto enety : translucid)
+        {
+            enety->render();
+        }
+
+        glDisable(GL_BLEND);
 
     }
 
@@ -171,7 +185,48 @@ namespace OpenGLRender3D
     Camera* Scene::getMainCamera()
     {
         return camera;
-    };
+    }
+
+    void Scene::orderEntitiesTransparency()
+    {
+
+
+        for (auto i = entities.begin(); i != entities.end(); ++i)
+        {
+            if (i->second->getOpacityModel() == OPACITYMODEL::OPAQUE)
+            {
+                opaque.push_back(i->second);
+            }
+            else
+            {
+                translucid.push_back(i->second);
+            }
+        }
+
+        orderEnetitesByDistanceCamera(translucid);       
+
+    }
+
+    void Scene::orderEnetitesByDistanceCamera(std::vector< BaseModel3D*> & toOrder)
+    {
+        std::map<float, BaseModel3D* > sorted;
+
+        for (unsigned int i = 0; i < toOrder.size(); i++)
+        {
+            float distance = glm::length(camera->transform.getPosition() - toOrder[i]->transform.getPosition());
+            sorted[distance] = toOrder[i];
+        }
+
+        toOrder.clear();
+
+        for (auto it = sorted.rbegin(); it != sorted.rend(); ++it)
+        {
+            toOrder.push_back(it->second);
+        }
+
+
+    }
+
 
 
 }

@@ -37,10 +37,14 @@ namespace OpenGLRender3D
 
     private:
 
+        std::map<std::string, glm::vec3> actionsPool;
 
         Camera * camera;
 
-        std::map<std::string,  BaseModel3D* > enetities;
+        std::map<std::string,  BaseModel3D* > entities;
+
+        std::vector< BaseModel3D* > opaque;
+        std::vector< BaseModel3D* > translucid;
 
         glm::vec2 window_size;
 
@@ -73,12 +77,15 @@ namespace OpenGLRender3D
 
         BaseModel3D * getEntity(std::string name)
         {
-            return enetities[name];
+            return entities[name];
         }
 
     private:
 
-        std::map<std::string, glm::vec3> actionsPool;
+        void orderEntitiesTransparency();
+
+        void orderEnetitesByDistanceCamera(std::vector< BaseModel3D*>& toOrder);
+  
 
     };
 

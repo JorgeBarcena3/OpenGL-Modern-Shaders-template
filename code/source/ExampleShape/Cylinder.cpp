@@ -25,9 +25,9 @@
 namespace OpenGLRender3D
 {
 
-    Cylinder::Cylinder(float _radius, float _height, Scene& _scene, float _sides, std::string tx_path)
+    Cylinder::Cylinder(float _radius, float _height, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, float _sides, std::string tx_path) : 
+        BaseModel3D(op, _scene)
     {
-        scene = &_scene;
         textures_factory.push_back(new Texture2D(tx_path));
         radius = _radius;
         height = _height;

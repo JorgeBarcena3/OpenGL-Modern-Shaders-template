@@ -61,9 +61,8 @@ namespace OpenGLRender3D
         +1.0f, -1.0f, +1.0f,
     };
 
-    Skybox::Skybox(const std::string& path, Scene& _scene)
+    Skybox::Skybox(const std::string& path, Scene& _scene, OpenGLRender3D::OPACITYMODEL op) : BaseModel3D(op, _scene)
     {
-        scene = &_scene;
         textures_factory.push_back( new Cubemap(path) );
 
 
@@ -108,7 +107,6 @@ namespace OpenGLRender3D
 
     void Skybox::render()
     {
-
 
         glDepthMask(GL_FALSE);
         shaderProgram.use();

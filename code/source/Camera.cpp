@@ -21,6 +21,7 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     projection_view_matrix_id = shaderProgram.get_uniform_id("projection_view_matrix");
 
+
 }
 
 void OpenGLRender3D::Camera::update(float time)
@@ -39,7 +40,9 @@ void OpenGLRender3D::Camera::render()
 
     shaderProgram.use();
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
     glEnable(GL_DEPTH_TEST);
+   
 
 }
 

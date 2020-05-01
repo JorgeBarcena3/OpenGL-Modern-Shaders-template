@@ -32,7 +32,7 @@ namespace OpenGLRender3D
 
     public:
 
-        Malla(float width, float height, int vertex_count, Scene& scene, std::string path = "",  std::string tx_path = "../../assets/default/texture.tga");
+        Malla(float width, float height, int vertex_count, Scene& scene, OpenGLRender3D::OPACITYMODEL op, std::string path = "",  std::string tx_path = "../../assets/default/texture.tga");
         ~Malla();
 
         void setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& tx, std::string path);

@@ -26,7 +26,7 @@ namespace OpenGLRender3D
 
     public:
 
-        Skybox(const std::string& path, Scene& scene);
+        Skybox(const std::string& path, Scene& scene, OpenGLRender3D::OPACITYMODEL op);
         ~Skybox();
 
         // Heredado vía BaseModel3D

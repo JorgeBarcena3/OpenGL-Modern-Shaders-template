@@ -7,9 +7,9 @@
 #include "..\..\header\Texture2D.hpp"
 #include "..\..\header\Camera.hpp"
 
-OpenGLRender3D::Model3D::Model3D(Scene& _scene, const char* path)
+OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op, const char* path) :
+    BaseModel3D(op, _scene)
 {
-    scene = &_scene;
 
     loadObj(path); 
 

@@ -21,6 +21,11 @@
 
 namespace OpenGLRender3D
 {
+    enum class OPACITYMODEL
+    {
+        OPAQUE,
+        TRANSPARENT
+    };
 
     class Texture;
 
@@ -46,18 +51,27 @@ namespace OpenGLRender3D
     protected:
 
         GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
+
         GLuint vao_id;                  // Id del VAO del cubo
 
         std::vector< GLuint > indices;
 
         std::vector<Texture*> textures_factory;
 
+        OPACITYMODEL opacityModel;
+
 
     public:
 
+        BaseModel3D(OPACITYMODEL _model, Scene& _scene)
+        {
+            opacityModel = _model;
+            scene = &_scene;
+        }
+
         Transform transform;
 
-        Scene* scene;
+        Scene * scene;
 
         virtual void render() = 0;
 
@@ -66,6 +80,11 @@ namespace OpenGLRender3D
         void setParent(Transform* _transform)
         {
             transform.addParent(_transform);
+        }
+
+        OpenGLRender3D::OPACITYMODEL getOpacityModel()
+        {
+            return opacityModel;
         }
 
     };

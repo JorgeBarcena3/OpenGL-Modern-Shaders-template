@@ -72,7 +72,7 @@ namespace OpenGLRender3D {
         /*
         * Crea un modelo 3D
         */
-        Model3D(Scene& scene, const char* path);
+        Model3D(Scene& scene, OpenGLRender3D::OPACITYMODEL op, const char* path);
 
         /*
         * Destructor del modelo 3D

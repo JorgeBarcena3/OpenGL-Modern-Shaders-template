@@ -5,8 +5,8 @@ in vec2 tx_coord;
 
 uniform sampler2D texture_sampler;
 
-
 void main()
 {
-    fragment_color =  texture (texture_sampler, tx_coord);
+    vec4 color = texture (texture_sampler, tx_coord);
+    fragment_color =  color;
 }

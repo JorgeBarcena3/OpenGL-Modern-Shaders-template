@@ -32,14 +32,14 @@ extern "C"
 namespace OpenGLRender3D
 {
 
-    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, std::string path, std::string tx_path)
+    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) : 
+        BaseModel3D(op, _scene)
     {
         textures_factory .push_back( new Texture2D(tx_path) );
         transform = Transform(glm::vec3(0,0,-20), glm::vec3(0,0,0), glm::vec3(1,1,1));
         width = _width;
         height = _height;
         vertex_count = _vertex_count;
-        scene = &_scene;
 
         std::vector< GLfloat > coordinates;
         std::vector< GLfloat > normals;
