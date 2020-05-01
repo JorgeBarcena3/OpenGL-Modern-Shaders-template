@@ -14,15 +14,13 @@ OpenGLRender3D::Mesh::Mesh(std::vector<GLuint> _indices, Model3D& _model, int _m
 void OpenGLRender3D::Mesh::render()
 {
 
-
-
     if (model->textures_factory[model->materials[material_index].diffuse_tex_id]->is_ok())
     {
         model->textures_factory[model->materials[material_index].diffuse_tex_id]->bind();
 
     }
 
-    glm::mat4 projection_view_matrix = model->scene->getMainCamera()->getProjectionMatrix() * model->scene->getMainCamera()->transform.getInverseMatrix() * model->transform.getModelViewMatrix();
+    glm::mat4 projection_view_matrix = model->scene->getMainCamera()->getProjectionMatrix() * model->scene->getMainCamera()->getTransformation() * model->transform.getModelViewMatrix();
     glUniformMatrix4fv(model->scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 
     // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:

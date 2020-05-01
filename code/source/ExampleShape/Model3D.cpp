@@ -243,7 +243,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 
 }
 
-void OpenGLRender3D::Model3D::update()
+void OpenGLRender3D::Model3D::update(float time)
 {
     static float angle = 0;
     angle -= 1;

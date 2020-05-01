@@ -10,6 +10,7 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define GLM_FORCE_RADIANS
+#define MAX_HEIGHT 3
 
 #include <cmath>
 #include <glm/vec3.hpp>
@@ -161,7 +162,6 @@ namespace OpenGLRender3D
         }
 
 
-        float max_height = 5;
         int texture_index = 0;
 
         // Cuanto mas alto mas blanco
@@ -174,7 +174,7 @@ namespace OpenGLRender3D
 
             float grey_scale = pixel.data.component.r;
 
-            float height = (grey_scale * max_height) / 255;
+            float height = (grey_scale * MAX_HEIGHT) / 255;
 
             coordinates[i + 1] = height;
 
@@ -263,7 +263,7 @@ namespace OpenGLRender3D
         }
     }
           
-    void Malla::update()
+    void Malla::update(float time)
     {
         static float angle = 0;
         angle += 0.0f;
@@ -277,7 +277,7 @@ namespace OpenGLRender3D
         if (textures_factory[0]->is_ok())
             textures_factory[0]->bind();
 
-        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() *  transform.getModelViewMatrix();
+        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation() *  transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:

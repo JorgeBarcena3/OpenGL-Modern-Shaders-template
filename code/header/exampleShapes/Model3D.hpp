@@ -87,7 +87,7 @@ namespace OpenGLRender3D {
         // Heredado vía BaseModel3D
         virtual void render() override;
 
-        virtual void update() override;
+        virtual void update(float time) override;
 
 
     private:

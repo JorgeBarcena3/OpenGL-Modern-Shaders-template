@@ -130,7 +130,7 @@ namespace OpenGLRender3D
             // texture coord
             const float texture_x = (float)i / sides;
             // normal
-            const float nf = 1. / sqrtf(x2 * x2 + z2 * z2), xn = x2 * nf, zn = z2 * nf;
+            const float nf = 1.f / sqrtf(x2 * x2 + z2 * z2), xn = x2 * nf, zn = z2 * nf;
 
             // Cara de abajo
             normals.push_back(xn);
@@ -169,7 +169,7 @@ namespace OpenGLRender3D
 
         int numVerticesAnillo = (coordinates.size()) / 3;
 
-        GLuint i = 0;
+        int i = 0;
 
         for (i = 0; i < numVerticesAnillo - 2; i += 2)
         {
@@ -213,7 +213,7 @@ namespace OpenGLRender3D
         if (textures_factory[0]->is_ok())
             textures_factory[0]->bind();
 
-        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() * transform.getModelViewMatrix();
+        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation() * transform.getModelViewMatrix();
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
@@ -223,7 +223,7 @@ namespace OpenGLRender3D
         glBindVertexArray(0);
     }
 
-    void Cylinder::update()
+    void Cylinder::update(float time)
     {
     }
 

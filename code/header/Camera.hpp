@@ -29,19 +29,56 @@ namespace OpenGLRender3D
     class Camera
     {
 
+        struct MousePosition
+        {
+            float lastx;
+            float lasty;
+            bool firstPressed = true;
+        };
+
+        struct CameraTransformAttributes
+        {
+            // Camera Attributes
+            glm::vec3 front;
+            glm::vec3 up;
+            glm::vec3 right;
+            glm::vec3 worldUp;
+
+            // Euler Angles
+            float yaw;
+            float pitch;
+
+            // Camera options
+            float movement_speed;
+            float mouse_sensivity;
+
+            CameraTransformAttributes()
+            {
+                worldUp = glm::vec3(0.f, 1., 0.f);
+                yaw = -90.f;
+                pitch = 0;
+                movement_speed     = 0.3f;
+                mouse_sensivity  = 0.2f;
+            }
+        };
+
     public:
 
         Transform transform;
 
+        CameraTransformAttributes cameraTransformAttributes;
+
+        MousePosition mousePosition;
+
     private:
 
         GLint  projection_view_matrix_id;
+
         glm::mat4 projection_matrix;
 
         Shader_Program shaderProgram;
 
         Scene* scene;
-
 
     public:
 
@@ -52,7 +89,7 @@ namespace OpenGLRender3D
         void   resize(int width, int height);
 
         void moveCamera(glm::vec3 movement);
-        void rotateCamera(glm::vec2 mousePos);
+        void rotateCamera(sf::Vector2i mousePos);
 
         const GLint getProjectionMatrixId()
         {
@@ -63,6 +100,10 @@ namespace OpenGLRender3D
         {
             return projection_matrix;
         };
+
+        const glm::mat4 getTransformation();
+
+        void updateCameraTransform();
 
 
 

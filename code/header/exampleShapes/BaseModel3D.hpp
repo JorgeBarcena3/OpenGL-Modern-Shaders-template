@@ -24,7 +24,7 @@ namespace OpenGLRender3D
     enum class OPACITYMODEL
     {
         OPAQUE,
-        TRANSPARENT
+        TRANSLUCID
     };
 
     class Texture;
@@ -75,7 +75,7 @@ namespace OpenGLRender3D
 
         virtual void render() = 0;
 
-        virtual void update() = 0;
+        virtual void update(float time) = 0;
 
         void setParent(Transform* _transform)
         {

@@ -84,7 +84,7 @@ namespace OpenGLRender3D
 
         void orderEntitiesTransparency();
 
-        void orderEnetitesByDistanceCamera(std::vector< BaseModel3D*>& toOrder);
+        void orderEntitiesByDistanceCamera(std::vector< BaseModel3D*>& toOrder);
   
 
     };

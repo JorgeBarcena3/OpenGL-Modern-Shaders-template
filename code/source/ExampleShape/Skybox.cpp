@@ -100,7 +100,7 @@ namespace OpenGLRender3D
     }
 
 
-    void Skybox::update()
+    void Skybox::update(float time)
     {
         transform.setPosition(scene->getMainCamera()->transform.getPosition() + (glm::vec3(0, 0, -2.5f)));
     }
@@ -113,7 +113,7 @@ namespace OpenGLRender3D
         
         textures_factory[0]->bind();
 
-        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->transform.getInverseMatrix() * transform.getModelViewMatrix();
+        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation() * transform.getModelViewMatrix();
         //glUniformMatrix4fv(model_view_matrix_id, 1, GL_FALSE, glm::value_ptr(model_view_matrix));
         glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
 

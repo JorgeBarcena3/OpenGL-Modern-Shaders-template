@@ -37,7 +37,7 @@ namespace OpenGLRender3D
 
         window_size = glm::vec2(width, height);
 
-        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, OPACITYMODEL::TRANSPARENT, "../../assets/height_map/Volcan.tga"));
+        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 512, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/height_map/Volcan.tga"));
         getEntity("Terreno")->setParent(scene_Node);
 
         entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
@@ -46,9 +46,31 @@ namespace OpenGLRender3D
         getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera")->setParent(scene_Node);
 
-        /*entities.emplace("Cilindro", new OpenGLRender3D::Malla(10,10,100, *this, OPACITYMODEL::TRANSPARENT, "", "../../assets/default/texture_alpha.tga"));
-        getEntity("Cilindro")->transform.setPosition(glm::vec3(0, 0, -10));
-        getEntity("Cilindro")->transform.setScale(glm::vec3(1));*/
+        entities.emplace("Calavera1", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera1")->transform.setPosition(glm::vec3(0, 0, -10));
+        getEntity("Calavera1")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera1")->transform.setRotation(glm::vec3(90.f, 0, 0));
+        getEntity("Calavera1")->setParent(scene_Node);
+
+        entities.emplace("Calavera2", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera2")->transform.setPosition(glm::vec3(0, 0, -35));
+        getEntity("Calavera2")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera2")->transform.setRotation(glm::vec3(90.f, 0, 0));
+        getEntity("Calavera2")->setParent(scene_Node);
+
+        entities.emplace("Calavera3", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera3")->transform.setPosition(glm::vec3(0, 5, -20));
+        getEntity("Calavera3")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera3")->transform.setRotation(glm::vec3(90.f, 0, 0));
+        getEntity("Calavera3")->setParent(scene_Node);
+
+        entities.emplace("Calavera4", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera4")->transform.setPosition(glm::vec3(0, 0, -25));
+        getEntity("Calavera4")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera4")->transform.setRotation(glm::vec3(90.f, 0, 0));
+        getEntity("Calavera4")->setParent(scene_Node);
+
+
 
         orderEntitiesTransparency();
 
@@ -57,16 +79,16 @@ namespace OpenGLRender3D
     void Scene::update(float time)
     {
 
-        camera->update(time);
-        skybox->update();
+        cleanActionsPool();
 
+        skybox->update(time);
+
+        camera->update(time);
 
         for (auto shape : entities)
         {
-            shape.second->update();
+            shape.second->update(time);
         }
-
-        cleanActionsPool();
 
     }
 
@@ -88,10 +110,10 @@ namespace OpenGLRender3D
         }
 
         //Se renderizan las entidades translucidas
-        orderEnetitesByDistanceCamera(translucid);
+        orderEntitiesByDistanceCamera(translucid);
 
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_COLOR);
 
         for (auto enety : translucid)
         {
@@ -145,39 +167,37 @@ namespace OpenGLRender3D
             {
                 if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
                 {
-                    actionsPool.emplace("Mover Camara", camera->transform.getFordwardVector());
+                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.front);
                 }
                 else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
                 {
-                    actionsPool.emplace("Mover Camara", -camera->transform.getFordwardVector());
+                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.front);
                 }
-                else if (event.key.code == sf::Keyboard::Space)
+
+                if (event.key.code == sf::Keyboard::Space)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, 1.0f, 0, 0));
+                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.worldUp);
                 }
                 else if (event.key.code == sf::Keyboard::LControl)
                 {
-                    actionsPool.emplace("Mover Camara", glm::vec4(0, -1.0f, 0, 0));
+                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.worldUp);
                 }
-                else if (event.key.code == sf::Keyboard::A)
+
+                if (event.key.code == sf::Keyboard::A)
                 {
-                    actionsPool.emplace("Mover Camara", -camera->transform.getRightVector());
+                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.right);
                 }
                 else if (event.key.code == sf::Keyboard::D)
                 {
-                    actionsPool.emplace("Mover Camara", camera->transform.getRightVector());
+                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.right);
                 }
             }
+
             }
         }
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-        {
-            sf::Vector2i pos = sf::Mouse::getPosition(window);
-            glm::vec2 pos_glm = glm::vec2({ pos.x, pos.y });
-            camera->rotateCamera(pos_glm);
-        }
-
+        sf::Vector2i pos = sf::Mouse::getPosition(window);
+        camera->rotateCamera(pos);
 
         return true;
     }
@@ -203,11 +223,11 @@ namespace OpenGLRender3D
             }
         }
 
-        orderEnetitesByDistanceCamera(translucid);       
+        orderEntitiesByDistanceCamera(translucid);
 
     }
 
-    void Scene::orderEnetitesByDistanceCamera(std::vector< BaseModel3D*> & toOrder)
+    void Scene::orderEntitiesByDistanceCamera(std::vector< BaseModel3D*>& toOrder)
     {
         std::map<float, BaseModel3D* > sorted;
 
@@ -226,7 +246,5 @@ namespace OpenGLRender3D
 
 
     }
-
-
 
 }
