@@ -62,10 +62,10 @@
     <ClInclude Include="..\..\lib\targa\include\targa.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\assets\fragmentShader.fglsl" />
+    <None Include="..\..\assets\camera\fragmentShader.fglsl" />
+    <None Include="..\..\assets\camera\vertexShader.vglsl" />
     <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
     <None Include="..\..\assets\skybox\vertexShader.vglsl" />
-    <None Include="..\..\assets\vertexShader.vglsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C0507E8D-58D6-4CB0-982E-14DF192A6D77}</ProjectGuid>

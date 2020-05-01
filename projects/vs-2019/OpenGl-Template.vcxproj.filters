@@ -34,9 +34,6 @@
     <Filter Include="headers\Texture\Base">
       <UniqueIdentifier>{316b5a50-b6c1-4746-a8a0-db8423e6a5c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders\Skybox">
-      <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
-    </Filter>
     <Filter Include="headers\3DModels">
       <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
     </Filter>
@@ -55,14 +52,17 @@
     <Filter Include="LIBRARIES\targa">
       <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shaders\Camera">
-      <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
-    </Filter>
     <Filter Include="headers\Light">
       <UniqueIdentifier>{3ac227f0-09c1-4c2a-8bd3-0c37023fdc28}</UniqueIdentifier>
     </Filter>
     <Filter Include="sources\Light">
       <UniqueIdentifier>{4e0ce583-100a-4c5f-b1a7-a4c1b307fb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\camera">
+      <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\skyboc">
+      <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -188,16 +188,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\skybox\vertexShader.vglsl">
-      <Filter>shaders\Skybox</Filter>
+      <Filter>shaders\skyboc</Filter>
     </None>
     <None Include="..\..\assets\skybox\fragmentShader.fglsl">
-      <Filter>shaders\Skybox</Filter>
+      <Filter>shaders\skyboc</Filter>
     </None>
-    <None Include="..\..\assets\fragmentShader.fglsl">
-      <Filter>shaders\Camera</Filter>
+    <None Include="..\..\assets\camera\vertexShader.vglsl">
+      <Filter>shaders\camera</Filter>
     </None>
-    <None Include="..\..\assets\vertexShader.vglsl">
-      <Filter>shaders\Camera</Filter>
+    <None Include="..\..\assets\camera\fragmentShader.fglsl">
+      <Filter>shaders\camera</Filter>
     </None>
   </ItemGroup>
 </Project>

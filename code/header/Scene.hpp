@@ -52,8 +52,8 @@ namespace OpenGLRender3D
 
         Skybox * skybox;
 
-        std::vector<PointLight * > Pointlights;
-        std::vector<DirectionalLight * > Directionallights;
+        std::vector<PointLight * > pointlights;
+        std::vector<DirectionalLight * > directionalLight;
 
         Transform * scene_Node;
 
@@ -86,6 +86,10 @@ namespace OpenGLRender3D
         }
 
     private:
+
+        void configureEntities();
+
+        void configureLights();
 
         void orderEntitiesTransparency();
 

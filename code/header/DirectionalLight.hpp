@@ -24,6 +24,8 @@ namespace OpenGLRender3D
 
         glm::vec3 direction;
 
+        GLint directionId;
+
     public:
 
         DirectionalLight(glm::vec3 _direction) : direction(_direction), Light()
@@ -34,6 +36,9 @@ namespace OpenGLRender3D
 
         // Heredado vía Light
         virtual void setUniformVariables(ShaderProgramHelper::Shader_Program& shader) override;
+
+        // Heredado vía Light
+        virtual void getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId) override;
 
     };
 

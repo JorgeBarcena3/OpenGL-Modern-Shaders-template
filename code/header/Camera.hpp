@@ -103,6 +103,11 @@ namespace OpenGLRender3D
 
         const glm::mat4 getTransformation();
 
+        Shader_Program& getShaderProgram()
+        {
+            return shaderProgram;
+        }
+
         void updateCameraTransform();
 
 

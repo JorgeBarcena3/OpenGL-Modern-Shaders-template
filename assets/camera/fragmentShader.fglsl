@@ -1,0 +1,74 @@
+#version 330
+
+#define POINT_N 5
+#define DIRECTIONAL_N 1
+
+struct DirectionalLight {
+
+    int eneabled;
+    vec3 direction;
+  
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+};  
+
+struct PointLight {  
+
+    int eneabled;
+    vec3 position;
+    
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};  
+
+uniform PointLight pointLights[POINT_N];
+uniform DirectionalLight directionalLight[DIRECTIONAL_N];
+
+out vec4 fragment_color;
+in vec2 tx_coord;
+
+uniform sampler2D texture_sampler;
+
+vec4 CalculateDirectionalLight(DirectionalLight light, vec3 N, vec3 L);  
+vec4 CalculatePointLight(PointLight light, vec3 N, vec3 P, vec3 L);  
+
+void main()
+{
+    // properties
+    vec3 norm = normalize(vec3(1));
+    vec3 viewDir = normalize(vec3(1));
+
+    vec4 finalColor = vec4(0);
+
+    for(int i = 0; i < DIRECTIONAL_N; i++)
+    {
+        if(directionalLight[i].eneabled == 1)
+        {
+            finalColor += CalculateDirectionalLight(directionalLight[i], norm, viewDir);
+        }
+    }
+
+    for(int i = 0; i < POINT_N; i++)
+    {
+        if(pointLights[i].eneabled == 1)
+        {
+            finalColor += CalculatePointLight(pointLights[i], norm, viewDir, vec3(0));
+        }
+    }
+
+    vec4 color = texture (texture_sampler, tx_coord);
+    fragment_color = finalColor * color;
+}
+
+vec4 CalculateDirectionalLight(DirectionalLight light, vec3 N, vec3 L)
+{
+   return vec4(1);
+}  
+
+vec4 CalculatePointLight(PointLight light, vec3 N, vec3 P, vec3 L)
+{
+    return vec4(1);
+} 

@@ -19,11 +19,26 @@ namespace OpenGLRender3D
 
     class PointLight : public Light
     {
+
+    private:
+
         glm::vec3 position;
 
+        GLint  positionId;
 
+
+    public:
+
+        PointLight(glm::vec3 pos) : position(pos), Light()
+        {
+                
+        }
+        
         // Heredado vía Light
         virtual void setUniformVariables(ShaderProgramHelper::Shader_Program& shader) override;
+
+        // Heredado vía Light
+        virtual void getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId) override;
 
     };
 

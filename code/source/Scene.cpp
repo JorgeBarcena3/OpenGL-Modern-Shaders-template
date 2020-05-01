@@ -28,53 +28,16 @@ namespace OpenGLRender3D
 
     using namespace std;
 
-    Scene::Scene(int width, int height)
+    Scene::Scene(int width, int height) :
+        scene_Node(new Transform()),
+        camera(new OpenGLRender3D::Camera(width, height, *this)),
+        skybox(new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this)),
+        window_size(glm::vec2(width, height))
     {
 
-        scene_Node = new Transform();
+        configureEntities();
 
-        camera = new OpenGLRender3D::Camera(width, height, *this);
-
-        skybox = new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this, OPACITYMODEL::OPAQUE);
-
-        window_size = glm::vec2(width, height);
-
-        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 512, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/height_map/Volcan.tga"));
-        getEntity("Terreno")->setParent(scene_Node);
-
-        entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -25));
-        getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera")->setParent(scene_Node);
-
-        entities.emplace("Calavera1", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera1")->transform.setPosition(glm::vec3(0, 0, -10));
-        getEntity("Calavera1")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera1")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera1")->setParent(scene_Node);
-
-        entities.emplace("Calavera2", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera2")->transform.setPosition(glm::vec3(0, 0, -35));
-        getEntity("Calavera2")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera2")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera2")->setParent(scene_Node);
-
-        entities.emplace("Calavera3", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera3")->transform.setPosition(glm::vec3(0, 5, -20));
-        getEntity("Calavera3")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera3")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera3")->setParent(scene_Node);
-
-        entities.emplace("Calavera4", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera4")->transform.setPosition(glm::vec3(0, 0, -25));
-        getEntity("Calavera4")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera4")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera4")->setParent(scene_Node);
-
-        Directionallights.push_back(new DirectionalLight(glm::vec3(0,0,-1)));
-
-        orderEntitiesTransparency();
+        configureLights();
 
     }
 
@@ -203,7 +166,7 @@ namespace OpenGLRender3D
             sf::Vector2i pos = sf::Mouse::getPosition(window);
             camera->rotateCamera(pos);
         }
-        else if(!camera->mousePosition.firstPressed)
+        else if (!camera->mousePosition.firstPressed)
         {
             camera->mousePosition.firstPressed = true;
         }
@@ -214,6 +177,62 @@ namespace OpenGLRender3D
     Camera* Scene::getMainCamera()
     {
         return camera;
+    }
+    
+    void Scene::configureLights()
+    {
+        int index = 0;
+
+        directionalLight.push_back(new DirectionalLight(glm::vec3(0, 0, -1)));
+        directionalLight[index]->getUniformId(camera->getShaderProgram(), std::to_string(index));
+        directionalLight[index]->setUniformVariables(camera->getShaderProgram());
+        
+        index = 0;
+
+        pointlights.push_back(new PointLight(glm::vec3(0, 0, -10)));
+        pointlights[index]->getUniformId(camera->getShaderProgram(), std::to_string(index));
+        pointlights[index]->setUniformVariables(camera->getShaderProgram());
+
+
+    }
+
+    void Scene::configureEntities()
+    {
+        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 512, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/height_map/Volcan.tga"));
+        getEntity("Terreno")->setParent(scene_Node);
+
+        entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -25));
+        getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera")->transform.setRotation(glm::vec3(90.f, 0, 0));
+        getEntity("Calavera")->setParent(scene_Node);
+
+        /*    entities.emplace("Calavera1", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+            getEntity("Calavera1")->transform.setPosition(glm::vec3(0, 0, -10));
+            getEntity("Calavera1")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+            getEntity("Calavera1")->transform.setRotation(glm::vec3(90.f, 0, 0));
+            getEntity("Calavera1")->setParent(scene_Node);
+
+            entities.emplace("Calavera2", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+            getEntity("Calavera2")->transform.setPosition(glm::vec3(0, 0, -35));
+            getEntity("Calavera2")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+            getEntity("Calavera2")->transform.setRotation(glm::vec3(90.f, 0, 0));
+            getEntity("Calavera2")->setParent(scene_Node);
+
+            entities.emplace("Calavera3", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::TRANSLUCID, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+            getEntity("Calavera3")->transform.setPosition(glm::vec3(0, 5, -20));
+            getEntity("Calavera3")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+            getEntity("Calavera3")->transform.setRotation(glm::vec3(90.f, 0, 0));
+            getEntity("Calavera3")->setParent(scene_Node);
+
+            entities.emplace("Calavera4", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+            getEntity("Calavera4")->transform.setPosition(glm::vec3(0, 0, -25));
+            getEntity("Calavera4")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+            getEntity("Calavera4")->transform.setRotation(glm::vec3(90.f, 0, 0));
+            getEntity("Calavera4")->setParent(scene_Node);*/
+
+
+        orderEntitiesTransparency();
     }
 
     void Scene::orderEntitiesTransparency()

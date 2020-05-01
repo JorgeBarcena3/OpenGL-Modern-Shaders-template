@@ -24,14 +24,20 @@ namespace OpenGLRender3D
 
     protected:
 
+        int eneabled;
         glm::vec3 ambientColor;
         glm::vec3 diffuseColor;
         glm::vec3 specularColor;
 
+        GLint ambientColorId ;
+        GLint diffuseColorId ;
+        GLint specularColorId;
+        GLint eneabledId;
+
     public:
 
         Light(glm::vec3 _ambientColor = glm::vec3(1,1,1), glm::vec3 _diffuseColor = glm::vec3(1, 1, 1), glm::vec3 _specularColor = glm::vec3(1, 1, 1)) :
-            ambientColor(_ambientColor), diffuseColor(_diffuseColor), specularColor(_specularColor)
+            ambientColor(_ambientColor), diffuseColor(_diffuseColor), specularColor(_specularColor), eneabled(1)
         {
                 
         }
@@ -50,8 +56,20 @@ namespace OpenGLRender3D
         {
             specularColor = a;
         }
+
+        void setEneabled(int isEneabled)
+        {
+            eneabled = isEneabled;
+        }
         
+        void refreshLightData(ShaderProgramHelper::Shader_Program& shader)
+        {
+            setUniformVariables(shader);
+        }
+
         virtual void setUniformVariables(ShaderProgramHelper::Shader_Program& shader) = 0;
+
+        virtual void getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId) = 0;
 
 
     };
