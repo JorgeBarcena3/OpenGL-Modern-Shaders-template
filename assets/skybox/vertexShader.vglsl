@@ -1,7 +1,7 @@
 #version 330
 
-uniform mat4 model_view_matrix;
-uniform mat4 projection_matrix;
+uniform mat4 camera_matrix;
+uniform mat4 modelMatrix;
 
 layout (location = 0) in vec3 vertex_coordinates;
 
@@ -10,5 +10,5 @@ out vec3 texture_coordinates;
 void main()
 {
    texture_coordinates = vec3(vertex_coordinates.x, -vertex_coordinates.y, vertex_coordinates.z);
-   gl_Position = projection_matrix * vec4(vertex_coordinates, 1.0);
+   gl_Position = camera_matrix * modelMatrix * vec4(vertex_coordinates, 1.0);
 }

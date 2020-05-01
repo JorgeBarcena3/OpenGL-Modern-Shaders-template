@@ -20,8 +20,11 @@ void OpenGLRender3D::Mesh::render()
 
     }
 
-    glm::mat4 projection_view_matrix = model->scene->getMainCamera()->getProjectionMatrix() * model->scene->getMainCamera()->getTransformation() * model->transform.getModelViewMatrix();
-    glUniformMatrix4fv(model->scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
+    glm::mat4 camera_matrix = model->scene->getMainCamera()->getProjectionMatrix() * model->scene->getMainCamera()->getTransformation();
+    glm::mat4 modelMatrix = model->transform.getModelViewMatrix();
+
+    glUniformMatrix4fv(model->scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(camera_matrix));
+    glUniformMatrix4fv(model->modelMatrixTransformationId, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
     // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
     glBindVertexArray(model->vao_id);

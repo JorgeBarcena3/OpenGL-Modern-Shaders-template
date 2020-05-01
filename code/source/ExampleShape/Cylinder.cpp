@@ -100,6 +100,9 @@ namespace OpenGLRender3D
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
         glBindVertexArray(0);
+
+        modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id("modelMatrix");
+
     }
 
     Cylinder::~Cylinder()
@@ -213,8 +216,11 @@ namespace OpenGLRender3D
         if (textures_factory[0]->is_ok())
             textures_factory[0]->bind();
 
-        glm::mat4 projection_view_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation() * transform.getModelViewMatrix();
-        glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(projection_view_matrix));
+        glm::mat4 camera_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation();
+        glm::mat4 modelMatrix = transform.getModelViewMatrix();
+
+        glUniformMatrix4fv(scene->getMainCamera()->getProjectionMatrixId(), 1, GL_FALSE, glm::value_ptr(camera_matrix));
+        glUniformMatrix4fv(modelMatrixTransformationId, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
         // Se selecciona el VAO que contiene los datos del objeto y se dibujan sus elementos:
 

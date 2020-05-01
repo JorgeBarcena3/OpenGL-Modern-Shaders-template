@@ -24,14 +24,23 @@ struct PointLight {
     vec3 specular;
 };  
 
+// Arrays que guardan la informacion de las luces
 uniform PointLight pointLights[POINT_N];
 uniform DirectionalLight directionalLight[DIRECTIONAL_N];
 
+// Variable de salida
 out vec4 fragment_color;
-in vec2 tx_coord;
 
+// Variable de entradas desde el vertex shader
+in vec2 tx_coord;
+in vec3 normal_vec;
+out vec3 vertex_pos;
+
+
+// Textura de donde se va a obtener el color base
 uniform sampler2D texture_sampler;
 
+// Declaraciones adelantadas de las funciones para calcular la iluminacion
 vec4 CalculateDirectionalLight(DirectionalLight light, vec3 N, vec3 L);  
 vec4 CalculatePointLight(PointLight light, vec3 N, vec3 P, vec3 L);  
 

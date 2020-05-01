@@ -48,6 +48,8 @@ namespace OpenGLRender3D
         };
 
 
+
+
     protected:
 
         GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
@@ -59,6 +61,8 @@ namespace OpenGLRender3D
         std::vector<Texture*> textures_factory;
 
         OPACITYMODEL opacityModel;
+
+        GLint modelMatrixTransformationId;
 
 
     public:
