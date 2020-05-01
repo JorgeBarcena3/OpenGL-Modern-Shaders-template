@@ -1,12 +1,50 @@
 #version 330
 
+struct DirectionalLight {
+    vec3 direction;
+  
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};  
+
+struct PointLight {    
+    vec3 position;
+    
+    float constant;
+    float linear;
+    float quadratic;  
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};  
+
+uniform PointLight pointLights[5];
+uniform DirectionalLight directionalLight;
+
+
 out vec4 fragment_color;
 in vec2 tx_coord;
 
 uniform sampler2D texture_sampler;
+
+vec3 CalculateDirectionalLight(DirectionalLight light, vec3 N, vec3 L);  
+vec3 CalculatePointLight(PointLight light, vec3 N, vec3 P, vec3 L);  
+
 
 void main()
 {
     vec4 color = texture (texture_sampler, tx_coord);
     fragment_color =  color;
 }
+
+vec3 CalculateDirectionalLight(DirectionalLight light, vec3 N, vec3 L)
+{
+   return vec3(1);
+}  
+
+vec3 CalculatePointLight(PointLight light, vec3 N, vec3 P, vec3 L)
+{
+    return vec3(1);
+} 

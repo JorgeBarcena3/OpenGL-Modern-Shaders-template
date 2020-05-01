@@ -196,8 +196,15 @@ namespace OpenGLRender3D
             }
         }
 
-        sf::Vector2i pos = sf::Mouse::getPosition(window);
-        camera->rotateCamera(pos);
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            sf::Vector2i pos = sf::Mouse::getPosition(window);
+            camera->rotateCamera(pos);
+        }
+        else if(!camera->mousePosition.firstPressed)
+        {
+            camera->mousePosition.firstPressed = true;
+        }
 
         return true;
     }

@@ -55,6 +55,9 @@
     <Filter Include="LIBRARIES\targa">
       <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders\Camera">
+      <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -163,17 +166,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\assets\fragmentShader.fglsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="..\..\assets\vertexShader.vglsl">
-      <Filter>shaders</Filter>
-    </None>
     <None Include="..\..\assets\skybox\vertexShader.vglsl">
       <Filter>shaders\Skybox</Filter>
     </None>
     <None Include="..\..\assets\skybox\fragmentShader.fglsl">
       <Filter>shaders\Skybox</Filter>
+    </None>
+    <None Include="..\..\assets\fragmentShader.fglsl">
+      <Filter>shaders\Camera</Filter>
+    </None>
+    <None Include="..\..\assets\vertexShader.vglsl">
+      <Filter>shaders\Camera</Filter>
     </None>
   </ItemGroup>
 </Project>
