@@ -28,8 +28,11 @@
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\header\DirectionalLight.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Model3D.hpp" />
+    <ClInclude Include="..\..\code\header\Light.hpp" />
+    <ClInclude Include="..\..\code\header\PointLight.hpp" />
     <ClInclude Include="..\..\code\header\Texture2D.hpp" />
     <ClInclude Include="..\..\code\header\Camera.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />

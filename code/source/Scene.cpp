@@ -251,7 +251,6 @@ namespace OpenGLRender3D
             toOrder.push_back(it->second);
         }
 
-
     }
 
 }

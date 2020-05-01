@@ -58,6 +58,9 @@
     <Filter Include="shaders\Camera">
       <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\Light">
+      <UniqueIdentifier>{3ac227f0-09c1-4c2a-8bd3-0c37023fdc28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -119,12 +122,6 @@
     <ClInclude Include="..\..\code\header\Vertex_Shader.hpp">
       <Filter>tools\header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\lib\targa\include\targa.h">
       <Filter>LIBRARIES\targa</Filter>
     </ClInclude>
@@ -163,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp">
       <Filter>headers\3DModels\OBJ_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\DirectionalLight.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Light.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\PointLight.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
+      <Filter>tools\header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
