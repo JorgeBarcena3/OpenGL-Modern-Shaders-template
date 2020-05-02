@@ -201,7 +201,7 @@ namespace OpenGLRender3D
 
         index = 0;
 
-        lights.emplace("Point Light 1", new DirectionalLight(glm::vec3(-1, 2, -1), *this));
+        lights.emplace("Point Light 1", new DirectionalLight(glm::vec3(-10, -10, -1), *this));
         lights["Point Light 1"]->setEneabled(1);
         lights["Point Light 1"]->setIntensity(glm::vec3(2));
         lights["Point Light 1"]->setColor(glm::vec3(1, 1, 1));

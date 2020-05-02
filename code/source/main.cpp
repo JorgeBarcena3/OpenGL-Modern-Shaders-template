@@ -28,6 +28,16 @@ void movement(Light* me, float time)
     point->setPosition(point->getScene()->getMainCamera()->transform.getPosition());
 }
 
+void calavera(BaseModel3D* me, float time)
+{
+    static float angle = 0;
+
+    angle = 1;
+
+    me->transform.setRotation(me->transform.getRotation() + glm::vec3(0, 0, 1));
+
+}
+
 
 int main()
 {
@@ -45,6 +55,7 @@ int main()
 
     myScene.getLight("Sun")->setUpdateFunction(movement);
     myScene.getEntity("Calavera")->transform.setRotation(glm::vec3(-90, 0, 0));
+    myScene.getEntity("Calavera")->setUpdateFunction(calavera);
 
     // Se ejecuta el bucle principal:
 

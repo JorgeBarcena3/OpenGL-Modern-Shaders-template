@@ -17,11 +17,12 @@ out vec3 camera_position;
 void main()
 {
 
-   normal_vec = normal_vertex;
+   gl_Position = camera_matrix * modelMatrix * vec4(vertex_coordinates, 1.0);
+
+   normal_vec = mat3(modelMatrix) * normal_vertex;  
    tx_coord = texture_coordinates;
    vertex_pos = vec3(modelMatrix * vec4(vertex_coordinates, 1.0));
    camera_position = camera_pos;
 
-   gl_Position = camera_matrix * modelMatrix * vec4(vertex_coordinates, 1.0);
 
 }

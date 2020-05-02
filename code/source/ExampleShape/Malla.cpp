@@ -202,9 +202,6 @@ namespace OpenGLRender3D
                 normals.push_back(normal.y);//normal.y );
                 normals.push_back(normal.z);// );
 
-                normalOffset += 3;
-
-
             }
         }
     }
