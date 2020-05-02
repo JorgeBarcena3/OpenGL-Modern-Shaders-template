@@ -60,21 +60,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
 
         if (materals.size() == 0)
         {
-            Material mat;
-
-            mat.Ka = glm::vec3(1, 1, 1);
-            mat.Kd = glm::vec3(1, 1, 1);
-            mat.Ks = glm::vec3(1, 1, 1);
-
-            mat.diffuse_texname = "default";
-            textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
-            mat.diffuse_tex_id = textures_factory.size() - 1;
-
-            mat.specular_texname = "default";
-            textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
-            mat.specular_tex_id = textures_factory.size() - 1;
-
-            materials.push_back(mat);
+            setDefaultMaterial();
         }
         else
         {
@@ -110,14 +96,15 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
                 else
                 {
                     mat.diffuse_texname = "default";
-                    textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
+                    textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::texture_default_path));
                     mat.diffuse_tex_id = textures_factory.size() - 1;
 
                     mat.specular_texname = "default";
-                    textures_factory.push_back(new Texture2D("../../assets/default/texture.tga"));
+                    textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::texture_default_path));
                     mat.specular_tex_id = textures_factory.size() - 1;
                 }
 
+                mat.getUniformsId(scene->getMainCamera()->getShaderProgram());
                 materials.push_back(mat);
 
             }

@@ -120,6 +120,9 @@
     <ClCompile Include="..\..\code\source\Light.cpp">
       <Filter>sources\Light</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\ExampleShape\BaseModel3D.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
       <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\ConfigOptions.hpp">
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@
 
 #include "../Scene.hpp"
 #include "../Transform.hpp"
+#include "../ConfigOptions.hpp"
 
 namespace OpenGLRender3D
 {
@@ -28,10 +29,49 @@ namespace OpenGLRender3D
         TRANSLUCID
     };
 
+    struct Material
+    {
+
+        glm::vec3 Ka;
+        glm::vec3 Kd;
+        glm::vec3 Ks;
+
+        GLint KaId;
+        GLint KdId;
+        GLint KsId;
+
+        std::string diffuse_texname;
+        int diffuse_tex_id;
+
+        std::string specular_texname;
+        int specular_tex_id;
+
+        bool hasTexture()
+        {
+            return (!specular_texname.empty() || !diffuse_texname.empty());
+        }
+
+        void getUniformsId(ShaderProgramHelper::Shader_Program& shaderProgram)
+        {
+            KaId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKa.c_str());
+            KdId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKd.c_str());
+            KsId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKs.c_str());
+        }
+
+        void setUniformsValue(ShaderProgramHelper::Shader_Program& shaderProgram)
+        {
+            shaderProgram.set_uniform_value(KaId, Ka);
+            shaderProgram.set_uniform_value(KdId, Kd);
+            shaderProgram.set_uniform_value(KsId, Ks);
+        }
+
+    };
+
     class Texture;
 
     class BaseModel3D
     {
+
 
     protected:
 
@@ -60,6 +100,8 @@ namespace OpenGLRender3D
         std::vector< GLuint > indices;
 
         std::vector<Texture*> textures_factory;
+
+        std::vector< Material > materials;
 
         OPACITYMODEL opacityModel;
 
@@ -109,6 +151,9 @@ namespace OpenGLRender3D
         {
             return opacityModel;
         }
+
+        void setDefaultMaterial(std::string path = ConfigOptions::ConfigPaths::texture_default_path);
+
 
     };
 

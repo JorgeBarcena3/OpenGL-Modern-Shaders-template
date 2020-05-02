@@ -17,28 +17,7 @@
 #define MODEL3D_HEADER
 
 
-namespace OpenGLRender3D {
-
-
-    struct Material
-    {
-
-        glm::vec3 Ka;
-        glm::vec3 Kd;
-        glm::vec3 Ks;
-
-        std::string diffuse_texname;
-        int diffuse_tex_id;
-
-        std::string specular_texname;
-        int specular_tex_id;
-
-        bool hasTexture()
-        {
-            return (!specular_texname.empty() || !diffuse_texname.empty());
-        }
-
-    };
+namespace OpenGLRender3D {    
 
     /*
     * Clase que va a manejar un modelo 3D
@@ -55,9 +34,6 @@ namespace OpenGLRender3D {
 
         std::vector<Mesh*> meshes;
 
-        std::vector< Material > materials;
-
-
 
     public:
 
@@ -69,7 +45,7 @@ namespace OpenGLRender3D {
         /*
         * Destructor del modelo 3D
         */
-        ~Model3D();     
+        ~Model3D();
 
         // Heredado vía BaseModel3D
         virtual void render() override;

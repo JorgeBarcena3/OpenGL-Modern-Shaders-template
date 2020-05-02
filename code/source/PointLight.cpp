@@ -18,11 +18,11 @@ void OpenGLRender3D::PointLight::setUniformVariables(ShaderProgramHelper::Shader
 
 void OpenGLRender3D::PointLight::getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId)
 {
-    colorId = shader.get_uniform_id(std::string("pointLights[" + lightId + "].color").c_str());
-    intensityId = shader.get_uniform_id(std::string("pointLights[" + lightId + "].intensity").c_str());
-    eneabledId = shader.get_uniform_id(std::string("pointLights[" + lightId + "].eneabled").c_str());
-    positionId = shader.get_uniform_id(std::string("pointLights[" +      lightId + "].position").c_str());
-    ambientId = shader.get_uniform_id(std::string("pointLights[" +  lightId + "].ambient").c_str());
-    difusseId = shader.get_uniform_id(std::string("pointLights[" +  lightId + "].diffuse").c_str());
-    specularId = shader.get_uniform_id(std::string("pointLights[" + lightId + "].specular").c_str());
+    colorId = shader.get_uniform_id(std::string    (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" + lightId + "].color").c_str());
+    intensityId = shader.get_uniform_id(std::string(ConfigOptions::ConfigPaths::shader_pointLight_array + "[" + lightId + "].intensity").c_str());
+    eneabledId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" + lightId + "].eneabled").c_str());
+    positionId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" +      lightId + "].position").c_str());
+    ambientId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" +  lightId + "].ambient").c_str());
+    difusseId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" +  lightId + "].diffuse").c_str());
+    specularId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::shader_pointLight_array + "[" + lightId + "].specular").c_str());
 }

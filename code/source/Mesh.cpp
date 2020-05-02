@@ -17,6 +17,7 @@ void OpenGLRender3D::Mesh::render()
     if (model->textures_factory[model->materials[material_index].diffuse_tex_id]->is_ok())
     {
         model->textures_factory[model->materials[material_index].diffuse_tex_id]->bind();
+        model->materials[material_index].setUniformsValue(model->scene->getMainCamera()->getShaderProgram());
 
     }
 

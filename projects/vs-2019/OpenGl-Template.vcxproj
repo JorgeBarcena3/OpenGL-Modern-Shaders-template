@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\code\source\Camera.cpp" />
     <ClCompile Include="..\..\code\source\Cubemap.cpp" />
     <ClCompile Include="..\..\code\source\DirectionalLight.cpp" />
+    <ClCompile Include="..\..\code\source\ExampleShape\BaseModel3D.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp" />
     <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\header\ConfigOptions.hpp" />
     <ClInclude Include="..\..\code\header\DirectionalLight.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp" />
     <ClInclude Include="..\..\code\header\exampleShapes\Model3D.hpp" />

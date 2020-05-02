@@ -28,7 +28,8 @@ namespace OpenGLRender3D
     Cylinder::Cylinder(float _radius, float _height, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, float _sides, std::string tx_path) : 
         BaseModel3D(op, _scene)
     {
-        textures_factory.push_back(new Texture2D(tx_path));
+
+        setDefaultMaterial(tx_path);
         radius = _radius;
         height = _height;
         sides = _sides;
@@ -213,8 +214,12 @@ namespace OpenGLRender3D
     void Cylinder::render()
     {
 
-        if (textures_factory[0]->is_ok())
-            textures_factory[0]->bind();
+        if (textures_factory[materials[0].diffuse_tex_id]->is_ok())
+        {
+            textures_factory[materials[0].diffuse_tex_id]->bind();
+            materials[0].setUniformsValue(scene->getMainCamera()->getShaderProgram());
+
+        }
 
         glm::mat4 camera_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation();
         glm::mat4 modelMatrix = transform.getModelViewMatrix();

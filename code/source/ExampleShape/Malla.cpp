@@ -36,7 +36,8 @@ namespace OpenGLRender3D
     Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) :
         BaseModel3D(op, _scene)
     {
-        textures_factory.push_back(new Texture2D(tx_path));
+        setDefaultMaterial(tx_path);
+
         transform = Transform(glm::vec3(0, 0, -20), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
         width = _width;
         height = _height;
@@ -296,8 +297,12 @@ namespace OpenGLRender3D
     void Malla::render()
     {
 
-        if (textures_factory[0]->is_ok())
-            textures_factory[0]->bind();
+        if (textures_factory[materials[0].diffuse_tex_id]->is_ok())
+        {
+            textures_factory[materials[0].diffuse_tex_id]->bind();
+            materials[0].setUniformsValue(scene->getMainCamera()->getShaderProgram());
+
+        }
 
         glm::mat4 camera_matrix = scene->getMainCamera()->getProjectionMatrix() * scene->getMainCamera()->getTransformation();
         glm::mat4 modelMatrix = transform.getModelViewMatrix();
