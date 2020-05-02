@@ -3,6 +3,14 @@
 #include "..\..\header\Scene.hpp"
 #include "..\..\header\Camera.hpp"
 
+OpenGLRender3D::BaseModel3D::~BaseModel3D()
+{
+    for (auto tex : textures_factory)
+    {
+        delete tex;
+    }
+}
+
 void OpenGLRender3D::BaseModel3D::setDefaultMaterial(std::string path)
 {
     Material mat;

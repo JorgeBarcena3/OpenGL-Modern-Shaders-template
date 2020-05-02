@@ -119,6 +119,8 @@ namespace OpenGLRender3D
             scene = &_scene;
         }
 
+        ~BaseModel3D();
+
         Transform transform;
 
         Scene* scene;

@@ -65,6 +65,8 @@ namespace OpenGLRender3D
 
         Scene(int width, int height);
 
+        ~Scene();
+
         void   update(float time);
         void   render();
         void   cleanActionsPool();

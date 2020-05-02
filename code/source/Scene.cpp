@@ -55,6 +55,24 @@ namespace OpenGLRender3D
 
     }
 
+    Scene::~Scene()
+    {
+        delete camera;
+        delete skybox;
+
+        for (auto entity : entities)
+        {
+            delete entity.second;
+        }
+
+        for (auto light : lights)
+        {
+            delete light.second;
+        }
+
+        delete scene_Node;
+    }
+
     void Scene::update(float time)
     {
 
