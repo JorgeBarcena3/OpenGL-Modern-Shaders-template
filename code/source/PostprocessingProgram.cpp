@@ -135,8 +135,8 @@ void OpenGLRender3D::PostprocessingProgram::createEffectFrameBuffer()
     {
         glGenRenderbuffers(1, &depthRenderBuffer_id);
         glBindRenderbuffer(GL_RENDERBUFFER, depthRenderBuffer_id);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, (GLint)scene->getWindowSize().x, (GLint)scene->getWindowSize().y);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, depthRenderBuffer_id);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, (GLint)scene->getWindowSize().x, (GLint)scene->getWindowSize().y);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderBuffer_id);
 
     }
 

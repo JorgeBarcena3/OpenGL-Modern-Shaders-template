@@ -63,7 +63,7 @@ void OpenGLRender3D::Camera::resize(int width, int height)
 
 void OpenGLRender3D::Camera::moveCamera(glm::vec3 direction)
 {
-    transform.setPosition(transform.getPosition() + (glm::vec3(direction) * cameraTransformAttributes.movement_speed));
+    transform.setPosition(transform.getPosition() + ( glm::normalize(direction) * cameraTransformAttributes.movement_speed));
 }
 
 void OpenGLRender3D::Camera::rotateCamera(sf::Vector2i pos)

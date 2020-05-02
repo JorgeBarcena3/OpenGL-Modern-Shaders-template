@@ -57,7 +57,7 @@ namespace OpenGLRender3D
                 worldUp = glm::vec3(0.f, 1., 0.f);
                 yaw = -90.f;
                 pitch = 0;
-                movement_speed     = 0.3f;
+                movement_speed     = 0.15f;
                 mouse_sensivity  = 0.2f;
             }
         };

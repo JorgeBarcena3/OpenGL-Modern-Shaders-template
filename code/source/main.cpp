@@ -54,8 +54,8 @@ int main()
     Scene myScene(800, 600);
 
     myScene.getLight("Camera Main Light")->setUpdateFunction(movement);
-  /*  myScene.getEntity("Calavera")->transform.setRotation(glm::vec3(-90, 0, 0));
-    myScene.getEntity("Calavera")->setUpdateFunction(calavera);*/
+    myScene.getEntity("Calavera")->transform.setRotation(glm::vec3(-90, 0, 0));
+    myScene.getEntity("Calavera")->setUpdateFunction(calavera);
 
     // Se ejecuta el bucle principal:
 

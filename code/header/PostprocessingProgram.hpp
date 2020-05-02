@@ -35,11 +35,6 @@ namespace OpenGLRender3D
 
         GLuint vao_id;          // Id del VAO del programa de postproceso    
 
-        GLuint triangle_vbo0;
-
-        GLuint triangle_vbo1;
-
-
         GLuint frameBuffer_id;
 
         GLuint textureColorBuffer_id;

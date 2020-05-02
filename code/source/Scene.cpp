@@ -80,7 +80,8 @@ namespace OpenGLRender3D
     {
 
         postpoProgram.activeCurrentFrameBuffer();
-        glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
+
+        glEnable(GL_DEPTH_TEST); 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         skybox->render();
@@ -234,10 +235,10 @@ namespace OpenGLRender3D
         entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/default/tx_colors.tga"));
         getEntity("Terreno")->setParent(scene_Node);
 
-        //entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        //getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -15));
-        //getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        //getEntity("Calavera")->setParent(scene_Node);
+        entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
+        getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -15));
+        getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        getEntity("Calavera")->setParent(scene_Node);
 
         entities.emplace("Cilindro", new OpenGLRender3D::Cylinder(2, 2, *this, OPACITYMODEL::OPAQUE, 18));
         getEntity("Cilindro")->transform.setPosition(glm::vec3(0, 0, -15));
