@@ -31,6 +31,7 @@
     <ClCompile Include="..\..\code\source\Light.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
     <ClCompile Include="..\..\code\source\PointLight.cpp" />
+    <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
     <ClCompile Include="..\..\code\source\Scene.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="..\..\code\header\DirectionalLight.hpp" />
     <ClInclude Include="..\..\code\header\Light.hpp" />
     <ClInclude Include="..\..\code\header\PointLight.hpp" />
+    <ClInclude Include="..\..\code\header\PostprocessingProgram.hpp" />
     <ClInclude Include="..\..\code\header\Texture2D.hpp" />
     <ClInclude Include="..\..\code\header\Camera.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />
@@ -67,6 +69,8 @@
   <ItemGroup>
     <None Include="..\..\assets\camera\fragmentShader.fglsl" />
     <None Include="..\..\assets\camera\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\vertexShader.vglsl" />
     <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
     <None Include="..\..\assets\skybox\vertexShader.vglsl" />
   </ItemGroup>

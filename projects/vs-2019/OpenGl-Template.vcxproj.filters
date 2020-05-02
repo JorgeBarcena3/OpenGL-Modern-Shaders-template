@@ -64,6 +64,21 @@
     <Filter Include="shaders\skybox">
       <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders\postprocessing">
+      <UniqueIdentifier>{0fc4fb27-51c6-4d2f-b222-a00fd63783f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Camera">
+      <UniqueIdentifier>{a1f565c2-8a8c-4026-a669-b510fd2e0484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Configuration">
+      <UniqueIdentifier>{fbc82c6a-d5ac-4809-b73b-b9feb62108ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Transform">
+      <UniqueIdentifier>{8f9dd5c2-1744-4e0c-a487-bf1163994eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Postprocessing">
+      <UniqueIdentifier>{32826e2c-0d02-431a-916f-978fe977ceec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -123,6 +138,9 @@
     <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp">
       <Filter>sources\3DModels</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
@@ -141,12 +159,6 @@
       <Filter>LIBRARIES\targa</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Scene.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\Camera.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\Transform.hpp">
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Texture.hpp">
@@ -173,9 +185,6 @@
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
       <Filter>tools\header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\ConfigOptions.hpp">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\code\header\3DModels\Malla.hpp">
       <Filter>headers\3DModels</Filter>
     </ClInclude>
@@ -194,6 +203,18 @@
     <ClInclude Include="..\..\code\header\3DModels\Mesh.hpp">
       <Filter>headers\3DModels\OBJ_Model</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\code\header\Camera.hpp">
+      <Filter>headers\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\ConfigOptions.hpp">
+      <Filter>headers\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Transform.hpp">
+      <Filter>headers\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\PostprocessingProgram.hpp">
+      <Filter>headers\Postprocessing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\skybox\vertexShader.vglsl">
@@ -207,6 +228,12 @@
     </None>
     <None Include="..\..\assets\camera\fragmentShader.fglsl">
       <Filter>shaders\camera</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\vertexShader.vglsl">
+      <Filter>shaders\postprocessing</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing</Filter>
     </None>
   </ItemGroup>
 </Project>

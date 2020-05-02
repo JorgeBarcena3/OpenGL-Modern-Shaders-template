@@ -22,6 +22,7 @@
 #include <glm/matrix.hpp>
 #include <vector>
 #include <map>
+#include "PostprocessingProgram.hpp"
 
 
 namespace OpenGLRender3D
@@ -47,9 +48,12 @@ namespace OpenGLRender3D
         std::map<std::string,  BaseModel3D* > entities;
 
         std::vector< BaseModel3D* > opaque;
+
         std::vector< BaseModel3D* > translucid;
 
         glm::vec2 window_size;
+
+        PostprocessingProgram postpoProgram;
 
         Skybox * skybox;
 

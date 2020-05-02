@@ -9,33 +9,52 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#define GLM_FORCE_RADIANS
 
-#ifndef CONFIGOPTIONS_HEADER
-#define CONFIGOPTIONS_HEADER
+#ifndef POSTPROCESSINGPROGRAM_HEADER
+#define POSTPROCESSINGPROGRAM_HEADER
 
-#include <string>
+#include "Shader_Program.hpp"
 
-namespace ConfigOptions
+
+namespace OpenGLRender3D
 {
 
-    class ConfigPaths
+    using namespace ShaderProgramHelper;
+    class Scene;
+
+    class PostprocessingProgram
     {
+
     public:
 
-        static std::string texture_default_path;
-        static std::string shader_myMaterialKa;
-        static std::string shader_myMaterialKd;
-        static std::string shader_myMaterialKs;
-        static std::string shader_pointLight_array;
-        static std::string shader_directionalLight_array;
-        static std::string camera_shader_path;
-        static std::string skybox_shader_path;
-        static std::string postprocesing_shader_path;
-        static std::string vertexShader_name;
-        static std::string fragmentShader_name;
+        Scene * scene;
+
+    private:
+
+        GLuint effectFrameBuffer_id;
+
+        GLuint effectFramebuffertexture_id;
+
+        GLuint effectRenderBufferObject_id;
+
+        ShaderProgramHelper::Shader_Program shaderProgram;
+
+
+    public:
+
+        PostprocessingProgram() = delete;
+
+        PostprocessingProgram(Scene& _scene);
+
+        ~PostprocessingProgram();
+
+        void render();
+
+    private:
+
 
     };
 
 }
+
 #endif

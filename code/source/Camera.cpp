@@ -14,8 +14,8 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     // Se compilan y se activan los shaders:
 
-    shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file("../../assets/camera/vertexShader.vglsl")));
-    shaderProgram.attach(Fragment_Shader(Shader::Source_Code::from_file("../../assets/camera/fragmentShader.fglsl")));
+    shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::camera_shader_path + ConfigOptions::ConfigPaths::vertexShader_name)));
+    shaderProgram.attach(Fragment_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::camera_shader_path + ConfigOptions::ConfigPaths::fragmentShader_name)));
 
     shaderProgram.link();
     shaderProgram.use();

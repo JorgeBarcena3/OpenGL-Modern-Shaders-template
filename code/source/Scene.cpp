@@ -29,6 +29,11 @@ std::string ConfigOptions::ConfigPaths::shader_myMaterialKd = "myMaterial.Kd";
 std::string ConfigOptions::ConfigPaths::shader_myMaterialKs = "myMaterial.Ks";
 std::string ConfigOptions::ConfigPaths::shader_pointLight_array = "pointLights";
 std::string ConfigOptions::ConfigPaths::shader_directionalLight_array = "directionalLight";
+std::string ConfigOptions::ConfigPaths::camera_shader_path = "../../assets/camera/";
+std::string ConfigOptions::ConfigPaths::skybox_shader_path = "../../assets/skybox/";
+std::string ConfigOptions::ConfigPaths::postprocesing_shader_path = "../../assets/postprocessing/";
+std::string ConfigOptions::ConfigPaths::vertexShader_name = "vertexShader.vglsl";
+std::string ConfigOptions::ConfigPaths::fragmentShader_name = "fragmentShader.fglsl";
 
 namespace OpenGLRender3D
 {
@@ -39,7 +44,8 @@ namespace OpenGLRender3D
         scene_Node(new Transform()),
         camera(new OpenGLRender3D::Camera(width, height, *this)),
         skybox(new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this)),
-        window_size(glm::vec2(width, height))
+        window_size(glm::vec2(width, height)),
+        postpoProgram(*this)
     {
 
         configureEntities();
@@ -209,7 +215,7 @@ namespace OpenGLRender3D
 
         lights.emplace("Main Directional Light", new DirectionalLight(glm::vec3(-10, -10, -1), *this));
         lights["Main Directional Light"]->setEneabled(1);
-        lights["Main Directional Light"]->setIntensity(glm::vec3(1));
+        lights["Main Directional Light"]->setIntensity(glm::vec3(3));
         lights["Main Directional Light"]->setColor(glm::vec3(1, 1, 1));
         lights["Main Directional Light"]->setAmbientColor(glm::vec3(0.1f));
         lights["Main Directional Light"]->setdiffuseColor(glm::vec3(0.9f));
