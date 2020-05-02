@@ -1,11 +1,12 @@
 #version 330
-out vec4 FragColor;
+out vec4 frag_color;
   
 in vec2 tx_coord;
 
-uniform sampler2D sampler_texture;
+uniform sampler2D screenTexture;
 
 void main()
 { 
-    FragColor = texture(sampler_texture, tx_coord);
+//    float media = tx_coord.x + tx_coord.y / 2;
+    frag_color = texture(screenTexture, tx_coord);
 }

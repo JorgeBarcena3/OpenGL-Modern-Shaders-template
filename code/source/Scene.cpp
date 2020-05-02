@@ -41,11 +41,12 @@ namespace OpenGLRender3D
     using namespace std;
 
     Scene::Scene(int width, int height) :
+        window_size(glm::vec2(width, height)),
+        postpoProgram(*this),
         scene_Node(new Transform()),
         camera(new OpenGLRender3D::Camera(width, height, *this)),
-        skybox(new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this)),
-        window_size(glm::vec2(width, height)),
-        postpoProgram(*this)
+        skybox(new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this))
+
     {
 
         configureEntities();
@@ -78,9 +79,9 @@ namespace OpenGLRender3D
     void Scene::render()
     {
 
-
+        postpoProgram.activeCurrentFrameBuffer();
+        glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0.5f, 0.5f, 0.5f, 1.f);
 
         skybox->render();
 
@@ -104,6 +105,8 @@ namespace OpenGLRender3D
         }
 
         glDisable(GL_BLEND);
+
+        postpoProgram.render();
 
     }
 
@@ -205,8 +208,8 @@ namespace OpenGLRender3D
         lights["Camera Main Light"]->setEneabled(1);
         lights["Camera Main Light"]->setColor(glm::vec3(1, 0, 0));
         lights["Camera Main Light"]->setIntensity(glm::vec3(2));
-        lights["Camera Main Light"]->setAmbientColor(glm::vec3(0.25f));
-        lights["Camera Main Light"]->setdiffuseColor(glm::vec3(0.5f));
+        lights["Camera Main Light"]->setAmbientColor(glm::vec3(0.1f));
+        lights["Camera Main Light"]->setdiffuseColor(glm::vec3(0.0f));
         lights["Camera Main Light"]->setSpecularColor(glm::vec3(0.25f));
         lights["Camera Main Light"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
         lights["Camera Main Light"]->setUniformVariables(camera->getShaderProgram());
@@ -215,7 +218,7 @@ namespace OpenGLRender3D
 
         lights.emplace("Main Directional Light", new DirectionalLight(glm::vec3(-10, -10, -1), *this));
         lights["Main Directional Light"]->setEneabled(1);
-        lights["Main Directional Light"]->setIntensity(glm::vec3(3));
+        lights["Main Directional Light"]->setIntensity(glm::vec3(1));
         lights["Main Directional Light"]->setColor(glm::vec3(1, 1, 1));
         lights["Main Directional Light"]->setAmbientColor(glm::vec3(0.1f));
         lights["Main Directional Light"]->setdiffuseColor(glm::vec3(0.9f));

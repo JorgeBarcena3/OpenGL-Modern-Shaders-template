@@ -30,12 +30,21 @@ namespace OpenGLRender3D
         Scene * scene;
 
     private:
+        
+        GLuint vbo_ids[2];      // Ids de los VBOs que se usan
 
-        GLuint effectFrameBuffer_id;
+        GLuint vao_id;          // Id del VAO del programa de postproceso    
 
-        GLuint effectFramebuffertexture_id;
+        GLuint triangle_vbo0;
 
-        GLuint effectRenderBufferObject_id;
+        GLuint triangle_vbo1;
+
+
+        GLuint frameBuffer_id;
+
+        GLuint textureColorBuffer_id;
+
+        GLuint depthRenderBuffer_id;
 
         ShaderProgramHelper::Shader_Program shaderProgram;
 
@@ -48,10 +57,15 @@ namespace OpenGLRender3D
 
         ~PostprocessingProgram();
 
+        void activeCurrentFrameBuffer();
+
         void render();
 
     private:
 
+        void createScreenCoordinatesVAO();
+
+        void createEffectFrameBuffer();
 
     };
 

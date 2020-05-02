@@ -25,6 +25,9 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     updateCameraTransform();
 
+    //glEnable(GL_CULL_FACE);
+
+
 
 }
 
@@ -44,8 +47,7 @@ void OpenGLRender3D::Camera::render()
 
     shaderProgram.use();
 
-    shaderProgram.set_uniform_value(cameraposition_id, transform.getPosition());
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    shaderProgram.set_uniform_value(cameraposition_id, transform.getPosition());     
 
     glEnable(GL_DEPTH_TEST);
 

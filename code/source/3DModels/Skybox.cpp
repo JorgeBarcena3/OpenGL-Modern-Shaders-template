@@ -112,6 +112,7 @@ namespace OpenGLRender3D
     {
 
         glDepthMask(GL_FALSE);
+
         shaderProgram.use();
         
         textures_factory[0]->bind();
