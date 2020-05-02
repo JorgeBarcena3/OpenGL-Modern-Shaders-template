@@ -43,12 +43,9 @@ namespace OpenGLRender3D
         std::string diffuse_texname;
         int diffuse_tex_id;
 
-        std::string specular_texname;
-        int specular_tex_id;
-
         bool hasTexture()
         {
-            return (!specular_texname.empty() || !diffuse_texname.empty());
+            return (!diffuse_texname.empty());
         }
 
         void getUniformsId(ShaderProgramHelper::Shader_Program& shaderProgram)

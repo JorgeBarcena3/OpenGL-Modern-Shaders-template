@@ -7,8 +7,8 @@ void OpenGLRender3D::BaseModel3D::setDefaultMaterial(std::string path)
 {
     Material mat;
 
-    mat.Ka = glm::vec3(0);
-    mat.Kd = glm::vec3(1);
+    mat.Ka = glm::vec3(0.5f);
+    mat.Kd = glm::vec3(0.5f);
     mat.Ks = glm::vec3(0);
 
     mat.diffuse_texname = "default";

@@ -11,7 +11,7 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op,
     BaseModel3D(op, _scene)
 {
 
-    loadObj(path); 
+    loadObj(path);
 
     modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id("modelMatrix");
 
@@ -73,25 +73,17 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
                 mat.Ka = glm::vec3(materals[m].ambient[0], materals[m].ambient[1], materals[m].ambient[2]);
                 mat.Kd = glm::vec3(materals[m].diffuse[0], materals[m].diffuse[1], materals[m].diffuse[2]);
                 mat.Ks = glm::vec3(materals[m].specular[0], materals[m].specular[1], materals[m].specular[2]);
-       
+
 
                 mat.diffuse_texname = materals[m].diffuse_texname;
-                mat.specular_texname = materals[m].specular_texname;
 
                 if (mat.hasTexture())
                 {
-                    if (!mat.diffuse_texname.empty())
-                    {
-                        textures_factory.push_back(new Texture2D(mtlPath + "/" + mat.diffuse_texname));
-                        mat.diffuse_tex_id = textures_factory.size() - 1;
-                    }
+
+                    textures_factory.push_back(new Texture2D(mtlPath + "/" + mat.diffuse_texname));
+                    mat.diffuse_tex_id = textures_factory.size() - 1;
 
 
-                    if (!mat.specular_texname.empty())
-                    {
-                        textures_factory.push_back(new Texture2D(mtlPath + "/" + mat.specular_texname));
-                        mat.specular_tex_id = textures_factory.size() - 1;
-                    }
                 }
                 else
                 {
@@ -99,9 +91,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
                     textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::texture_default_path));
                     mat.diffuse_tex_id = textures_factory.size() - 1;
 
-                    mat.specular_texname = "default";
-                    textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::texture_default_path));
-                    mat.specular_tex_id = textures_factory.size() - 1;
+
                 }
 
                 mat.getUniformsId(scene->getMainCamera()->getShaderProgram());
