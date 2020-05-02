@@ -14,7 +14,7 @@
 
 #include "../../header/Vertex_Shader.hpp"
 #include "../../header/Fragment_Shader.hpp"
-#include "../../header/exampleShapes/Skybox.hpp"
+#include "../../header/3DModels/Skybox.hpp"
 #include "../../header/Cubemap.hpp"
 #include "../../header/Camera.hpp"
 

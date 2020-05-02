@@ -1,4 +1,4 @@
-#include "..\..\header\exampleShapes\BaseModel3D.hpp"
+#include "..\..\header\3DModels\BaseModel3D.hpp"
 #include "..\..\header\Texture2D.hpp"
 #include "..\..\header\Scene.hpp"
 #include "..\..\header\Camera.hpp"

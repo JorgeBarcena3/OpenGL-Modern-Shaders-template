@@ -16,7 +16,7 @@
 #include <string>
 #include <glm/matrix.hpp>
 
-#include "exampleShapes/BaseModel3D.hpp"
+#include "3DModels/BaseModel3D.hpp"
 #include "Shader_Program.hpp"
 #include "Color_Buffer_Rgba8888.hpp"
 

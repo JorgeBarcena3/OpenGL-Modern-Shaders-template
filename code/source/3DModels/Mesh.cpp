@@ -1,7 +1,7 @@
-#include "..\header\exampleShapes\Mesh.hpp"
-#include "..\header\exampleShapes\Model3D.hpp"
-#include "..\header\Camera.hpp"
-#include "..\header\Texture2D.hpp"
+#include "..\..\header\3DModels\Mesh.hpp"
+#include "..\..\header\3DModels\Model3D.hpp"
+#include "..\..\header\Camera.hpp"
+#include "..\..\header\Texture2D.hpp"
 
 
 OpenGLRender3D::Mesh::Mesh(std::vector<GLuint> _indices, Model3D& _model, int _material_index)

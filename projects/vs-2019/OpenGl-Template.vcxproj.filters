@@ -78,20 +78,11 @@
     <ClCompile Include="..\..\lib\targa\src\targa.c">
       <Filter>LIBRARIES\targa</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp">
-      <Filter>sources\3DModels</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp">
-      <Filter>sources\3DModels</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\code\source\Scene.cpp">
       <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\source\Camera.cpp">
       <Filter>sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp">
-      <Filter>sources\3DModels</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\source\Texture.cpp">
       <Filter>sources\Textures\base</Filter>
@@ -105,12 +96,6 @@
     <ClCompile Include="..\..\lib\glad\src\glad.c">
       <Filter>LIBRARIES\GLAD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp">
-      <Filter>sources\3DModels</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\code\source\Mesh.cpp">
-      <Filter>sources\3DModels</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\code\source\PointLight.cpp">
       <Filter>sources\Light</Filter>
     </ClCompile>
@@ -120,7 +105,22 @@
     <ClCompile Include="..\..\code\source\Light.cpp">
       <Filter>sources\Light</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\source\ExampleShape\BaseModel3D.cpp">
+    <ClCompile Include="..\..\code\source\3DModels\Cylinder.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Malla.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Mesh.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Model3D.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Skybox.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp">
       <Filter>sources\3DModels</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,26 +140,14 @@
     <ClInclude Include="..\..\lib\targa\include\targa.h">
       <Filter>LIBRARIES\targa</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp">
-      <Filter>headers\3DModels</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp">
-      <Filter>headers\3DModels</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\code\header\Scene.hpp">
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Camera.hpp">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\BaseModel3D.hpp">
-      <Filter>headers\3DModels\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\code\header\Transform.hpp">
       <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Skybox.hpp">
-      <Filter>headers\3DModels</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\Texture.hpp">
       <Filter>headers\Texture\Base</Filter>
@@ -169,12 +157,6 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\Texture2D.hpp">
       <Filter>headers\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Model3D.hpp">
-      <Filter>headers\3DModels\OBJ_Model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp">
-      <Filter>headers\3DModels\OBJ_Model</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\DirectionalLight.hpp">
       <Filter>headers\Light</Filter>
@@ -193,6 +175,24 @@
     </ClInclude>
     <ClInclude Include="..\..\code\header\ConfigOptions.hpp">
       <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Malla.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Skybox.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Cylinder.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\BaseModel3D.hpp">
+      <Filter>headers\3DModels\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Model3D.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Mesh.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

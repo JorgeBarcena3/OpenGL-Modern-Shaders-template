@@ -14,13 +14,13 @@
 #include <SFML/Window/Mouse.hpp>
 
 #include "../header/Scene.hpp"
-#include "../header/exampleShapes/Malla.hpp"
-#include "../header/exampleShapes/Model3D.hpp"
+#include "../header/3DModels/Malla.hpp"
+#include "../header/3DModels/Model3D.hpp"
 #include "../header/Camera.hpp"
 #include "../header/DirectionalLight.hpp"
 #include "../header/PointLight.hpp"
-#include "../header/exampleShapes/Skybox.hpp"
-#include "../header/exampleShapes/Cylinder.hpp" 
+#include "../header/3DModels/Skybox.hpp"
+#include "../header/3DModels/Cylinder.hpp" 
 
 // Rutas por defecto de la aplicacion
 std::string ConfigOptions::ConfigPaths::texture_default_path = "../../assets/default/texture.tga";

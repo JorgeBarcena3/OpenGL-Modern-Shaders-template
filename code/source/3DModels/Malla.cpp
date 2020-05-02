@@ -17,7 +17,7 @@
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 #include <glm/gtc/type_ptr.hpp>                 // value_ptr
 
-#include "../../header/exampleShapes/Malla.hpp"
+#include "../../header/3DModels/Malla.hpp"
 #include "../../header/Color_Buffer_Rgba8888.hpp"
 #include "../../header/Texture2D.hpp"
 #include "../../header/Camera.hpp"

@@ -14,7 +14,7 @@
 #include <cmath>
 #include <glm/vec3.hpp>
 
-#include "../../header/exampleShapes/Cylinder.hpp"
+#include "../../header/3DModels/Cylinder.hpp"
 #include "../../header/Texture2D.hpp"
 #include "../../header/Scene.hpp"
 #include "../../header/Camera.hpp"

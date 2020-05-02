@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Cylinder.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Malla.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Mesh.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Model3D.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Skybox.cpp" />
     <ClCompile Include="..\..\code\source\Camera.cpp" />
     <ClCompile Include="..\..\code\source\Cubemap.cpp" />
     <ClCompile Include="..\..\code\source\DirectionalLight.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\BaseModel3D.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\Model3D.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\Skybox.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\Cylinder.cpp" />
-    <ClCompile Include="..\..\code\source\ExampleShape\Malla.cpp" />
     <ClCompile Include="..\..\code\source\Light.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
-    <ClCompile Include="..\..\code\source\Mesh.cpp" />
     <ClCompile Include="..\..\code\source\PointLight.cpp" />
     <ClCompile Include="..\..\code\source\Shader.cpp" />
     <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
@@ -40,10 +40,14 @@
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\header\3DModels\BaseModel3D.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Cylinder.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Malla.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Mesh.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Model3D.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Skybox.hpp" />
     <ClInclude Include="..\..\code\header\ConfigOptions.hpp" />
     <ClInclude Include="..\..\code\header\DirectionalLight.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Mesh.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Model3D.hpp" />
     <ClInclude Include="..\..\code\header\Light.hpp" />
     <ClInclude Include="..\..\code\header\PointLight.hpp" />
     <ClInclude Include="..\..\code\header\Texture2D.hpp" />
@@ -51,10 +55,6 @@
     <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />
     <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp" />
     <ClInclude Include="..\..\code\header\Cubemap.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\BaseModel3D.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Skybox.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Cylinder.hpp" />
-    <ClInclude Include="..\..\code\header\exampleShapes\Malla.hpp" />
     <ClInclude Include="..\..\code\header\Fragment_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader.hpp" />
     <ClInclude Include="..\..\code\header\Shader_Program.hpp" />

@@ -2,8 +2,8 @@
 #include "tiny_obj_loader.h"
 
 
-#include "..\..\header\exampleShapes\Model3D.hpp"
-#include "..\..\header\exampleShapes\Mesh.hpp"
+#include "..\..\header\3DModels\Model3D.hpp"
+#include "..\..\header\3DModels\Mesh.hpp"
 #include "..\..\header\Texture2D.hpp"
 #include "..\..\header\Camera.hpp"
 

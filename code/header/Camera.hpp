@@ -18,7 +18,7 @@
 #include <glm/matrix.hpp>
 
 #include "Shader_Program.hpp"
-#include "exampleShapes/BaseModel3D.hpp"
+#include "3DModels/BaseModel3D.hpp"
 
 
 namespace OpenGLRender3D

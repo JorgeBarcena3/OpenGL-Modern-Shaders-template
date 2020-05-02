@@ -16,7 +16,7 @@
 #include <glm/matrix.hpp>
 #include <glm/gtc/matrix_transform.hpp>         // translate, rotate, scale, perspective
 
-#include "exampleShapes/BaseModel3D.hpp"
+#include "3DModels/BaseModel3D.hpp"
 #include "Shader_Program.hpp"
 
 
