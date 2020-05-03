@@ -63,6 +63,8 @@ namespace OpenGLRender3D
 
         void toggleActive();
 
+        void resize(int width, int height);
+
     private:
 
         void createScreenCoordinatesVAO();

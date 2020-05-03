@@ -82,6 +82,18 @@
     <Filter Include="assets">
       <UniqueIdentifier>{4c85cbc5-4f29-4886-b1a2-a59204145891}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders\postprocessing\blur">
+      <UniqueIdentifier>{01c03547-2ff3-4dae-968a-140e609ec976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\negative">
+      <UniqueIdentifier>{974d072c-6bab-4b35-bc4e-9ac80b0dd2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\eye-fish">
+      <UniqueIdentifier>{61bbbca5-8ed2-42c2-ba6c-795eebb5fe1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\lessColors">
+      <UniqueIdentifier>{6e71f1ef-ff3e-4050-901b-57491de19e6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -239,10 +251,28 @@
       <Filter>shaders\camera</Filter>
     </None>
     <None Include="..\..\assets\postprocessing\vertexShader.vglsl">
-      <Filter>shaders\postprocessing</Filter>
+      <Filter>shaders\postprocessing\blur</Filter>
     </None>
     <None Include="..\..\assets\postprocessing\fragmentShader.fglsl">
-      <Filter>shaders\postprocessing</Filter>
+      <Filter>shaders\postprocessing\blur</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\negative\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\negative</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\negative\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\negative</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\eye-fish\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\eye-fish</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\eye-fish\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\eye-fish</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\radial_blur\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\lessColors</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\radial_blur\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\lessColors</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

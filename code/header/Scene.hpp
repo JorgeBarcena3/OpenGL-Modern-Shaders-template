@@ -75,8 +75,12 @@ namespace OpenGLRender3D
         ~Scene();
 
         void   update(float time);
+
         void   render();
-        void   cleanActionsPool();
+
+        void addEntity(std::string name, BaseModel3D* entity);
+
+        void addLight(std::string name, Light* entity);
 
         bool manageInput(sf::Window& wd);
 
@@ -87,31 +91,26 @@ namespace OpenGLRender3D
             return window_size;
         }
 
-        void setWindowSize(int width, int height)
+        inline void setWindowSize(int width, int height)
         {
 
             window_size = glm::vec2(width, height);
         }
 
-        BaseModel3D* getEntity(std::string name)
+        inline BaseModel3D* getEntity(std::string name)
         {
             return entities[name];
         }
 
-        Light* getLight(std::string name)
+        inline Light* getLight(std::string name)
         {
             return lights[name];
         }
 
     private:
 
-        void configureEntities();
-
-        void configureLights();
-
-        void addEntity(std::string name, BaseModel3D* entity);
-
-        void addLight(std::string name, Light* entity);
+     
+        void   cleanActionsPool();
 
         void orderEntitiesTransparency();
 

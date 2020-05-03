@@ -1,0 +1,18 @@
+#version 330
+out vec4 frag_color;
+  
+in vec2 tx_coord;
+
+uniform sampler2D screenTexture;
+
+uniform float numColors = 10; // 8.0
+
+void main() 
+{
+  vec3 c = texture(screenTexture, tx_coord.xy).rgb;
+  c = c * numColors;
+  c = floor(c);
+  c = c / numColors;
+  frag_color = vec4(c, 1.0);
+
+}

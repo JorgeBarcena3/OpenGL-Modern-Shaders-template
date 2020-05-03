@@ -71,7 +71,13 @@
   <ItemGroup>
     <None Include="..\..\assets\camera\fragmentShader.fglsl" />
     <None Include="..\..\assets\camera\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\eye-fish\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\eye-fish\vertexShader.vglsl" />
     <None Include="..\..\assets\postprocessing\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\negative\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\negative\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\radial_blur\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\radial_blur\vertexShader.vglsl" />
     <None Include="..\..\assets\postprocessing\vertexShader.vglsl" />
     <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
     <None Include="..\..\assets\skybox\vertexShader.vglsl" />

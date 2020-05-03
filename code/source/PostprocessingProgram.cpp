@@ -44,8 +44,10 @@ OpenGLRender3D::PostprocessingProgram::PostprocessingProgram(Scene& _scene) : sc
 
 OpenGLRender3D::PostprocessingProgram::~PostprocessingProgram()
 {
+    glDeleteTextures(1, &textureColorBuffer_id);
     glDeleteVertexArrays(1, &vao_id);
     glDeleteBuffers(2, vbo_ids);
+    glDeleteRenderbuffers(1, &depthRenderBuffer_id);
     glDeleteFramebuffers(1, &frameBuffer_id);
 }
 
@@ -85,6 +87,54 @@ void OpenGLRender3D::PostprocessingProgram::setActive(bool a)
 void OpenGLRender3D::PostprocessingProgram::toggleActive()
 {
     active = !active;
+}
+
+void OpenGLRender3D::PostprocessingProgram::resize(int width, int height)
+{
+
+    // Bindeamos el frame buffer
+    glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer_id);
+
+    glDeleteTextures(1, &textureColorBuffer_id);
+
+    // Creamos una textura que renderizara el frame buffer
+    {
+        glGenTextures(1, &textureColorBuffer_id);
+        glBindTexture(GL_TEXTURE_2D, textureColorBuffer_id);
+
+        glTexImage2D
+        (
+            GL_TEXTURE_2D,
+            0,
+            GL_RGB,
+            (GLint)width,
+            (GLint)height,
+            0,
+            GL_RGB,
+            GL_UNSIGNED_BYTE,
+            NULL
+        );
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorBuffer_id, 0);
+
+    }
+
+    // Creamos un renderbuffer de la Z para utilizarlo a la par
+    {
+        glDeleteRenderbuffers(1, &depthRenderBuffer_id);
+
+        glGenRenderbuffers(1, &depthRenderBuffer_id);
+        glBindRenderbuffer(GL_RENDERBUFFER, depthRenderBuffer_id);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, (GLint)width, (GLint)height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderBuffer_id);
+
+    }
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
 }
 
 void OpenGLRender3D::PostprocessingProgram::createScreenCoordinatesVAO()

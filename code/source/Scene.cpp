@@ -61,10 +61,6 @@ namespace OpenGLRender3D
         XMLParser::loadScene(path, *this);       
         orderEntitiesTransparency();
 
-        //configureEntities();
-
-        //configureLights();
-
     }
 
     Scene::~Scene()
@@ -163,8 +159,6 @@ namespace OpenGLRender3D
     {
         sf::Event event;
 
-        window.setTitle(sf::String(std::to_string(sf::Mouse::getPosition(window).x)));
-
         while (window.pollEvent(event))
         {
             switch (event.type)
@@ -177,9 +171,10 @@ namespace OpenGLRender3D
 
             case sf::Event::Resized:
             {
-                sf::Vector2u window_size = window.getSize();
+                window_size = glm::vec2((int)window.getSize().x, (int)window.getSize().y);
 
-                getMainCamera()->resize(window_size.x, window_size.y);
+                getMainCamera()->resize((int)window_size.x, (int)window_size.y);
+                postpoProgram->resize((int)window_size.x, (int)window_size.y);
 
                 break;
             }
@@ -239,35 +234,6 @@ namespace OpenGLRender3D
         return camera;
     }
 
-    void Scene::configureLights()
-    {
-        int index = 0;
-
-        lights.emplace("Camera Main Light", new PointLight(glm::vec3(-1, 1, -1), *this));
-        lights["Camera Main Light"]->setEneabled(1);
-        lights["Camera Main Light"]->setColor(glm::vec3(1, 0, 0));
-        lights["Camera Main Light"]->setIntensity(glm::vec3(2));
-        lights["Camera Main Light"]->setAmbientColor(glm::vec3(0.1f));
-        lights["Camera Main Light"]->setdiffuseColor(glm::vec3(0.0f));
-        lights["Camera Main Light"]->setSpecularColor(glm::vec3(0.25f));
-        lights["Camera Main Light"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
-        lights["Camera Main Light"]->setUniformVariables(camera->getShaderProgram());
-
-        index = 0;
-
-        lights.emplace("Main Directional Light", new DirectionalLight(glm::vec3(-10, -10, -1), *this));
-        lights["Main Directional Light"]->setEneabled(1);
-        lights["Main Directional Light"]->setIntensity(glm::vec3(3));
-        lights["Main Directional Light"]->setColor(glm::vec3(1, 1, 1));
-        lights["Main Directional Light"]->setAmbientColor(glm::vec3(0.1f));
-        lights["Main Directional Light"]->setdiffuseColor(glm::vec3(0.9f));
-        lights["Main Directional Light"]->setSpecularColor(glm::vec3(0.f));
-        lights["Main Directional Light"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
-        lights["Main Directional Light"]->setUniformVariables(camera->getShaderProgram());
-
-
-    }
-
     void Scene::addEntity(std::string name, BaseModel3D * entity)
     {
         entities[name] = entity;
@@ -277,30 +243,6 @@ namespace OpenGLRender3D
     {
         lights[name] = light;
 
-    }
-
-    void Scene::configureEntities()
-    {
-        entities.emplace("Terreno", new OpenGLRender3D::Malla(25, 25, 256, *this, OPACITYMODEL::OPAQUE, "../../assets/height_map/Volcan.tga", "../../assets/default/tx_colors.tga"));
-        getEntity("Terreno")->setParent(scene_Node);
-
-        entities.emplace("Calavera", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera")->transform.setPosition(glm::vec3(0, 0, -15));
-        getEntity("Calavera")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera")->setParent(scene_Node);
-
-        entities.emplace("Cilindro", new OpenGLRender3D::Cylinder(2, 2, *this, OPACITYMODEL::OPAQUE, 18));
-        getEntity("Cilindro")->transform.setPosition(glm::vec3(0, 0, -15));
-        getEntity("Cilindro")->transform.setScale(glm::vec3(1));
-        getEntity("Cilindro")->setParent(scene_Node);
-
-        entities.emplace("Calavera1", new OpenGLRender3D::Model3D(*this, OPACITYMODEL::OPAQUE, "../../assets/models/skull/12140_Skull_v3_L2.obj"));
-        getEntity("Calavera1")->transform.setPosition(glm::vec3(0, 0, -10));
-        getEntity("Calavera1")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-        getEntity("Calavera1")->transform.setRotation(glm::vec3(90.f, 0, 0));
-        getEntity("Calavera1")->setParent(scene_Node);
-
-        orderEntitiesTransparency();
     }
 
     void Scene::orderEntitiesTransparency()
