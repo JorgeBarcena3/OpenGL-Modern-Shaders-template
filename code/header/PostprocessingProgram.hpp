@@ -29,10 +29,11 @@ namespace OpenGLRender3D
 
         Scene * scene;
 
+
     private:
         
         GLuint vbo_ids[2];      // Ids de los VBOs que se usan
-
+        
         GLuint vao_id;          // Id del VAO del programa de postproceso    
 
         GLuint frameBuffer_id;
@@ -40,6 +41,8 @@ namespace OpenGLRender3D
         GLuint textureColorBuffer_id;
 
         GLuint depthRenderBuffer_id;
+
+        bool active;
 
         ShaderProgramHelper::Shader_Program shaderProgram;
 
@@ -55,6 +58,10 @@ namespace OpenGLRender3D
         void activeCurrentFrameBuffer();
 
         void render();
+
+        void setActive(bool a);
+
+        void toggleActive();
 
     private:
 

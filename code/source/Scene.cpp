@@ -136,6 +136,10 @@ namespace OpenGLRender3D
             if (action.first == "Mover Camara")
             {
                 camera->moveCamera(action.second);
+            } 
+            else if (action.first == "Postproceso")
+            {
+                postpoProgram.toggleActive();
             }
         }
 
@@ -195,6 +199,10 @@ namespace OpenGLRender3D
                 else if (event.key.code == sf::Keyboard::D)
                 {
                     actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.right);
+                }
+                else if (event.key.code == sf::Keyboard::P)
+                {
+                    actionsPool.emplace("Postproceso", glm::vec3());
                 }
             }
 
@@ -268,9 +276,6 @@ namespace OpenGLRender3D
         getEntity("Calavera1")->transform.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
         getEntity("Calavera1")->transform.setRotation(glm::vec3(90.f, 0, 0));
         getEntity("Calavera1")->setParent(scene_Node);
-
-
-
 
         orderEntitiesTransparency();
     }

@@ -37,6 +37,8 @@ OpenGLRender3D::PostprocessingProgram::PostprocessingProgram(Scene& _scene) : sc
 
     createScreenCoordinatesVAO();
 
+    active = true;
+
 
 }
 
@@ -49,27 +51,40 @@ OpenGLRender3D::PostprocessingProgram::~PostprocessingProgram()
 
 void OpenGLRender3D::PostprocessingProgram::activeCurrentFrameBuffer()
 {
-
-    glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer_id);
+    if (active)
+        glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer_id);
 
 }
 
 void OpenGLRender3D::PostprocessingProgram::render()
 {
 
-    // now bind back to default framebuffer and draw a quad plane with the attached framebuffer color texture
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDisable(GL_DEPTH_TEST);
+    if (active)
+    {
+        // now bind back to default framebuffer and draw a quad plane with the attached framebuffer color texture
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glDisable(GL_DEPTH_TEST);
 
-    glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-    shaderProgram.use();
+        shaderProgram.use();
 
-    glBindVertexArray(vao_id);
-    glBindTexture(GL_TEXTURE_2D, textureColorBuffer_id);	// use the color attachment texture as the texture of the quad plane
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(vao_id);
+        glBindTexture(GL_TEXTURE_2D, textureColorBuffer_id);	// use the color attachment texture as the texture of the quad plane
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
-    shaderProgram.disable();
+        shaderProgram.disable();
+    }
+}
+
+void OpenGLRender3D::PostprocessingProgram::setActive(bool a)
+{
+    active = a;
+}
+
+void OpenGLRender3D::PostprocessingProgram::toggleActive()
+{
+    active = !active;
 }
 
 void OpenGLRender3D::PostprocessingProgram::createScreenCoordinatesVAO()
@@ -85,7 +100,7 @@ void OpenGLRender3D::PostprocessingProgram::createScreenCoordinatesVAO()
     glBufferData(GL_ARRAY_BUFFER, 18 * sizeof(GLfloat), screenVertex, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);   
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     // Coordenadas de uv
     glBindBuffer(GL_ARRAY_BUFFER, vbo_ids[1]);
