@@ -20,7 +20,7 @@
   <Configuration name="shader_camera_matrix"          value="camera_matrix" />
   <Configuration name="shader_model_matrix"           value="model_matrix" />
   <Configuration name="shader_camera_position"        value="camera_pos" />
-  <Configuration name="skybox_path"                   value="../../assets/skybox/SD/sky-cube-map-" />
+  <Configuration name="skybox_path"                   value="../../assets/skybox/HD/sky-cube-map-" />
 
   <Entity name="Cylindro" type="Cylinder" radius="2" height="2" sides="18" opacity="Translucid" texturePath="../../assets/default/texture_alpha.tga">
     <Position>0,0,-10</Position>
