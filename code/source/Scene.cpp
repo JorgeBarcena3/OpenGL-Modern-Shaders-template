@@ -34,6 +34,10 @@ std::string ConfigOptions::ConfigPaths::skybox_shader_path = "../../assets/skybo
 std::string ConfigOptions::ConfigPaths::postprocesing_shader_path = "../../assets/postprocessing/";
 std::string ConfigOptions::ConfigPaths::vertexShader_name = "vertexShader.vglsl";
 std::string ConfigOptions::ConfigPaths::fragmentShader_name = "fragmentShader.fglsl";
+std::string ConfigOptions::ConfigPaths::shader_camera_matrix = "camera_matrix";
+std::string ConfigOptions::ConfigPaths::shader_model_matrix = "modelMatrix";
+std::string ConfigOptions::ConfigPaths::shader_camera_position = "camera_pos";
+
 
 namespace OpenGLRender3D
 {
@@ -245,7 +249,7 @@ namespace OpenGLRender3D
 
         lights.emplace("Main Directional Light", new DirectionalLight(glm::vec3(-10, -10, -1), *this));
         lights["Main Directional Light"]->setEneabled(1);
-        lights["Main Directional Light"]->setIntensity(glm::vec3(1));
+        lights["Main Directional Light"]->setIntensity(glm::vec3(3));
         lights["Main Directional Light"]->setColor(glm::vec3(1, 1, 1));
         lights["Main Directional Light"]->setAmbientColor(glm::vec3(0.1f));
         lights["Main Directional Light"]->setdiffuseColor(glm::vec3(0.9f));

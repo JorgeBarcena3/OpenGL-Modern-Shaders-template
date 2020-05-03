@@ -117,7 +117,7 @@ namespace OpenGLRender3D
 
         glBindVertexArray(0);
 
-        modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id("modelMatrix");
+        modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::shader_model_matrix.c_str());
     }
 
     Malla::~Malla()

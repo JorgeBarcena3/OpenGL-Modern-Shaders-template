@@ -13,7 +13,7 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op,
 
     loadObj(path);
 
-    modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id("modelMatrix");
+    modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::shader_model_matrix.c_str());
 
 
 }

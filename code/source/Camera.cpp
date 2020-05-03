@@ -20,8 +20,8 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
     shaderProgram.link();
     shaderProgram.use();
 
-    projection_view_matrix_id = shaderProgram.get_uniform_id("camera_matrix");
-    cameraposition_id = shaderProgram.get_uniform_id("camera_pos");
+    projection_view_matrix_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_camera_matrix.c_str());
+    cameraposition_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_camera_position.c_str());
 
     updateCameraTransform();
 
