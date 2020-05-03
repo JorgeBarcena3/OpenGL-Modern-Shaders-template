@@ -25,10 +25,6 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     updateCameraTransform();
 
-    //glEnable(GL_CULL_FACE);
-
-
-
 }
 
 void OpenGLRender3D::Camera::update(float time)

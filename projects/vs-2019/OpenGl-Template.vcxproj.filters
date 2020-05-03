@@ -79,6 +79,9 @@
     <Filter Include="headers\Postprocessing">
       <UniqueIdentifier>{32826e2c-0d02-431a-916f-978fe977ceec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{4c85cbc5-4f29-4886-b1a2-a59204145891}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp">
       <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\header\XMLParser.cpp">
+      <Filter>tools\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +221,9 @@
     <ClInclude Include="..\..\code\header\PostprocessingProgram.hpp">
       <Filter>headers\Postprocessing</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\code\header\XMLParser.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\skybox\vertexShader.vglsl">
@@ -235,5 +244,10 @@
     <None Include="..\..\assets\postprocessing\fragmentShader.fglsl">
       <Filter>shaders\postprocessing</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\assets\scene\scene.xml">
+      <Filter>assets</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

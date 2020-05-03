@@ -37,6 +37,7 @@ namespace ConfigOptions
         static std::string shader_camera_matrix;
         static std::string shader_model_matrix ;
         static std::string shader_camera_position;
+        static std::string skybox_path;
 
     };
 

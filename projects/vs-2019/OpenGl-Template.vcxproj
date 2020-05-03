@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\code\header\XMLParser.cpp" />
     <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp" />
     <ClCompile Include="..\..\code\source\3DModels\Cylinder.cpp" />
     <ClCompile Include="..\..\code\source\3DModels\Malla.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="..\..\code\header\Transform.hpp" />
     <ClInclude Include="..\..\code\header\Vertex_Shader.hpp" />
     <ClInclude Include="..\..\code\header\Scene.hpp" />
+    <ClInclude Include="..\..\code\header\XMLParser.hpp" />
     <ClInclude Include="..\..\lib\targa\include\targa.h" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +75,9 @@
     <None Include="..\..\assets\postprocessing\vertexShader.vglsl" />
     <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
     <None Include="..\..\assets\skybox\vertexShader.vglsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\assets\scene\scene.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C0507E8D-58D6-4CB0-982E-14DF192A6D77}</ProjectGuid>
@@ -143,7 +148,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,7 +164,7 @@
       <WarningLevel>Level2</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -177,7 +182,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -197,7 +202,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

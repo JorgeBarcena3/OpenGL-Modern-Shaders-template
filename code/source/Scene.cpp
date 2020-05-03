@@ -21,22 +21,24 @@
 #include "../header/PointLight.hpp"
 #include "../header/3DModels/Skybox.hpp"
 #include "../header/3DModels/Cylinder.hpp" 
+#include "../header/XMLParser.hpp"
 
 // Rutas por defecto de la aplicacion
-std::string ConfigOptions::ConfigPaths::texture_default_path = "../../assets/default/texture.tga";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKa = "myMaterial.Ka";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKd = "myMaterial.Kd";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKs = "myMaterial.Ks";
-std::string ConfigOptions::ConfigPaths::shader_pointLight_array = "pointLights";
-std::string ConfigOptions::ConfigPaths::shader_directionalLight_array = "directionalLight";
-std::string ConfigOptions::ConfigPaths::camera_shader_path = "../../assets/camera/";
-std::string ConfigOptions::ConfigPaths::skybox_shader_path = "../../assets/skybox/";
-std::string ConfigOptions::ConfigPaths::postprocesing_shader_path = "../../assets/postprocessing/";
-std::string ConfigOptions::ConfigPaths::vertexShader_name = "vertexShader.vglsl";
-std::string ConfigOptions::ConfigPaths::fragmentShader_name = "fragmentShader.fglsl";
-std::string ConfigOptions::ConfigPaths::shader_camera_matrix = "camera_matrix";
-std::string ConfigOptions::ConfigPaths::shader_model_matrix = "modelMatrix";
-std::string ConfigOptions::ConfigPaths::shader_camera_position = "camera_pos";
+std::string ConfigOptions::ConfigPaths::texture_default_path            = "../../assets/default/texture.tga";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKa             = "myMaterial.Ka";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKd             = "myMaterial.Kd";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKs             = "myMaterial.Ks";
+std::string ConfigOptions::ConfigPaths::shader_pointLight_array         = "pointLights";
+std::string ConfigOptions::ConfigPaths::shader_directionalLight_array   = "directionalLight";
+std::string ConfigOptions::ConfigPaths::camera_shader_path              = "../../assets/camera/";
+std::string ConfigOptions::ConfigPaths::skybox_shader_path              = "../../assets/skybox/";
+std::string ConfigOptions::ConfigPaths::postprocesing_shader_path       = "../../assets/postprocessing/";
+std::string ConfigOptions::ConfigPaths::vertexShader_name               = "vertexShader.vglsl";
+std::string ConfigOptions::ConfigPaths::fragmentShader_name             = "fragmentShader.fglsl";
+std::string ConfigOptions::ConfigPaths::shader_camera_matrix            = "camera_matrix";
+std::string ConfigOptions::ConfigPaths::shader_model_matrix             = "modelMatrix";
+std::string ConfigOptions::ConfigPaths::shader_camera_position          = "camera_pos";
+std::string ConfigOptions::ConfigPaths::skybox_path                     = "../../assets/skybox/SD/sky-cube-map-";
 
 
 namespace OpenGLRender3D
@@ -44,16 +46,22 @@ namespace OpenGLRender3D
 
     using namespace std;
 
-    Scene::Scene(int width, int height) :
-        window_size(glm::vec2(width, height)),
-        postpoProgram(*this),
-        scene_Node(new Transform()),
-        camera(new OpenGLRender3D::Camera(width, height, *this)),
-        skybox(new OpenGLRender3D::Skybox("../../assets/skybox/SD/sky-cube-map-", *this))
-
+    Scene::Scene(int width, int height, std::string path, sf::Window& _window)
     {
+        XMLParser::parseConfig(path);
 
-        configureEntities();
+        window = &_window;
+        window_size = (glm::vec2(width, height));
+        camera = (new OpenGLRender3D::Camera(width, height, *this));
+        postpoProgram = new PostprocessingProgram(*this);
+        scene_Node = (new Transform());
+        skybox = (new OpenGLRender3D::Skybox(ConfigOptions::ConfigPaths::skybox_path, *this));
+
+
+        XMLParser::loadScene(path, *this);       
+        orderEntitiesTransparency();
+
+        //configureEntities();
 
         configureLights();
 
@@ -101,9 +109,9 @@ namespace OpenGLRender3D
     void Scene::render()
     {
 
-        postpoProgram.activeCurrentFrameBuffer();
+        postpoProgram->activeCurrentFrameBuffer();
 
-        glEnable(GL_DEPTH_TEST); 
+        glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         skybox->render();
@@ -129,7 +137,7 @@ namespace OpenGLRender3D
 
         glDisable(GL_BLEND);
 
-        postpoProgram.render();
+        postpoProgram->render();
 
     }
 
@@ -140,10 +148,10 @@ namespace OpenGLRender3D
             if (action.first == "Mover Camara")
             {
                 camera->moveCamera(action.second);
-            } 
+            }
             else if (action.first == "Postproceso")
             {
-                postpoProgram.toggleActive();
+                postpoProgram->toggleActive();
             }
         }
 
@@ -257,6 +265,17 @@ namespace OpenGLRender3D
         lights["Main Directional Light"]->getUniformId(camera->getShaderProgram(), std::to_string(index));
         lights["Main Directional Light"]->setUniformVariables(camera->getShaderProgram());
 
+
+    }
+
+    void Scene::addEntity(std::string name, BaseModel3D * entity)
+    {
+        entities[name] = entity;
+    }
+
+    void Scene::addLight(std::string name, Light* light)
+    {
+        lights[name] = light;
 
     }
 

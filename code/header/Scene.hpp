@@ -53,7 +53,7 @@ namespace OpenGLRender3D
 
         glm::vec2 window_size;
 
-        PostprocessingProgram postpoProgram;
+        PostprocessingProgram  * postpoProgram;
 
         Skybox * skybox;
 
@@ -61,9 +61,16 @@ namespace OpenGLRender3D
 
         Transform * scene_Node;
 
+        sf::Window* window;
+
+        /*
+        * La clase XMLParser puede acceder a las variables privadas de la escena
+        */
+        friend class XMLParser;
+
     public:
 
-        Scene(int width, int height);
+        Scene(int width, int height, std::string path, sf::Window& window);
 
         ~Scene();
 
@@ -107,6 +114,10 @@ namespace OpenGLRender3D
         void configureEntities();
 
         void configureLights();
+
+        void addEntity(std::string name, BaseModel3D * entity);
+
+        void addLight(std::string name, Light * entity);
 
         void orderEntitiesTransparency();
 
