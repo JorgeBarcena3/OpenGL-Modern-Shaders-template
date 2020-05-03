@@ -1,5 +1,7 @@
     #include "..\header\DirectionalLight.hpp"
 
+int OpenGLRender3D::DirectionalLight::light_id = 0;
+
 void OpenGLRender3D::DirectionalLight::setUniformVariables(ShaderProgramHelper::Shader_Program& shader)
 {
     if (eneabledId != -1)

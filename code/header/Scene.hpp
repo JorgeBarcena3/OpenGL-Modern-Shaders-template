@@ -43,9 +43,9 @@ namespace OpenGLRender3D
 
         std::map<std::string, glm::vec3> actionsPool;
 
-        Camera * camera;
+        Camera* camera;
 
-        std::map<std::string,  BaseModel3D* > entities;
+        std::map<std::string, BaseModel3D* > entities;
 
         std::vector< BaseModel3D* > opaque;
 
@@ -53,13 +53,13 @@ namespace OpenGLRender3D
 
         glm::vec2 window_size;
 
-        PostprocessingProgram  * postpoProgram;
+        PostprocessingProgram* postpoProgram;
 
-        Skybox * skybox;
+        Skybox* skybox;
 
-        std::map<std::string, Light * > lights;
+        std::map<std::string, Light* > lights;
 
-        Transform * scene_Node;
+        Transform* scene_Node;
 
         sf::Window* window;
 
@@ -86,27 +86,21 @@ namespace OpenGLRender3D
         {
             return window_size;
         }
-        
+
         void setWindowSize(int width, int height)
         {
 
             window_size = glm::vec2(width, height);
         }
 
-        BaseModel3D * getEntity(std::string name)
+        BaseModel3D* getEntity(std::string name)
         {
             return entities[name];
         }
 
         Light* getLight(std::string name)
         {
-
-            auto it = lights.find(name);
-
-            if (it != lights.end())
-                return lights[name];           
-
-            return nullptr;
+            return lights[name];
         }
 
     private:
@@ -115,14 +109,14 @@ namespace OpenGLRender3D
 
         void configureLights();
 
-        void addEntity(std::string name, BaseModel3D * entity);
+        void addEntity(std::string name, BaseModel3D* entity);
 
-        void addLight(std::string name, Light * entity);
+        void addLight(std::string name, Light* entity);
 
         void orderEntitiesTransparency();
 
         void orderEntitiesByDistanceCamera(std::vector< BaseModel3D*>& toOrder);
-  
+
 
     };
 

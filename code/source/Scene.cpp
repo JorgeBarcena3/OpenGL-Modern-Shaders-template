@@ -36,7 +36,7 @@ std::string ConfigOptions::ConfigPaths::postprocesing_shader_path       = "../..
 std::string ConfigOptions::ConfigPaths::vertexShader_name               = "vertexShader.vglsl";
 std::string ConfigOptions::ConfigPaths::fragmentShader_name             = "fragmentShader.fglsl";
 std::string ConfigOptions::ConfigPaths::shader_camera_matrix            = "camera_matrix";
-std::string ConfigOptions::ConfigPaths::shader_model_matrix             = "modelMatrix";
+std::string ConfigOptions::ConfigPaths::shader_model_matrix             = "model_matrix";
 std::string ConfigOptions::ConfigPaths::shader_camera_position          = "camera_pos";
 std::string ConfigOptions::ConfigPaths::skybox_path                     = "../../assets/skybox/SD/sky-cube-map-";
 
@@ -63,7 +63,7 @@ namespace OpenGLRender3D
 
         //configureEntities();
 
-        configureLights();
+        //configureLights();
 
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<scene WindowName="OPENGL - Jorge Barcena">
+<scene WindowName="OPENGL - Jorge Barcena Lumbreras">
 
   <Configuration name="texture_default_path"          value="../../assets/default/texture.tga" />
   <Configuration name="shader_myMaterialKa"           value="myMaterial.Ka" />
@@ -9,13 +9,21 @@
   <Configuration name="shader_directionalLight_array" value="directionalLight" />
   <Configuration name="camera_shader_path"            value="../../assets/camera/" />
   <Configuration name="skybox_shader_path"            value="../../assets/skybox/" />
-  <Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/" />
+  <Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/blur/" />
   <Configuration name="vertexShader_name"             value="vertexShader.vglsl" />
   <Configuration name="fragmentShader_name"           value="fragmentShader.fglsl" />
   <Configuration name="shader_camera_matrix"          value="camera_matrix" />
-  <Configuration name="shader_model_matrix"           value="modelMatrix" />
+  <Configuration name="shader_model_matrix"           value="model_matrix" />
   <Configuration name="shader_camera_position"        value="camera_pos" />
   <Configuration name="skybox_path"                   value="../../assets/skybox/SD/sky-cube-map-" />
+
+
+  <Entity name="Cylindro" type="Cylinder" radius="2" height="2" sides="18" opacity="Translucid" texturePath="../../assets/default/texture_alpha.tga">
+    <Position>0,0,-10</Position>
+    <Rotation>0,0,0</Rotation>
+    <Scale>1,1,1</Scale>
+  </Entity>
+
 
   <Entity name="Calavera" type="Model3D" objPath ="../../assets/models/skull/12140_Skull_v3_L2.obj" opacity="Opaco">
     <Position>0,0,-20</Position>
@@ -23,22 +31,36 @@
     <Scale>0.1,0.1,0.1</Scale>
   </Entity>
 
-  <Entity name="Cylindro" type="Cylinder" radius="2" height="2" sides="18"   opacity="Opaco">
-    <Position>0,0,-10</Position>
-    <Rotation>-90,0,0</Rotation>
-    <Scale>0.1,0.1,0.1</Scale>
-  </Entity>
   
+  <Entity name="Cylindro2" type="Cylinder" radius="2" height="2" sides="18" opacity="Opaco" texturePath="../../assets/default/texture_alpha.tga" parent="Calavera">
+    <Position>0,0,-10</Position>
+    <Rotation>0,0,0</Rotation>
+    <Scale>1,1,1</Scale>
+  </Entity>
+
+
   <Entity name="Terreno" type="Malla" heightMap="../../assets/height_map/Volcan.tga"  vertex="256" width="25" height="25" opacity="Opaco">
     <Position>0,0,-25</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>1,1,1</Scale>
   </Entity>
 
-  <Light name="Luz" type="Directional" heightMap="../../assets/height_map/Volcan.tga"  vertex="256" width="25" height="25" opacity="Opaco">
-    <Position>0,0,-25</Position>
-    <Rotation>0,0,0</Rotation>
-    <Scale>1,1,1</Scale>
+  <Light name="Luz" type="Directional" eneabled = "1" direction="-10,-10,-1">
+    <Color>1,1,1</Color>
+    <Intensity>3,3,3</Intensity>
+    <Ambient>0.1, 0.1, 0.1</Ambient>
+    <Diffuse>0.9, 0.9, 0.9</Diffuse>
+    <Specular>0.0, 0.0, 0.0</Specular>
   </Light>
+
+  <Light name="Camera Main Light" type="PointLight" eneabled = "1" position="0,0,0">
+    <Color>1,0,0</Color>
+    <Intensity>2,2,2</Intensity>
+    <Ambient>0.9, 0.9, 0.9</Ambient>
+    <Diffuse>0.1, 0.1, 0.1</Diffuse>
+    <Specular>0.0, 0.0, 0.0</Specular>
+  
+</Light>
+
 
 </scene>

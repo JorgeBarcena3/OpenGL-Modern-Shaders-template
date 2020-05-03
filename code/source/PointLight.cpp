@@ -1,5 +1,8 @@
 #include "..\header\PointLight.hpp"
 
+int OpenGLRender3D::PointLight::light_id = 0;
+
+
 void OpenGLRender3D::PointLight::setUniformVariables(ShaderProgramHelper::Shader_Program& shader)
 {
     if (eneabledId != -1)

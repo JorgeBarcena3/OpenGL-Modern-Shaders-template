@@ -19,6 +19,9 @@ namespace OpenGLRender3D
 
     class DirectionalLight : public Light
     {
+    public:
+
+        static GLint light_id;
 
     private:
 
