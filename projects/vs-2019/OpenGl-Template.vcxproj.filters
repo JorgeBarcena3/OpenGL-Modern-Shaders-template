@@ -159,9 +159,6 @@
     <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp">
       <Filter>sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\header\XMLParser.cpp">
-      <Filter>tools\source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\SOIL\image_helper.c">
       <Filter>LIBRARIES\SOIL</Filter>
     </ClCompile>
@@ -173,6 +170,12 @@
     </ClCompile>
     <ClCompile Include="..\..\lib\SOIL\image_DXT.c">
       <Filter>LIBRARIES\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\XMLParser.cpp">
+      <Filter>tools\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\SFMLApplication.cpp">
+      <Filter>tools\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +252,9 @@
       <Filter>headers\Postprocessing</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\header\XMLParser.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\SFMLApplication.hpp">
       <Filter>tools\header</Filter>
     </ClInclude>
   </ItemGroup>

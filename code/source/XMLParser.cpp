@@ -1,11 +1,11 @@
-#include "XMLParser.hpp"
-#include "ConfigOptions.hpp"
-#include "3DModels/Model3D.hpp"
-#include "3DModels/Malla.hpp"
-#include "3DModels/Cylinder.hpp"
-#include "Transform.hpp"
-#include "DirectionalLight.hpp"
-#include "PointLight.hpp"
+#include "../header/XMLParser.hpp"
+#include "../header/ConfigOptions.hpp"
+#include "../header/3DModels/Model3D.hpp"
+#include "../header/3DModels/Malla.hpp"
+#include "../header/3DModels/Cylinder.hpp"
+#include "../header/Transform.hpp"
+#include "../header/DirectionalLight.hpp"
+#include "../header/PointLight.hpp"
 
 #include <sstream>      // std::stringstream
 
