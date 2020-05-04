@@ -122,10 +122,7 @@ namespace OpenGLRender3D
 
     Malla::~Malla()
     {
-        // Se liberan los VBOs y el VAO usados:
-
-        glDeleteVertexArrays(1, &vao_id);
-        glDeleteBuffers(VBO_COUNT, vbo_ids);
+       
     }
 
     void Malla::setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx, std::string path)

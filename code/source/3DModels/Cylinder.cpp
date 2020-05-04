@@ -108,10 +108,7 @@ namespace OpenGLRender3D
 
     Cylinder::~Cylinder()
     {
-        // Se liberan los VBOs y el VAO usados:
-
-        glDeleteVertexArrays(1, &vao_id);
-        glDeleteBuffers(VBO_COUNT, vbo_ids);
+      
     }
 
 

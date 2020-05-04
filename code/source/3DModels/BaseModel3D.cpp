@@ -9,6 +9,10 @@ OpenGLRender3D::BaseModel3D::~BaseModel3D()
     {
         delete tex;
     }
+
+    // Se liberan los VBOs y el VAO usados:
+    glDeleteVertexArrays(1, &vao_id);
+    glDeleteBuffers(VBO_COUNT, vbo_ids);
 }
 
 void OpenGLRender3D::BaseModel3D::setDefaultMaterial(std::string path)

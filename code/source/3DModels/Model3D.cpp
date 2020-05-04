@@ -20,10 +20,8 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op,
 
 OpenGLRender3D::Model3D::~Model3D()
 {
-    // Se liberan los VBOs y el VAO usados:
+   
 
-    glDeleteVertexArrays(1, &vao_id);
-    glDeleteBuffers(VBO_COUNT, vbo_ids);
 }
 
 void OpenGLRender3D::Model3D::loadObj(const char* path)

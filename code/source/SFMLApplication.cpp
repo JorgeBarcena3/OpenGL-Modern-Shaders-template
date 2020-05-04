@@ -19,12 +19,12 @@ void movement(Light* me, float time)
 
 void calavera(BaseModel3D* me, float time)
 {
- 
+
     me->transform.setRotation(me->transform.getRotation() + glm::vec3(0, 0, 1));
 
 }
 
-OpenGLRender3D::SFMLApplication::SFMLApplication()
+OpenGLRender3D::SFMLApplication::SFMLApplication(std::string path)
 {
     srand((unsigned int)time(NULL));
 
@@ -35,13 +35,9 @@ OpenGLRender3D::SFMLApplication::SFMLApplication()
     if (!gladLoadGL())
         throw std::exception("No se ha podido cargar el contexto de OpenGL");
 
-    myScene = new Scene(800, 600, "../../assets/scene/scene.xml");
+    myScene = new Scene(800, 600, path);
 
     window->setTitle(myScene->sceneTitle);
-    myScene->getLight("Camera Main Light")->setUpdateFunction(movement);
-    myScene->getEntity("Calavera")->setUpdateFunction(calavera);
-
-
 
 }
 

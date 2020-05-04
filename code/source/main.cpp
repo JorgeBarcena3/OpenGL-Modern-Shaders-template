@@ -10,12 +10,20 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "../header/SFMLApplication.hpp"
+#include <iostream>
 
 
-int main()
+int main(int argc, char* argv[])
 {
+    //"OpenGLRender3D --scene ../../assets/scene/scene-nocat.xml"
+    std::string path = "../../assets/scene/scene.xml";
+    
+    if(argc == 3)
+    {
+        path = (!strcmp(argv[1], "--scene")) ? argv[2] : "../../assets/scene/scene.xml";
+    }
 
-    OpenGLRender3D::SFMLApplication app;
+    OpenGLRender3D::SFMLApplication app(path);
     app.start();
 
     return 0;

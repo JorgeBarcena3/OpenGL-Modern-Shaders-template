@@ -15,6 +15,8 @@
 #ifndef SFMLAPPLICATION_HEADER
 #define SFMLAPPLICATION_HEADER
 
+#include <string>
+
 namespace sf
 {
     class Window;
@@ -36,7 +38,7 @@ namespace OpenGLRender3D
 
     public:
 
-        SFMLApplication();
+        SFMLApplication(std::string path);
 
         ~SFMLApplication();
 
