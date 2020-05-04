@@ -15,18 +15,22 @@
 #ifndef SFMLAPPLICATION_HEADER
 #define SFMLAPPLICATION_HEADER
 
-#include <SFML/Window.hpp>
-#include "Scene.hpp"
+namespace sf
+{
+    class Window;
+}
 
 namespace OpenGLRender3D
 {
+
+    class Scene;
 
     class SFMLApplication
     {
 
     private:
 
-        sf::Window * window;
+        sf::Window* window;
 
         Scene * myScene;
 

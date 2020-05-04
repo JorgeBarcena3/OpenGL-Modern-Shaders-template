@@ -12,6 +12,8 @@
 #include <iostream>
 #include <cassert>
 
+#include <glad/glad.h>
+
 #include "../header/Scene.hpp"
 #include "../header/3DModels/Malla.hpp"
 #include "../header/3DModels/Model3D.hpp"
