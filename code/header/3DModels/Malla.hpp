@@ -28,11 +28,12 @@ namespace OpenGLRender3D
         float width;
         float height;
         int vertex_count;     
+        float max_height;
 
 
     public:
 
-        Malla(float width, float height, int vertex_count, Scene& scene, OpenGLRender3D::OPACITYMODEL op, std::string path = "",  std::string tx_path = ConfigOptions::ConfigPaths::texture_default_path);
+        Malla(float width, float height, float max_height, int vertex_count, Scene& scene, OpenGLRender3D::OPACITYMODEL op, std::string path = "",  std::string tx_path = ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"]);
         ~Malla();
 
         void setHeightCoordinates(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx, std::string path);

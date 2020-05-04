@@ -66,8 +66,8 @@ namespace OpenGLRender3D
         textures_factory.push_back( new Cubemap(path) );
 
 
-        shaderProgram.attach(ShaderProgramHelper::Vertex_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::skybox_shader_path + ConfigOptions::ConfigPaths::vertexShader_name)));
-        shaderProgram.attach(ShaderProgramHelper::Fragment_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::skybox_shader_path + ConfigOptions::ConfigPaths::fragmentShader_name)));
+        shaderProgram.attach(ShaderProgramHelper::Vertex_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["skybox_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["vertexShader_name"])));
+        shaderProgram.attach(ShaderProgramHelper::Fragment_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["skybox_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["fragmentShader_name"])));
 
         shaderProgram.link();
 

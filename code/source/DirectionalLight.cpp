@@ -20,11 +20,11 @@ void OpenGLRender3D::DirectionalLight::setUniformVariables(ShaderProgramHelper::
 
 void OpenGLRender3D::DirectionalLight::getUniformId(ShaderProgramHelper::Shader_Program& shader, std::string lightId)
 {
-    colorId = shader.get_uniform_id(std::string     (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" + lightId + "].color").c_str());
-    intensityId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" + lightId + "].intensity").c_str());
-    eneabledId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" + lightId + "].eneabled").c_str());
-    directionId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" + lightId + "].direction").c_str());
-    ambientId = shader.get_uniform_id(std::string   (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" +  lightId + "].ambient").c_str());
-    difusseId = shader.get_uniform_id(std::string   (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" +  lightId + "].diffuse").c_str());
-    specularId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::shader_directionalLight_array + "[" + lightId + "].specular").c_str());
+    colorId = shader.get_uniform_id(std::string     (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" + lightId + "].color").c_str());
+    intensityId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" + lightId + "].intensity").c_str());
+    eneabledId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" + lightId + "].eneabled").c_str());
+    directionId = shader.get_uniform_id(std::string (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" + lightId + "].direction").c_str());
+    ambientId = shader.get_uniform_id(std::string   (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" +  lightId + "].ambient").c_str());
+    difusseId = shader.get_uniform_id(std::string   (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" +  lightId + "].diffuse").c_str());
+    specularId = shader.get_uniform_id(std::string  (ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] + "[" + lightId + "].specular").c_str());
 }

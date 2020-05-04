@@ -28,8 +28,8 @@ OpenGLRender3D::PostprocessingProgram::PostprocessingProgram(Scene& _scene) : sc
 {
 
     // Creamos los shader
-    shaderProgram.attach(ShaderProgramHelper::Vertex_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::postprocesing_shader_path + ConfigOptions::ConfigPaths::vertexShader_name)));
-    shaderProgram.attach(ShaderProgramHelper::Fragment_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::postprocesing_shader_path + ConfigOptions::ConfigPaths::fragmentShader_name)));
+    shaderProgram.attach(ShaderProgramHelper::Vertex_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["postprocesing_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["vertexShader_name"])));
+    shaderProgram.attach(ShaderProgramHelper::Fragment_Shader(ShaderProgramHelper::Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["postprocesing_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["fragmentShader_name"])));
 
     shaderProgram.link();
 

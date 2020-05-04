@@ -25,21 +25,7 @@
 #include "../header/XMLParser.hpp"
 
 // Rutas por defecto de la aplicacion
-std::string ConfigOptions::ConfigPaths::texture_default_path = "../../assets/default/texture.tga";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKa = "myMaterial.Ka";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKd = "myMaterial.Kd";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKs = "myMaterial.Ks";
-std::string ConfigOptions::ConfigPaths::shader_pointLight_array = "pointLights";
-std::string ConfigOptions::ConfigPaths::shader_directionalLight_array = "directionalLight";
-std::string ConfigOptions::ConfigPaths::camera_shader_path = "../../assets/camera/";
-std::string ConfigOptions::ConfigPaths::skybox_shader_path = "../../assets/skybox/";
-std::string ConfigOptions::ConfigPaths::postprocesing_shader_path = "../../assets/postprocessing/";
-std::string ConfigOptions::ConfigPaths::vertexShader_name = "vertexShader.vglsl";
-std::string ConfigOptions::ConfigPaths::fragmentShader_name = "fragmentShader.fglsl";
-std::string ConfigOptions::ConfigPaths::shader_camera_matrix = "camera_matrix";
-std::string ConfigOptions::ConfigPaths::shader_model_matrix = "model_matrix";
-std::string ConfigOptions::ConfigPaths::shader_camera_position = "camera_pos";
-std::string ConfigOptions::ConfigPaths::skybox_path = "../../assets/skybox/SD/sky-cube-map-";
+std::map<std::string, std::string> ConfigOptions::ConfigPaths::configSettingsMap;
 
 
 namespace OpenGLRender3D
@@ -55,7 +41,7 @@ namespace OpenGLRender3D
         camera = (new OpenGLRender3D::Camera(width, height, *this));
         postpoProgram = new PostprocessingProgram(*this);
         scene_Node = (new Transform());
-        skybox = (new OpenGLRender3D::Skybox(ConfigOptions::ConfigPaths::skybox_path, *this));
+        skybox = (new OpenGLRender3D::Skybox(ConfigOptions::ConfigPaths::configSettingsMap["skybox_path"], *this));
 
 
         XMLParser::loadScene(path, *this);

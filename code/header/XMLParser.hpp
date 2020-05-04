@@ -37,6 +37,10 @@ namespace OpenGLRender3D
         static OpenGLRender3D::Transform parseTransfrom(rapidxml::xml_node<>* path);
         static glm::vec3 parseVec3(std::string value);
 
+    private:
+
+        static void setDefaultConfiguration();
+
     };
 
 }

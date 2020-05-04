@@ -14,14 +14,14 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
     // Se compilan y se activan los shaders:
 
-    shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::camera_shader_path + ConfigOptions::ConfigPaths::vertexShader_name)));
-    shaderProgram.attach(Fragment_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::camera_shader_path + ConfigOptions::ConfigPaths::fragmentShader_name)));
+    shaderProgram.attach(Vertex_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["camera_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["vertexShader_name"])));
+    shaderProgram.attach(Fragment_Shader(Shader::Source_Code::from_file(ConfigOptions::ConfigPaths::configSettingsMap["camera_shader_path"] + ConfigOptions::ConfigPaths::configSettingsMap["fragmentShader_name"])));
 
     shaderProgram.link();
     shaderProgram.use();
 
-    projection_view_matrix_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_camera_matrix.c_str());
-    cameraposition_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_camera_position.c_str());
+    projection_view_matrix_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_camera_matrix"].c_str());
+    cameraposition_id = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_camera_position"].c_str());
 
     updateCameraTransform();
 

@@ -29,7 +29,7 @@ namespace OpenGLRender3D
 
     public:
 
-        Cylinder(float radius, float height, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, float sides = 18, std::string tx_path = ConfigOptions::ConfigPaths::texture_default_path);
+        Cylinder(float radius, float height, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, float sides = 18, std::string tx_path = ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"]);
         ~Cylinder();
 
         void createVertices(std::vector< GLfloat >& coordinates, std::vector< GLfloat >& normals, std::vector< GLfloat >& tx);

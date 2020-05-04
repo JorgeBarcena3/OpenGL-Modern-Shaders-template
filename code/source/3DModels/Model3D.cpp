@@ -13,7 +13,7 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op,
 
     loadObj(path);
 
-    modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::shader_model_matrix.c_str());
+    modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_model_matrix"].c_str());
 
 
 }
@@ -88,7 +88,7 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
                 else
                 {
                     mat.diffuse_texname = "default";
-                    textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::texture_default_path));
+                    textures_factory.push_back(new Texture2D(ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"]));
                     mat.diffuse_tex_id = textures_factory.size() - 1;
 
 

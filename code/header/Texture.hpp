@@ -26,7 +26,10 @@ namespace OpenGLRender3D
 
     class Texture
     {
- 
+
+    public:
+
+        static std::shared_ptr< Color_buffers::Color_Buffer_Rgba8888 > load_texture(const std::string& texture_path);
 
     protected:
 
@@ -42,9 +45,6 @@ namespace OpenGLRender3D
 
         Texture(const Texture&);
 
-    protected:
-
-        std::shared_ptr< Color_buffers::Color_Buffer_Rgba8888 > load_texture(const std::string& texture_path);
 
     public:
 

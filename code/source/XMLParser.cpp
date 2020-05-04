@@ -42,6 +42,9 @@ void OpenGLRender3D::XMLParser::loadScene(std::string path, Scene& scene)
 
 void OpenGLRender3D::XMLParser::parseConfig(std::string path)
 {
+
+    setDefaultConfiguration();
+
     rapidxml::file<> xmlFile(path.c_str());
     rapidxml::xml_document<> doc;
     doc.parse<0>(xmlFile.data());
@@ -68,52 +71,7 @@ void OpenGLRender3D::XMLParser::setConfiguration(rapidxml::xml_node<>* element)
     std::string name = element->first_attribute("name")->value();
     std::string value = element->first_attribute("value")->value();
 
-    if (name == "texture_default_path")
-    {
-        ConfigOptions::ConfigPaths::texture_default_path = value;
-    }
-    else if (name == "shader_myMaterialKa") {
-        ConfigOptions::ConfigPaths::shader_myMaterialKa = value;
-    }
-    else if (name == "shader_myMaterialKd") {
-        ConfigOptions::ConfigPaths::shader_myMaterialKd = value;
-    }
-    else if (name == "shader_myMaterialKs") {
-        ConfigOptions::ConfigPaths::shader_myMaterialKs = value;
-    }
-    else if (name == "shader_pointLight_array") {
-        ConfigOptions::ConfigPaths::shader_pointLight_array = value;
-    }
-    else if (name == "shader_directionalLight_array") {
-        ConfigOptions::ConfigPaths::shader_directionalLight_array = value;
-    }
-    else if (name == "camera_shader_path") {
-        ConfigOptions::ConfigPaths::camera_shader_path = value;
-    }
-    else if (name == "skybox_shader_path") {
-        ConfigOptions::ConfigPaths::skybox_shader_path = value;
-    }
-    else if (name == "skybox_path") {
-        ConfigOptions::ConfigPaths::skybox_path = value;
-    }
-    else if (name == "postprocesing_shader_path") {
-        ConfigOptions::ConfigPaths::postprocesing_shader_path = value;
-    }
-    else if (name == "vertexShader_name") {
-        ConfigOptions::ConfigPaths::vertexShader_name = value;
-    }
-    else if (name == "fragmentShader_name") {
-        ConfigOptions::ConfigPaths::fragmentShader_name = value;
-    }
-    else if (name == "shader_camera_matrix") {
-        ConfigOptions::ConfigPaths::shader_camera_matrix = value;
-    }
-    else if (name == "shader_model_matrix") {
-        ConfigOptions::ConfigPaths::shader_model_matrix = value;
-    }
-    else if (name == "shader_camera_position") {
-        ConfigOptions::ConfigPaths::shader_camera_position = value;
-    }
+    ConfigOptions::ConfigPaths::configSettingsMap[name] = value;
 
 }
 
@@ -125,7 +83,7 @@ void OpenGLRender3D::XMLParser::setEntities(rapidxml::xml_node<>* element, Scene
 
     if (type == "Model3D")
     {
-        std::string path = element->first_attribute("objPath") ? element->first_attribute("objPath")->value() : ConfigOptions::ConfigPaths::texture_default_path;
+        std::string path = element->first_attribute("objPath") ? element->first_attribute("objPath")->value() : ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"];
         OpenGLRender3D::OPACITYMODEL opacity = element->first_attribute("opacity")->value() == "Translucid" ? OpenGLRender3D::OPACITYMODEL::TRANSLUCID : OpenGLRender3D::OPACITYMODEL::OPAQUE;
         Transform  transform = parseTransfrom(element);
 
@@ -141,9 +99,9 @@ void OpenGLRender3D::XMLParser::setEntities(rapidxml::xml_node<>* element, Scene
         std::string radius = element->first_attribute("radius")->value();
         std::string height = element->first_attribute("height")->value();
         std::string sides = element->first_attribute("sides")->value();
-        std::string path = element->first_attribute("texturePath") ? element->first_attribute("texturePath")->value() : ConfigOptions::ConfigPaths::texture_default_path;
+        std::string path = element->first_attribute("texturePath") ? element->first_attribute("texturePath")->value() : ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"];
 
-        OpenGLRender3D::OPACITYMODEL opacity = ( std::string("Translucid").compare(element->first_attribute("opacity")->value()) == 0)  ? OpenGLRender3D::OPACITYMODEL::TRANSLUCID : OpenGLRender3D::OPACITYMODEL::OPAQUE;
+        OpenGLRender3D::OPACITYMODEL opacity = (std::string("Translucid").compare(element->first_attribute("opacity")->value()) == 0) ? OpenGLRender3D::OPACITYMODEL::TRANSLUCID : OpenGLRender3D::OPACITYMODEL::OPAQUE;
         Transform  transform = parseTransfrom(element);
 
         scene.addEntity(name, new OpenGLRender3D::Cylinder(std::atof(radius.c_str()), std::atof(height.c_str()), scene, opacity, std::atof(sides.c_str()), path));
@@ -160,8 +118,9 @@ void OpenGLRender3D::XMLParser::setEntities(rapidxml::xml_node<>* element, Scene
         std::string width = element->first_attribute("width")->value();
         std::string height = element->first_attribute("height")->value();
         std::string vertex = element->first_attribute("vertex")->value();
+        std::string max_height = element->first_attribute("max-height") ? element->first_attribute("max-height")->value() : "3";
         std::string heightMap = element->first_attribute("heightMap")->value() ? element->first_attribute("heightMap")->value() : "";
-        std::string textureMap = element->first_attribute("texturePath") ? element->first_attribute("texturePath")->value() : ConfigOptions::ConfigPaths::texture_default_path;
+        std::string textureMap = element->first_attribute("texturePath") ? element->first_attribute("texturePath")->value() : ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"];
 
         OpenGLRender3D::OPACITYMODEL opacity = element->first_attribute("opacity")->value() == "Translucid" ? OpenGLRender3D::OPACITYMODEL::TRANSLUCID : OpenGLRender3D::OPACITYMODEL::OPAQUE;
         Transform  transform = parseTransfrom(element);
@@ -169,6 +128,7 @@ void OpenGLRender3D::XMLParser::setEntities(rapidxml::xml_node<>* element, Scene
         scene.addEntity(name, new OpenGLRender3D::Malla(
             std::atof(width.c_str()),
             std::atof(height.c_str()),
+            std::atof(max_height.c_str()),
             std::atoi(vertex.c_str()),
             scene,
             opacity,
@@ -219,15 +179,15 @@ void OpenGLRender3D::XMLParser::setLights(rapidxml::xml_node<>* element, Scene& 
             else if (attrb == "Intensity")
             {
                 scene.getLight(name)->setIntensity(value);
-            } 
+            }
             else if (attrb == "Ambient")
             {
                 scene.getLight(name)->setAmbientColor(value);
-            } 
+            }
             else if (attrb == "Diffuse")
             {
                 scene.getLight(name)->setdiffuseColor(value);
-            } 
+            }
             else if (attrb == "Specular")
             {
                 scene.getLight(name)->setSpecularColor(value);
@@ -282,7 +242,7 @@ void OpenGLRender3D::XMLParser::setLights(rapidxml::xml_node<>* element, Scene& 
         scene.getLight(name)->getUniformId(scene.camera->getShaderProgram(), std::to_string(PointLight::light_id++));
         scene.getLight(name)->setUniformVariables(scene.camera->getShaderProgram());
     }
-    
+
 
 }
 
@@ -341,6 +301,26 @@ glm::vec3 OpenGLRender3D::XMLParser::parseVec3(std::string value)
     }
 
     return glm::vec3(std::stof(seglist[0]), std::stof(seglist[1]), std::stof(seglist[2]));
+}
+
+void OpenGLRender3D::XMLParser::setDefaultConfiguration()
+{
+    ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"] = "../../assets/default/texture.tga";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKa"] = "myMaterial.Ka";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKd"] = "myMaterial.Kd";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKs"] = "myMaterial.Ks";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_pointLight_array"] = "pointLights";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] = "directionalLight";
+    ConfigOptions::ConfigPaths::configSettingsMap["camera_shader_path"] = "../../assets/camera/";
+    ConfigOptions::ConfigPaths::configSettingsMap["skybox_shader_path"] = "../../assets/skybox/";
+    ConfigOptions::ConfigPaths::configSettingsMap["postprocesing_shader_path"] = "../../assets/postprocessing/";
+    ConfigOptions::ConfigPaths::configSettingsMap["vertexShader_name"] = "vertexShader.vglsl";
+    ConfigOptions::ConfigPaths::configSettingsMap["fragmentShader_name"] = "fragmentShader.fglsl";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_camera_matrix"] = "camera_matrix";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_model_matrix"] = "model_matrix";
+    ConfigOptions::ConfigPaths::configSettingsMap["shader_camera_position"] = "camera_pos";
+    ConfigOptions::ConfigPaths::configSettingsMap["skybox_path"] = "../../assets/skybox/SD/sky-cube-map-";
+
 }
 
 

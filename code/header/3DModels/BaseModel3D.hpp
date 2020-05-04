@@ -50,9 +50,9 @@ namespace OpenGLRender3D
 
         void getUniformsId(ShaderProgramHelper::Shader_Program& shaderProgram)
         {
-            KaId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKa.c_str());
-            KdId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKd.c_str());
-            KsId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::shader_myMaterialKs.c_str());
+            KaId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKa"].c_str());
+            KdId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKd"].c_str());
+            KsId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKs"].c_str());
         }
 
         void setUniformsValue(ShaderProgramHelper::Shader_Program& shaderProgram)
@@ -151,7 +151,7 @@ namespace OpenGLRender3D
             return opacityModel;
         }
 
-        void setDefaultMaterial(std::string path = ConfigOptions::ConfigPaths::texture_default_path);
+        void setDefaultMaterial(std::string path = ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"]);
 
 
     };

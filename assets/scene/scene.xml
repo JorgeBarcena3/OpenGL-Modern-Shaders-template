@@ -11,9 +11,9 @@
   <Configuration name="skybox_shader_path"            value="../../assets/skybox/" />
   
   <!--<Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/blur/" />-->
-  <!--<Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/negative/" />-->
+  <Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/negative/" />
   <!--<Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/eye-fish/" />-->
-  <Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/lessColors/" />
+  <!--<Configuration name="postprocesing_shader_path"     value="../../assets/postprocessing/lessColors/" />-->
   
   <Configuration name="vertexShader_name"             value="vertexShader.vglsl" />
   <Configuration name="fragmentShader_name"           value="fragmentShader.fglsl" />
@@ -43,7 +43,7 @@
   </Entity>
 
 
-  <Entity name="Terreno" type="Malla" heightMap="../../assets/height_map/Volcan.tga"  vertex="256" width="25" height="25" opacity="Opaco">
+  <Entity name="Terreno" type="Malla" texturePath="../../assets/height_map/texture.png" heightMap="../../assets/height_map/city.png"  vertex="256" width="25" height="25" max-height="1" opacity="Opaco">
     <Position>0,0,-25</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>1,1,1</Scale>

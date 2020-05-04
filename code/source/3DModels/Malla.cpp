@@ -10,7 +10,6 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define GLM_FORCE_RADIANS
-#define MAX_HEIGHT 3
 
 #include <cmath>
 #include <glm/vec3.hpp>
@@ -33,7 +32,7 @@ extern "C"
 namespace OpenGLRender3D
 {
 
-    Malla::Malla(float _width, float _height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) :
+    Malla::Malla(float _width, float _height, float _max_height, int _vertex_count, Scene& _scene, OpenGLRender3D::OPACITYMODEL op, std::string path, std::string tx_path) :
         BaseModel3D(op, _scene)
     {
         setDefaultMaterial(tx_path);
@@ -42,6 +41,7 @@ namespace OpenGLRender3D
         width = _width;
         height = _height;
         vertex_count = _vertex_count;
+        max_height = _max_height;
 
         std::vector< GLfloat > coordinates;
         std::vector< GLfloat > normals;
@@ -117,7 +117,7 @@ namespace OpenGLRender3D
 
         glBindVertexArray(0);
 
-        modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::shader_model_matrix.c_str());
+        modelMatrixTransformationId = scene->getMainCamera()->getShaderProgram().get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_model_matrix"].c_str());
     }
 
     Malla::~Malla()
@@ -132,57 +132,26 @@ namespace OpenGLRender3D
     {
         std::shared_ptr< Color_buffers::Color_Buffer_Rgba8888 > texture;
 
+        texture = Texture::load_texture(path);
 
-        tga_image loaded_image;
 
-        if (tga_read(&loaded_image, path.c_str()) == TGA_NOERR)
+        for (GLint coordinate_index = 0, tx_index = 0; coordinate_index < coordinates.size(); coordinate_index += 3, tx_index += 2)
         {
-            // Si se ha podido cargar la imagen desde el archivo, se crea un búfer para una textura:
 
-            texture.reset(new Color_buffers::Color_Buffer_Rgba8888(loaded_image.width, loaded_image.height));
+            int tx_x = (int)( (texture->get_width() - 1) * tx[tx_index]);
+            int tx_y = (int)( (texture->get_height() - 1) * tx[tx_index + 1]);
 
-            // Se convierte el formato de píxel de la imagen cargada a RGBA8888:
-
-            tga_convert_depth(&loaded_image, texture->bits_per_color());
-            tga_swap_red_blue(&loaded_image);
-
-            // Se copian los pixels del búfer de la imagen cargada al búfer de la textura:
-
-            Color_buffers::Color_Buffer_Rgba8888::Color* loaded_image_pixels = reinterpret_cast<Color_buffers::Color_Buffer_Rgba8888::Color*>(loaded_image.image_data);
-            Color_buffers::Color_Buffer_Rgba8888::Color* loaded_image_pixels_end = loaded_image_pixels + loaded_image.width * loaded_image.height;
-            Color_buffers::Color_Buffer_Rgba8888::Color* image_buffer_pixels = texture->colors();
-
-            while (loaded_image_pixels < loaded_image_pixels_end)
-            {
-                *image_buffer_pixels++ = *loaded_image_pixels++;
-            }
-
-            tga_free_buffers(&loaded_image);
-        }
-        else
-        {
-            return;
-        }
-
-
-        int texture_index = 0;
-
-        // Cuanto mas alto mas blanco
-        for (size_t i = 0; i < coordinates.size(); i += 3)
-        {
-            int pixel_x = (int)(texture->get_width() * tx[texture_index]);
-            int pixel_y = (int)(texture->get_height() * tx[texture_index + 1]);
-
-            auto pixel = texture->colors()[texture->offset_at(pixel_x, pixel_y)];
+            auto pixel = texture->colors()[texture->offset_at(tx_x, tx_y)];
 
             float grey_scale = pixel.data.component.r;
 
-            float height = (grey_scale * MAX_HEIGHT) / 255;
+            float height = (grey_scale * max_height) / 255;
 
-            coordinates[i + 1] = height;
 
-            texture_index += 2;
+            coordinates[coordinate_index + 1] = height;
+
         }
+
 
         // COMPROBAMOS LAS NORMALES
 
