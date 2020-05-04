@@ -16,7 +16,6 @@
 #define SCENE_HEADER
 
 
-#include <SFML/Window.hpp>  
 #include <glad/glad.h>
 #include <string>
 #include <glm/matrix.hpp>
@@ -39,6 +38,15 @@ namespace OpenGLRender3D
     class Scene
     {
 
+        /*
+        * La clase XMLParser puede acceder a las variables privadas de la escena
+        */
+        friend class XMLParser;
+
+    public:
+
+        std::string sceneTitle;
+
     private:
 
         std::map<std::string, glm::vec3> actionsPool;
@@ -60,17 +68,11 @@ namespace OpenGLRender3D
         std::map<std::string, Light* > lights;
 
         Transform* scene_Node;
-
-        sf::Window* window;
-
-        /*
-        * La clase XMLParser puede acceder a las variables privadas de la escena
-        */
-        friend class XMLParser;
+       
 
     public:
 
-        Scene(int width, int height, std::string path, sf::Window& window);
+        Scene(int width, int height, std::string path);
 
         ~Scene();
 
@@ -80,9 +82,15 @@ namespace OpenGLRender3D
 
         void addEntity(std::string name, BaseModel3D* entity);
 
+        void removeEntity(std::string name);
+
         void addLight(std::string name, Light* entity);
 
-        bool manageInput(sf::Window& wd);
+        void removeLight(std::string name);
+
+        void Scene::resize(int width, int height);
+
+        bool Scene::manageInput(std::vector<std::string> keys, glm::vec2 mousePosition, bool mousePressed);
 
         Camera* getMainCamera();
 
@@ -109,7 +117,7 @@ namespace OpenGLRender3D
 
     private:
 
-     
+
         void   cleanActionsPool();
 
         void orderEntitiesTransparency();

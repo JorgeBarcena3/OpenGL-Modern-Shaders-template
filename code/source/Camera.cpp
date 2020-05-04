@@ -62,7 +62,7 @@ void OpenGLRender3D::Camera::moveCamera(glm::vec3 direction)
     transform.setPosition(transform.getPosition() + ( glm::normalize(direction) * cameraTransformAttributes.movement_speed));
 }
 
-void OpenGLRender3D::Camera::rotateCamera(sf::Vector2i pos)
+void OpenGLRender3D::Camera::rotateCamera(glm::vec2 pos)
 {
     
     if (mousePosition.firstPressed)

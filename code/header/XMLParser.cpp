@@ -20,7 +20,7 @@ void OpenGLRender3D::XMLParser::loadScene(std::string path, Scene& scene)
 
     auto rootNode = doc.first_node();
 
-    scene.window->setTitle(rootNode->first_attribute("WindowName")->value());
+    scene.sceneTitle = rootNode->first_attribute("WindowName")->value();
 
     for (rapidxml::xml_node<>* entityNode = rootNode->first_node(); entityNode; entityNode = entityNode->next_sibling()) //Son las entidades
     {

@@ -51,8 +51,9 @@ int main()
     if (!gladLoadGL())
         throw std::exception("No se ha podido cargar el contexto de OpenGL");
 
-    Scene myScene(800, 600, "../../assets/scene/scene.xml", window);
+    Scene myScene(800, 600, "../../assets/scene/scene.xml");
 
+    window.setTitle(myScene.sceneTitle);
     myScene.getLight("Camera Main Light")->setUpdateFunction(movement);
     //myScene.getEntity("Calavera")->setUpdateFunction(calavera);
 
@@ -65,7 +66,71 @@ int main()
     do
     {
 
-        running = myScene.manageInput(window);
+        Event event;
+        std::vector<std::string> keys;
+
+        while (window.pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case Event::Closed:
+            {
+                running = false;
+                break;
+            }
+
+            case Event::Resized:
+            {
+                Vector2u window_size = window.getSize();
+
+                myScene.resize(window_size.x, window_size.y);
+
+                break;
+            }
+
+            case Event::KeyPressed:
+            {
+                if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
+                {
+                    keys.push_back("W");
+                }
+                else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
+                {
+                    keys.push_back("S");
+                }
+
+                if (event.key.code == sf::Keyboard::Space)
+                {
+                    keys.push_back("Space");
+                }
+                else if (event.key.code == sf::Keyboard::LControl)
+                {
+                    keys.push_back("LControl");
+                }
+
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    keys.push_back("A");
+                }
+                else if (event.key.code == sf::Keyboard::D)
+                {
+                    keys.push_back("D");
+                }
+                else if (event.key.code == sf::Keyboard::P)
+                {
+                    keys.push_back("P");
+                }
+                else if (event.key.code == sf::Keyboard::Escape)
+                {
+                    keys.push_back("Esc");
+                }
+                break;
+            }
+            }
+        }
+
+        if (running)
+            running = myScene.manageInput(keys, glm::vec2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y), sf::Mouse::isButtonPressed(sf::Mouse::Button::Left));
         myScene.update(clock.getElapsedTime().asSeconds());
         myScene.render();
 

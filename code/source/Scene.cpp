@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <cassert>
-#include <SFML/Window/Mouse.hpp>
 
 #include "../header/Scene.hpp"
 #include "../header/3DModels/Malla.hpp"
@@ -24,21 +23,21 @@
 #include "../header/XMLParser.hpp"
 
 // Rutas por defecto de la aplicacion
-std::string ConfigOptions::ConfigPaths::texture_default_path            = "../../assets/default/texture.tga";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKa             = "myMaterial.Ka";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKd             = "myMaterial.Kd";
-std::string ConfigOptions::ConfigPaths::shader_myMaterialKs             = "myMaterial.Ks";
-std::string ConfigOptions::ConfigPaths::shader_pointLight_array         = "pointLights";
-std::string ConfigOptions::ConfigPaths::shader_directionalLight_array   = "directionalLight";
-std::string ConfigOptions::ConfigPaths::camera_shader_path              = "../../assets/camera/";
-std::string ConfigOptions::ConfigPaths::skybox_shader_path              = "../../assets/skybox/";
-std::string ConfigOptions::ConfigPaths::postprocesing_shader_path       = "../../assets/postprocessing/";
-std::string ConfigOptions::ConfigPaths::vertexShader_name               = "vertexShader.vglsl";
-std::string ConfigOptions::ConfigPaths::fragmentShader_name             = "fragmentShader.fglsl";
-std::string ConfigOptions::ConfigPaths::shader_camera_matrix            = "camera_matrix";
-std::string ConfigOptions::ConfigPaths::shader_model_matrix             = "model_matrix";
-std::string ConfigOptions::ConfigPaths::shader_camera_position          = "camera_pos";
-std::string ConfigOptions::ConfigPaths::skybox_path                     = "../../assets/skybox/SD/sky-cube-map-";
+std::string ConfigOptions::ConfigPaths::texture_default_path = "../../assets/default/texture.tga";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKa = "myMaterial.Ka";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKd = "myMaterial.Kd";
+std::string ConfigOptions::ConfigPaths::shader_myMaterialKs = "myMaterial.Ks";
+std::string ConfigOptions::ConfigPaths::shader_pointLight_array = "pointLights";
+std::string ConfigOptions::ConfigPaths::shader_directionalLight_array = "directionalLight";
+std::string ConfigOptions::ConfigPaths::camera_shader_path = "../../assets/camera/";
+std::string ConfigOptions::ConfigPaths::skybox_shader_path = "../../assets/skybox/";
+std::string ConfigOptions::ConfigPaths::postprocesing_shader_path = "../../assets/postprocessing/";
+std::string ConfigOptions::ConfigPaths::vertexShader_name = "vertexShader.vglsl";
+std::string ConfigOptions::ConfigPaths::fragmentShader_name = "fragmentShader.fglsl";
+std::string ConfigOptions::ConfigPaths::shader_camera_matrix = "camera_matrix";
+std::string ConfigOptions::ConfigPaths::shader_model_matrix = "model_matrix";
+std::string ConfigOptions::ConfigPaths::shader_camera_position = "camera_pos";
+std::string ConfigOptions::ConfigPaths::skybox_path = "../../assets/skybox/SD/sky-cube-map-";
 
 
 namespace OpenGLRender3D
@@ -46,11 +45,10 @@ namespace OpenGLRender3D
 
     using namespace std;
 
-    Scene::Scene(int width, int height, std::string path, sf::Window& _window)
+    Scene::Scene(int width, int height, std::string path)
     {
         XMLParser::parseConfig(path);
 
-        window = &_window;
         window_size = (glm::vec2(width, height));
         camera = (new OpenGLRender3D::Camera(width, height, *this));
         postpoProgram = new PostprocessingProgram(*this);
@@ -58,7 +56,7 @@ namespace OpenGLRender3D
         skybox = (new OpenGLRender3D::Skybox(ConfigOptions::ConfigPaths::skybox_path, *this));
 
 
-        XMLParser::loadScene(path, *this);       
+        XMLParser::loadScene(path, *this);
         orderEntitiesTransparency();
 
     }
@@ -155,71 +153,59 @@ namespace OpenGLRender3D
         actionsPool.clear();
     }
 
-    bool Scene::manageInput(sf::Window& window)
+    void Scene::resize(int width, int height)
     {
-        sf::Event event;
+        window_size = glm::vec2(width, height);
 
-        while (window.pollEvent(event))
+        getMainCamera()->resize(width, height);
+        postpoProgram->resize(width, height);
+    }
+
+    bool Scene::manageInput(std::vector<std::string> keys, glm::vec2 mousePosition, bool mousePressed)
+    {
+
+        for (std::string key : keys)
         {
-            switch (event.type)
+
+            if (key == "W")
             {
-            case sf::Event::Closed:
+                actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.front);
+            }
+            else if (key == "S")
+            {
+                actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.front);
+            }
+
+            if (key == "Space")
+            {
+                actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.worldUp);
+            }
+            else if (key == "LControl")
+            {
+                actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.worldUp);
+            }
+
+            if (key == "A")
+            {
+                actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.right);
+            }
+            else if (key == "D")
+            {
+                actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.right);
+            }
+            else if (key == "P")
+            {
+                actionsPool.emplace("Postproceso", glm::vec3());
+            }    
+            else if (key == "Esc")
             {
                 return false;
-                break;
-            }
-
-            case sf::Event::Resized:
-            {
-                window_size = glm::vec2((int)window.getSize().x, (int)window.getSize().y);
-
-                getMainCamera()->resize((int)window_size.x, (int)window_size.y);
-                postpoProgram->resize((int)window_size.x, (int)window_size.y);
-
-                break;
-            }
-
-            case sf::Event::KeyPressed:
-            {
-                if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up)
-                {
-                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.front);
-                }
-                else if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down)
-                {
-                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.front);
-                }
-
-                if (event.key.code == sf::Keyboard::Space)
-                {
-                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.worldUp);
-                }
-                else if (event.key.code == sf::Keyboard::LControl)
-                {
-                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.worldUp);
-                }
-
-                if (event.key.code == sf::Keyboard::A)
-                {
-                    actionsPool.emplace("Mover Camara", -camera->cameraTransformAttributes.right);
-                }
-                else if (event.key.code == sf::Keyboard::D)
-                {
-                    actionsPool.emplace("Mover Camara", camera->cameraTransformAttributes.right);
-                }
-                else if (event.key.code == sf::Keyboard::P)
-                {
-                    actionsPool.emplace("Postproceso", glm::vec3());
-                }
-            }
-
             }
         }
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        if (mousePressed)
         {
-            sf::Vector2i pos = sf::Mouse::getPosition(window);
-            camera->rotateCamera(pos);
+            camera->rotateCamera(mousePosition);
         }
         else if (!camera->mousePosition.firstPressed)
         {
@@ -234,15 +220,38 @@ namespace OpenGLRender3D
         return camera;
     }
 
-    void Scene::addEntity(std::string name, BaseModel3D * entity)
+    void Scene::addEntity(std::string name, BaseModel3D* entity)
     {
         entities[name] = entity;
+        orderEntitiesTransparency();
+    }
+
+    void Scene::removeEntity(std::string name)
+    {
+        auto it = entities.find(name);
+
+        if (it != entities.end())
+        {
+            delete entities[name];
+            entities.erase(it);
+        }
     }
 
     void Scene::addLight(std::string name, Light* light)
     {
         lights[name] = light;
 
+    }
+
+    void Scene::removeLight(std::string name)
+    {
+        auto it = lights.find(name);
+
+        if (it != lights.end())
+        {
+            delete lights[name];
+            lights.erase(it);
+        }
     }
 
     void Scene::orderEntitiesTransparency()

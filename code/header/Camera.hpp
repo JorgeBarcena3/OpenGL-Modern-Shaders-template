@@ -90,7 +90,7 @@ namespace OpenGLRender3D
         void   resize(int width, int height);
 
         void moveCamera(glm::vec3 movement);
-        void rotateCamera(sf::Vector2i mousePos);
+        void rotateCamera(glm::vec2 mousePos);
 
         const GLint getProjectionMatrixId()
         {
