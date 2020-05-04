@@ -94,6 +94,9 @@
     <Filter Include="shaders\postprocessing\lessColors">
       <UniqueIdentifier>{6e71f1ef-ff3e-4050-901b-57491de19e6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LIBRARIES\SOIL">
+      <UniqueIdentifier>{5ea0480a-bce2-4da6-82e3-d79544a0ea50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\main.cpp">
@@ -158,6 +161,18 @@
     </ClCompile>
     <ClCompile Include="..\..\code\header\XMLParser.cpp">
       <Filter>tools\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\SOIL\image_helper.c">
+      <Filter>LIBRARIES\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\SOIL\SOIL.c">
+      <Filter>LIBRARIES\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\SOIL\stb_image_aug.c">
+      <Filter>LIBRARIES\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\SOIL\image_DXT.c">
+      <Filter>LIBRARIES\SOIL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

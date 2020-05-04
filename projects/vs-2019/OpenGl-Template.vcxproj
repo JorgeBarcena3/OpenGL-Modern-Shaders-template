@@ -39,6 +39,10 @@
     <ClCompile Include="..\..\code\source\Texture.cpp" />
     <ClCompile Include="..\..\code\source\Texture2D.cpp" />
     <ClCompile Include="..\..\lib\glad\src\glad.c" />
+    <ClCompile Include="..\..\lib\SOIL\image_DXT.c" />
+    <ClCompile Include="..\..\lib\SOIL\image_helper.c" />
+    <ClCompile Include="..\..\lib\SOIL\SOIL.c" />
+    <ClCompile Include="..\..\lib\SOIL\stb_image_aug.c" />
     <ClCompile Include="..\..\lib\targa\src\targa.c" />
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +158,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -170,7 +174,7 @@
       <WarningLevel>Level2</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -188,7 +192,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -208,7 +212,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

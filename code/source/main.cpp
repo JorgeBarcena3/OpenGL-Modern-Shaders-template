@@ -54,7 +54,7 @@ int main()
     Scene myScene(800, 600, "../../assets/scene/scene.xml", window);
 
     myScene.getLight("Camera Main Light")->setUpdateFunction(movement);
-    myScene.getEntity("Calavera")->setUpdateFunction(calavera);
+    //myScene.getEntity("Calavera")->setUpdateFunction(calavera);
 
     // Se ejecuta el bucle principal:
 

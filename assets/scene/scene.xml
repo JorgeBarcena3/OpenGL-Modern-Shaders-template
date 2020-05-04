@@ -29,7 +29,7 @@
   </Entity>
 
 
-  <Entity name="Calavera" type="Model3D" objPath ="../../assets/models/skull/12140_Skull_v3_L2.obj" opacity="Opaco">
+  <Entity name="Calavera" type="Model3D" objPath ="../../assets/models/cat/12221_Cat_v1_l3.obj" opacity="Opaco">
     <Position>0,0,-20</Position>
     <Rotation>-90,0,0</Rotation>
     <Scale>0.1,0.1,0.1</Scale>
