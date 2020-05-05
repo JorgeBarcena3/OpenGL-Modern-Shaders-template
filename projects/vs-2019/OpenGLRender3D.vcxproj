@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib-Debug|Win32">
+      <Configuration>Lib-Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib-Debug|x64">
+      <Configuration>Lib-Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib-Release|Win32">
+      <Configuration>Lib-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Lib-Release|x64">
+      <Configuration>Lib-Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Cylinder.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Malla.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Mesh.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Model3D.cpp" />
+    <ClCompile Include="..\..\code\source\3DModels\Skybox.cpp" />
+    <ClCompile Include="..\..\code\source\Camera.cpp" />
+    <ClCompile Include="..\..\code\source\Cubemap.cpp" />
+    <ClCompile Include="..\..\code\source\DirectionalLight.cpp" />
+    <ClCompile Include="..\..\code\source\Light.cpp" />
+    <ClCompile Include="..\..\code\source\main.cpp" />
+    <ClCompile Include="..\..\code\source\PointLight.cpp" />
+    <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp" />
+    <ClCompile Include="..\..\code\source\SFMLApplication.cpp" />
+    <ClCompile Include="..\..\code\source\Shader.cpp" />
+    <ClCompile Include="..\..\code\source\Shader_Program.cpp" />
+    <ClCompile Include="..\..\code\source\Scene.cpp" />
+    <ClCompile Include="..\..\code\source\Texture.cpp" />
+    <ClCompile Include="..\..\code\source\Texture2D.cpp" />
+    <ClCompile Include="..\..\code\source\XMLParser.cpp" />
+    <ClCompile Include="..\..\lib\glad\src\glad.c" />
+    <ClCompile Include="..\..\lib\targa\src\targa.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\header\3DModels\BaseModel3D.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Cylinder.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Malla.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Mesh.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Model3D.hpp" />
+    <ClInclude Include="..\..\code\header\3DModels\Skybox.hpp" />
+    <ClInclude Include="..\..\code\header\ConfigOptions.hpp" />
+    <ClInclude Include="..\..\code\header\DirectionalLight.hpp" />
+    <ClInclude Include="..\..\code\header\Light.hpp" />
+    <ClInclude Include="..\..\code\header\PointLight.hpp" />
+    <ClInclude Include="..\..\code\header\PostprocessingProgram.hpp" />
+    <ClInclude Include="..\..\code\header\SFMLApplication.hpp" />
+    <ClInclude Include="..\..\code\header\Texture2D.hpp" />
+    <ClInclude Include="..\..\code\header\Camera.hpp" />
+    <ClInclude Include="..\..\code\header\Color_Buffer.hpp" />
+    <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp" />
+    <ClInclude Include="..\..\code\header\Cubemap.hpp" />
+    <ClInclude Include="..\..\code\header\Fragment_Shader.hpp" />
+    <ClInclude Include="..\..\code\header\Shader.hpp" />
+    <ClInclude Include="..\..\code\header\Shader_Program.hpp" />
+    <ClInclude Include="..\..\code\header\Texture.hpp" />
+    <ClInclude Include="..\..\code\header\Transform.hpp" />
+    <ClInclude Include="..\..\code\header\Vertex_Shader.hpp" />
+    <ClInclude Include="..\..\code\header\Scene.hpp" />
+    <ClInclude Include="..\..\code\header\XMLParser.hpp" />
+    <ClInclude Include="..\..\lib\targa\include\targa.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\camera\fragmentShader.fglsl" />
+    <None Include="..\..\assets\camera\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\eye-fish\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\eye-fish\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\negative\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\negative\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\radial_blur\fragmentShader.fglsl" />
+    <None Include="..\..\assets\postprocessing\radial_blur\vertexShader.vglsl" />
+    <None Include="..\..\assets\postprocessing\vertexShader.vglsl" />
+    <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
+    <None Include="..\..\assets\skybox\vertexShader.vglsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\assets\scene\scene.xml" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C0507E8D-58D6-4CB0-982E-14DF192A6D77}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OpenGLRender3D</RootNamespace>
+    <ProjectName>OpenGLRender3D</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Lib-Release|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Lib-Release|x64'">
+    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x32;$(SolutionDir)\..\..\lib\SOIL\lib\x32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-d.lib;winmm.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SOIL\lib\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x64;$(SolutionDir)\..\..\lib\SOIL\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-d.lib;winmm.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>D:\GitHub\OpenGL-Renderer\lib\SFML-2.5.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SOIL\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-d.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x32;$(SolutionDir)\..\..\lib\SOIL\lib\x32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-r.lib;winmm.lib;sfml-main.lib;sfml-system-s.lib;sfml-window-s.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\lib\x64;$(SolutionDir)\..\..\lib\SOIL\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-r.lib;winmm.lib;sfml-main.lib;sfml-system-s.lib;sfml-window-s.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>../../SFML-2.5.1/lib/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Release|x64'">
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SOIL\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL-r.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+    </Lib>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Lib-Release|Win32'">
+    <Lib>
+      <AdditionalDependencies>SOIL-r.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\lib\SOIL\lib\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib\SFML-2.5.1\include;$(SolutionDir)\..\..\lib\targa\include;$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm;$(SolutionDir)\..\..\lib\tinyobj;$(SolutionDir)\..\..\lib\rapidxml-1.13;$(SolutionDir)\..\..\lib\SOIL\headers</AdditionalIncludeDirectories>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;</PreprocessorDefinitions>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

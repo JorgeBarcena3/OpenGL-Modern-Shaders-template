@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{38c4a35e-54ce-4e31-b795-220ddafb2dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{549598b4-6ef0-474b-8c50-ec1e5f8dab4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{e311bd5c-a6d5-47f9-946d-4cc30e0d82e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{ca98fbe4-7fde-4b4f-b22c-829779bf2bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\source">
+      <UniqueIdentifier>{cfbb8155-85d2-4a41-b4bf-310a2d67af2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\header">
+      <UniqueIdentifier>{2c799136-1120-4e75-b89f-f57a5d24a111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\3DModels">
+      <UniqueIdentifier>{a807a94d-4512-4ff3-a0dd-a25908d7919b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\Textures">
+      <UniqueIdentifier>{a082f04e-07ef-4371-8f73-614e93ad0d37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\Textures\base">
+      <UniqueIdentifier>{5773fe6c-6825-4f33-8c89-9b248b29af4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Texture">
+      <UniqueIdentifier>{af8d9b9f-8bf4-4683-a79f-3ba97d6584b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Texture\Base">
+      <UniqueIdentifier>{316b5a50-b6c1-4746-a8a0-db8423e6a5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels">
+      <UniqueIdentifier>{2f88aaed-a5df-4a02-9d5d-cef7f20da812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels\base">
+      <UniqueIdentifier>{09dde16b-79e7-44e0-9c9f-291a728542bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\3DModels\OBJ_Model">
+      <UniqueIdentifier>{40ff5d9b-a1d3-44bf-a43f-a1ad80814a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES">
+      <UniqueIdentifier>{6cb743d9-cd29-469c-a920-531eca477dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES\GLAD">
+      <UniqueIdentifier>{31955f75-a69e-4421-90ce-12dfb268063f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBRARIES\targa">
+      <UniqueIdentifier>{eff57c60-a33f-4f55-b343-7690c34ec899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Light">
+      <UniqueIdentifier>{3ac227f0-09c1-4c2a-8bd3-0c37023fdc28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\Light">
+      <UniqueIdentifier>{4e0ce583-100a-4c5f-b1a7-a4c1b307fb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\camera">
+      <UniqueIdentifier>{9eb5cfc0-4d21-483c-9127-d8011820aa25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\skybox">
+      <UniqueIdentifier>{8390d3bf-a62a-46ca-acec-d7b43cbd5b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing">
+      <UniqueIdentifier>{0fc4fb27-51c6-4d2f-b222-a00fd63783f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Camera">
+      <UniqueIdentifier>{a1f565c2-8a8c-4026-a669-b510fd2e0484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Configuration">
+      <UniqueIdentifier>{fbc82c6a-d5ac-4809-b73b-b9feb62108ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Transform">
+      <UniqueIdentifier>{8f9dd5c2-1744-4e0c-a487-bf1163994eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\Postprocessing">
+      <UniqueIdentifier>{32826e2c-0d02-431a-916f-978fe977ceec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{4c85cbc5-4f29-4886-b1a2-a59204145891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\blur">
+      <UniqueIdentifier>{01c03547-2ff3-4dae-968a-140e609ec976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\negative">
+      <UniqueIdentifier>{974d072c-6bab-4b35-bc4e-9ac80b0dd2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\eye-fish">
+      <UniqueIdentifier>{61bbbca5-8ed2-42c2-ba6c-795eebb5fe1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders\postprocessing\lessColors">
+      <UniqueIdentifier>{6e71f1ef-ff3e-4050-901b-57491de19e6b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\source\main.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Shader.cpp">
+      <Filter>tools\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Shader_Program.cpp">
+      <Filter>tools\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\targa\src\targa.c">
+      <Filter>LIBRARIES\targa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Scene.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Camera.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Texture.cpp">
+      <Filter>sources\Textures\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Cubemap.cpp">
+      <Filter>sources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Texture2D.cpp">
+      <Filter>sources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\glad\src\glad.c">
+      <Filter>LIBRARIES\GLAD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\PointLight.cpp">
+      <Filter>sources\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\DirectionalLight.cpp">
+      <Filter>sources\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\Light.cpp">
+      <Filter>sources\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Cylinder.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Malla.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Mesh.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Model3D.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\Skybox.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\3DModels\BaseModel3D.cpp">
+      <Filter>sources\3DModels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\PostprocessingProgram.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\XMLParser.cpp">
+      <Filter>tools\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\source\SFMLApplication.cpp">
+      <Filter>tools\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\header\Fragment_Shader.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Shader.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Shader_Program.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Vertex_Shader.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\targa\include\targa.h">
+      <Filter>LIBRARIES\targa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Scene.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Texture.hpp">
+      <Filter>headers\Texture\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Cubemap.hpp">
+      <Filter>headers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Texture2D.hpp">
+      <Filter>headers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\DirectionalLight.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Light.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\PointLight.hpp">
+      <Filter>headers\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer_Rgba8888.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Color_Buffer.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Malla.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Skybox.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Cylinder.hpp">
+      <Filter>headers\3DModels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\BaseModel3D.hpp">
+      <Filter>headers\3DModels\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Model3D.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\3DModels\Mesh.hpp">
+      <Filter>headers\3DModels\OBJ_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Camera.hpp">
+      <Filter>headers\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\ConfigOptions.hpp">
+      <Filter>headers\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\Transform.hpp">
+      <Filter>headers\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\PostprocessingProgram.hpp">
+      <Filter>headers\Postprocessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\XMLParser.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\header\SFMLApplication.hpp">
+      <Filter>tools\header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\skybox\vertexShader.vglsl">
+      <Filter>shaders\skybox</Filter>
+    </None>
+    <None Include="..\..\assets\skybox\fragmentShader.fglsl">
+      <Filter>shaders\skybox</Filter>
+    </None>
+    <None Include="..\..\assets\camera\vertexShader.vglsl">
+      <Filter>shaders\camera</Filter>
+    </None>
+    <None Include="..\..\assets\camera\fragmentShader.fglsl">
+      <Filter>shaders\camera</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\blur</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\blur</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\negative\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\negative</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\negative\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\negative</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\eye-fish\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\eye-fish</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\eye-fish\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\eye-fish</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\radial_blur\fragmentShader.fglsl">
+      <Filter>shaders\postprocessing\lessColors</Filter>
+    </None>
+    <None Include="..\..\assets\postprocessing\radial_blur\vertexShader.vglsl">
+      <Filter>shaders\postprocessing\lessColors</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\assets\scene\scene.xml">
+      <Filter>assets</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

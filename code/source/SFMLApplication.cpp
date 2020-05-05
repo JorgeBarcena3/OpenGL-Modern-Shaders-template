@@ -2,9 +2,7 @@
 
 
 #include <SFML/Window.hpp>
-#include <SFML/Window/Mouse.hpp>
 #include <time.h>
-
 
 #include "../header/Scene.hpp"
 #include "../header/PointLight.hpp"

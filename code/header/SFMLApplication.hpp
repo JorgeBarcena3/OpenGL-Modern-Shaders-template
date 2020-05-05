@@ -21,6 +21,7 @@
 namespace sf
 {
     class Window;
+    class Mouse;
 }
 
 namespace OpenGLRender3D
