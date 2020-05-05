@@ -282,7 +282,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="..\..\assets\scene\scene.xml">
+    <Xml Include="..\..\assets\scene.xml">
+      <Filter>assets</Filter>
+    </Xml>
+    <Xml Include="..\..\assets\scene-nocat.xml">
       <Filter>assets</Filter>
     </Xml>
   </ItemGroup>

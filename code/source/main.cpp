@@ -17,7 +17,7 @@
 int main(int argc, char* argv[])
 {
     //"OpenGLRender3D --scene ../../assets/scene/scene-nocat.xml"
-    std::string path = "../../assets/scene/scene.xml";
+    std::string path = "../../assets/scene-nocat.xml";
     
     if(argc == 3)
     {

@@ -29,10 +29,7 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
 void OpenGLRender3D::Camera::update(float time)
 {
-
-    static float angle = 0;
-
-    angle = 1.0f;
+    getShaderProgram().use();
 
     transform.getModelViewMatrix();
 

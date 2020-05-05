@@ -41,6 +41,8 @@ namespace OpenGLRender3D
 
         static void setDefaultConfiguration();
 
+        static std::string XMLPath;
+
     };
 
 }

@@ -38,6 +38,8 @@ OpenGLRender3D::SFMLApplication::SFMLApplication(std::string path)
 
     myScene = new Scene(800, 600, path);
 
+    myScene->getLight("Camera Main Light")->setUpdateFunction(movement);
+
     window->setTitle(myScene->sceneTitle);
 
 }
