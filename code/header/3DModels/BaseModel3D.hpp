@@ -23,10 +23,10 @@
 
 namespace OpenGLRender3D
 {
-    enum class OPACITYMODEL
+    const enum class OPACITYMODEL
     {
-        OPAQUE,
-        TRANSLUCID
+        OPAQUE = 0,
+        TRANSLUCID = 1
     };
 
     struct Material
@@ -100,7 +100,7 @@ namespace OpenGLRender3D
 
         std::vector< Material > materials;
 
-        OPACITYMODEL opacityModel;
+        OpenGLRender3D::OPACITYMODEL opacityModel;
 
         GLint modelMatrixTransformationId;
 
@@ -113,7 +113,7 @@ namespace OpenGLRender3D
 
     public:
 
-        BaseModel3D(OPACITYMODEL _model, Scene& _scene)
+        OpenGLRender3D::BaseModel3D(OPACITYMODEL _model, Scene& _scene)
         {
             opacityModel = _model;
             scene = &_scene;

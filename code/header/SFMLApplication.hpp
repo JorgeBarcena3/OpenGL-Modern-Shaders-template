@@ -15,6 +15,7 @@
 #ifndef SFMLAPPLICATION_HEADER
 #define SFMLAPPLICATION_HEADER
 
+
 #include <string>
 
 namespace sf

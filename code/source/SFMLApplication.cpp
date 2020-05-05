@@ -1,11 +1,14 @@
 #include "../header/SFMLApplication.hpp"
 
+
 #include <SFML/Window.hpp>
 #include <SFML/Window/Mouse.hpp>
 #include <time.h>
 
+
 #include "../header/Scene.hpp"
 #include "../header/PointLight.hpp"
+#include "../header/3DModels/BaseModel3D.hpp"
 
 using namespace sf;
 using namespace OpenGLRender3D;
@@ -17,7 +20,7 @@ void movement(Light* me, float time)
     point->setPosition(point->getScene()->getMainCamera()->transform.getPosition());
 }
 
-void calavera(BaseModel3D* me, float time)
+void calavera(OpenGLRender3D::BaseModel3D* me, float time)
 {
 
     me->transform.setRotation(me->transform.getRotation() + glm::vec3(0, 0, 1));

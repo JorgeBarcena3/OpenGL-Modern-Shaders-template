@@ -16,7 +16,6 @@
 #define SCENE_HEADER
 
 
-#include <glad/glad.h>
 #include <string>
 #include <glm/matrix.hpp>
 #include <vector>

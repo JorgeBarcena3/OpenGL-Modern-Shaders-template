@@ -9,6 +9,7 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+
 #include "../header/SFMLApplication.hpp"
 #include <iostream>
 
