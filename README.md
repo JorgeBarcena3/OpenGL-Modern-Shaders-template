@@ -83,6 +83,8 @@ La herramienta permite cargar escenas mediante archivos XML. La herramienta por 
     > OpenGLRendering.exe --scene "Nuevo path"
 
 Respecto a la estructura del XML, se puede consultar desde [el siguiente archivo de ejemplo](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/assets/scene.xml).
+
+Un detalle a tener en cuenta cuando utilizamos este medio de carga es que las rutas, seran relativas a este archivo XML y no al archivo de ejecución del programa.
     
 ## Arquitectura
 
