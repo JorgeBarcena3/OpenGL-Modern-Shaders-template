@@ -281,6 +281,7 @@ namespace OpenGLRender3D
         glBindVertexArray(vao_id);
         glDrawElements(GL_TRIANGLES, indices.size() * sizeof(GLuint), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
+
     }
 
 

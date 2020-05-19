@@ -1,13 +1,20 @@
+// File: Cubemap.hpp
+// Author: Jorge Bárcena Lumbreras
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by Ángel on april of 2014                                          *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+// © Copyright (C) 2020  Jorge Bárcena Lumbreras
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 #ifndef CUBEMAP_HEADER
 #define CUBEMAP_HEADER
@@ -18,15 +25,23 @@
 namespace OpenGLRender3D
 {
 
+    /**
+    * Clase cubemap
+    */
     class Cubemap : public Texture
     {
 
     public:
 
-        Cubemap(const std::string& path);
-        
+        /**
+        * Contructor del cube map
+        */
+        Cubemap(const std::string& path);       
 
-        // Heredado vía Texture
+        /**
+        * Heredado de Texture.
+        * Bindea la textura
+        */
         virtual bool bind() const override;
 
     };

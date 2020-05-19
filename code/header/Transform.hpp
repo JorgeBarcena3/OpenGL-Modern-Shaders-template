@@ -1,13 +1,20 @@
+// File: Transfom.hpp
+// Author: Jorge Bárcena Lumbreras
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by Ángel on april of 2014                                          *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+// © Copyright (C) 2020  Jorge Bárcena Lumbreras
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 #ifndef TRANSFORM_HEADER
 #define TRANSFORM_HEADER
@@ -23,25 +30,31 @@
 namespace OpenGLRender3D
 {
 
+    /**
+    * Clase que maneja el transform de un modelo
+    */
     class Transform
     {
+
     public:
 
-        Transform * parent;
+        Transform * parent;         ///< Transform del padre
 
     private:
 
-        // Matriz de coordenadas de modelo
-        glm::mat4 transform_matrix;
+        glm::mat4 transform_matrix; ///<  Matriz de la transformacion
 
-        glm::vec3 position;
+        glm::vec3 position;         ///< Posicion del transform
 
-        glm::vec3 rotation;
+        glm::vec3 rotation;         ///< Rotacion
 
-        glm::vec3 scale;
+        glm::vec3 scale;            ///< Escala
 
     public:
 
+        /**
+        * Contructor por defecto
+        */
         Transform(glm::vec3 _position = glm::vec3(0, 0, 0), glm::vec3 _rotation = glm::vec3(0, 0, 0), glm::vec3 _scale = glm::vec3(1, 1, 1))
         {
             position = _position;
@@ -51,35 +64,57 @@ namespace OpenGLRender3D
 
         }
 
+        /**
+        * Devuelve la posicion de la entidad
+        */
         inline glm::vec3 getPosition()
         {
             return position;
         }
 
+        /**
+        * Devuelve la rotacion de la entidad
+        */
         inline glm::vec3 getRotation()
         {
             return rotation;
         }
 
+        /**
+        * Devuelve la escala de la entidad
+        */
         inline glm::vec3 getScale()
         {
             return scale;
         }
 
+        /**
+        * Determina la posicion de la entidad
+        */
         inline void setPosition(glm::vec3 _v)
         {
             position = _v;
         }
+
+        /**
+        * Determina la rotacion de la entidad
+        */
         inline void setRotation(glm::vec3 _v)
         {
             rotation = _v;
         }
 
+        /**
+        * Determina la escala de la entidad
+        */
         inline void setScale(glm::vec3 _v)
         {
             scale = _v;
         }
 
+        /**
+        * Devuelve la matriz del modelo
+        */
         glm::mat4 getModelViewMatrix()
         {
 
@@ -105,32 +140,17 @@ namespace OpenGLRender3D
             return transform_matrix;
         }
 
+        /**
+        * Devuelve la matriz inversa del modelo
+        */
         inline glm::mat4 getInverseMatrix()
         {
             return glm::inverse(transform_matrix);
         }
 
-        inline glm::vec3 getFordwardVector()
-        {
-
-            glm::vec4 a = transform_matrix * glm::vec4(0, 0, -1, 0);
-            return glm::vec3(a[0], a[1], a[2]);
-        }
-
-        inline glm::vec3 getRightVector()
-        {
-
-            glm::vec4 a = transform_matrix * glm::vec4(1, 0, 0, 0);
-            return glm::vec3(a[0], a[1], a[2]);
-        }
-        
-        inline glm::vec3 getUpVector()
-        {
-
-            glm::vec4 a = transform_matrix * glm::vec4(0, 1, 0, 0);
-            return glm::vec3(a[0], a[1], a[2]);
-        }
-
+        /**
+        * Añade un padre al transform
+        */
         inline void addParent(Transform* transform)
         {
             parent = (transform);

@@ -20,7 +20,10 @@ OpenGLRender3D::Model3D::Model3D(Scene& _scene, OpenGLRender3D::OPACITYMODEL op,
 
 OpenGLRender3D::Model3D::~Model3D()
 {
-   
+    for each (auto mesh in meshes)
+    {
+        delete mesh;
+    }
 
 }
 
@@ -206,7 +209,6 @@ void OpenGLRender3D::Model3D::loadObj(const char* path)
     /*********************
     ** DATOS DE INDICES **
     **********************/
-
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_ids[INDICES_IBO]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);

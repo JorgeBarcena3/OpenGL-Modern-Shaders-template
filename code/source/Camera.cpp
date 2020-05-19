@@ -27,6 +27,10 @@ OpenGLRender3D::Camera::Camera(int width, int height, Scene& _scene)
 
 }
 
+OpenGLRender3D::Camera::~Camera()
+{
+}
+
 void OpenGLRender3D::Camera::update(float time)
 {
     getShaderProgram().use();
@@ -81,7 +85,6 @@ void OpenGLRender3D::Camera::rotateCamera(glm::vec2 pos)
     cameraTransformAttributes.yaw   += offset.x;
     cameraTransformAttributes.pitch += offset.y;
 
-    // Update Front, Right and Up Vectors using the updated Euler angles
     updateCameraTransform();
 
 }

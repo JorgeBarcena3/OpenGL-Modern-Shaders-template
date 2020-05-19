@@ -1,13 +1,20 @@
+// File: BaseModel3D.hpp
+// Author: Jorge Bárcena Lumbreras
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by Ángel on march of 2014                                          *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+// © Copyright (C) 2020  Jorge Bárcena Lumbreras
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #ifndef BASESHAPES_HEADER
 #define BASESHAPES_HEADER
@@ -23,12 +30,18 @@
 
 namespace OpenGLRender3D
 {
+    /**
+    * Tipo de opacidad que tiene un modelo de nuestro programa
+    */
     const enum class OPACITYMODEL
     {
         OPAQUE = 0,
         TRANSLUCID = 1
     };
 
+    /**
+    * Informacion del material de cada modelo
+    */
     struct Material
     {
 
@@ -43,11 +56,17 @@ namespace OpenGLRender3D
         std::string diffuse_texname;
         int diffuse_tex_id;
 
+        /**
+        * Determina si tiene o no textura
+        */
         bool hasTexture()
         {
             return (!diffuse_texname.empty());
         }
 
+        /**
+        * Obtiene los id de las variables uniformes donde iran la informacion
+        */
         void getUniformsId(ShaderProgramHelper::Shader_Program& shaderProgram)
         {
             KaId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKa"].c_str());
@@ -55,6 +74,9 @@ namespace OpenGLRender3D
             KsId = shaderProgram.get_uniform_id(ConfigOptions::ConfigPaths::configSettingsMap["shader_myMaterialKs"].c_str());
         }
 
+        /**
+        * Pasa al shaderprogram la informacion de los materiales
+        */
         void setUniformsValue(ShaderProgramHelper::Shader_Program& shaderProgram)
         {
             shaderProgram.set_uniform_value(KaId, Ka);
@@ -66,6 +88,9 @@ namespace OpenGLRender3D
 
     class Texture;
 
+    /**
+    * Clase base de todo modelo que se vaya a renderizar
+    */
     class BaseModel3D
     {
 
@@ -73,8 +98,9 @@ namespace OpenGLRender3D
     protected:
 
 
-        // Índices para indexar el array vbo_ids:
-
+        /**
+        * Indices de los VBO de cada modelo
+        */
         enum
         {
             COORDINATES_VBO,
@@ -85,72 +111,90 @@ namespace OpenGLRender3D
             VBO_COUNT
         };
 
+    public:
 
+        Transform transform;                                          ///< Transform del modelo
+
+        Scene* scene;                                                 ///< Escena a la que pertenece
 
 
     protected:
 
-        GLuint vbo_ids[VBO_COUNT];      // Ids de los VBOs que se usan
 
-        GLuint vao_id;                  // Id del VAO del cubo
+        GLuint vbo_ids[VBO_COUNT];                                    ///< Ids de los VBO
 
-        std::vector< GLuint > indices;
+        GLuint vao_id;                                                ///< Id del VAO
 
-        std::vector<Texture*> textures_factory;
+        std::vector< GLuint > indices;                                ///< Indices del modelo a renderizar
 
-        std::vector< Material > materials;
+        std::vector<Texture*> textures_factory;                       ///< Texturas utilizadas por el modelo
+                                                                      
+        std::vector< Material > materials;                            ///< Materiales del modelo
+                                                                      
+        OpenGLRender3D::OPACITYMODEL opacityModel;                    ///< Tipo de opacidad del modelo
+                                                                      
+        GLint modelMatrixTransformationId;                            ///< Id de la matriz de transformacion
 
-        OpenGLRender3D::OPACITYMODEL opacityModel;
+        std::function<void(BaseModel3D*, float time)> updateFunction; ///< Funcion que se ejecutara en el update
 
-        GLint modelMatrixTransformationId;
-
-        /*
-       * Funcion que se ejecutara en el update
-       */
-        std::function<void(BaseModel3D*, float time)> updateFunction;
-
-
-
+   
     public:
 
+        /**
+        * Constructor por defecto
+        */
         OpenGLRender3D::BaseModel3D(OPACITYMODEL _model, Scene& _scene)
         {
             opacityModel = _model;
             scene = &_scene;
         }
 
+        /**
+        * Destructor por defecto
+        */
         ~BaseModel3D();
 
-        Transform transform;
-
-        Scene* scene;
-
+        /**
+        * Funcion virtual de render
+        */
         virtual void render() = 0;
 
+        /**
+        * Funcion de update por defecto
+        */
         virtual void update(float time) 
         {
             if (updateFunction)
                 updateFunction(this, time);
         }
 
-        /*
-        * Determina cual será la funcion de update del modelo
+        /**
+        * Determina la funcion que se ejecutara en el update
         */
         void setUpdateFunction(std::function<void(BaseModel3D*, float time)> UpdateFunction)
         {
             updateFunction = UpdateFunction;
         }
 
+        /**
+        * Determina el padre del modelo
+        */
         void setParent(Transform* _transform)
         {
             transform.addParent(_transform);
         }
 
-        OpenGLRender3D::OPACITYMODEL getOpacityModel()
+        /**
+        * Devuelve la opacidad del modelo
+        */
+        inline OpenGLRender3D::OPACITYMODEL getOpacityModel()
         {
             return opacityModel;
         }
 
+        /**
+        * Determina el material por defecto
+        */
         void setDefaultMaterial(std::string path = ConfigOptions::ConfigPaths::configSettingsMap["texture_default_path"]);
 
 

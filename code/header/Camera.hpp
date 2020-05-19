@@ -1,13 +1,20 @@
+// File: Camera.hpp
+// Author: Jorge Bárcena Lumbreras
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by Ángel on april of 2014                                          *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+// © Copyright (C) 2020  Jorge Bárcena Lumbreras
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 #define GLM_FORCE_RADIANS
 
@@ -26,32 +33,42 @@ namespace OpenGLRender3D
 
     using namespace ShaderProgramHelper;
 
+    /**
+    * Clase que maneja la camara y su movimiento
+    */
     class Camera
     {
 
+        /**
+        * Posicion del raton para determinar el movimiento
+        */
         struct MousePosition
         {
-            float lastx;
-            float lasty;
-            bool firstPressed = true;
+            float lastx;                ///< Ultima posicion de x (del raton)
+            float lasty;                ///< Ultima posicion de y (del raton)
+            bool firstPressed = true;   ///< Determina si el click es la primera vez que se produce
         };
 
+        /**
+        * Atributos de las transformacions de la camara
+        */
         struct CameraTransformAttributes
         {
-            // Camera Attributes
-            glm::vec3 front;
-            glm::vec3 up;
-            glm::vec3 right;
-            glm::vec3 worldUp;
+         
+            glm::vec3 front;                ///< Vector front desde la camara
+            glm::vec3 up;                   ///< Vector up desde la camara
+            glm::vec3 right;                ///< Vector right desde la camara
+            glm::vec3 worldUp;              ///< Vector up del mundo desde la camara
 
-            // Euler Angles
-            float yaw;
-            float pitch;
+            float yaw;                      ///< Angulos de rotacion del yaw ( Y )
+            float pitch;                    ///< Angulos de rotacion del pitch ( X )
 
-            // Camera options
-            float movement_speed;
-            float mouse_sensivity;
+            float movement_speed;           ///< Velocidad de movimiento de la camara
+            float mouse_sensivity;          ///< Sensibilidad de la camara
 
+            /**
+            * Contructor del transform de la camara
+            */
             CameraTransformAttributes()
             {
                 worldUp = glm::vec3(0.f, 1., 0.f);
@@ -64,51 +81,93 @@ namespace OpenGLRender3D
 
     public:
 
-        Transform transform;
+        Transform transform;                                    ///< Transform de la camara
 
-        CameraTransformAttributes cameraTransformAttributes;
+        CameraTransformAttributes cameraTransformAttributes;    ///< Atributos auxialires de transformacion de la camara
 
-        MousePosition mousePosition;
+        MousePosition mousePosition;                            ///< Posicion del raton
 
     private:
 
-        GLint  projection_view_matrix_id;
-        GLint  cameraposition_id;
+        GLint  projection_view_matrix_id;                       ///< Id de la matriz de proyeccion
 
-        glm::mat4 projection_matrix;
+        GLint  cameraposition_id;                               ///< Id de la posicion de la camara
 
-        Shader_Program shaderProgram;
+        glm::mat4 projection_matrix;                            ///< Matriz de proyeccion
 
-        Scene* scene;
+        Shader_Program shaderProgram;                           ///< Shaderprogram de la camara
+
+        Scene* scene;                                           ///< Escena a la que pertenece
 
     public:
 
+        /**
+        * Constructor de la camara
+        */
         Camera(int width, int height, Scene& scene);
 
+        /**
+        * Destructor de la camara
+        */
+        ~Camera();
+
+        /**
+        * Realiza el update de la camara
+        */
         void   update(float time);
+
+        /**
+        * Renderiza la camara
+        */
         void   render();
+
+        /**
+        * Cambia el aspect ratio de la camara
+        */
         void   resize(int width, int height);
 
+        /**
+        * Mueve la camara
+        */
         void moveCamera(glm::vec3 movement);
+        
+        /**
+        * Rota la camara
+        */
         void rotateCamera(glm::vec2 mousePos);
 
-        const GLint getProjectionMatrixId()
+        /**
+        * Devuelve la transformacion de la camara
+        */
+        const glm::mat4 getTransformation();
+
+        /**
+        * Devuelve el id de la matriz de proyeccion
+        */
+        inline const GLint getProjectionMatrixId()
         {
             return projection_view_matrix_id;
         };
 
-        const glm::mat4 getProjectionMatrix()
+        /**
+        * Devuelve la matriz de proyeccion
+        */
+        inline const glm::mat4 getProjectionMatrix()
         {
             return projection_matrix;
         };
 
-        const glm::mat4 getTransformation();
-
+        /**
+        * Devuelve el shaderprogram de la camara
+        */
         Shader_Program& getShaderProgram()
         {
             return shaderProgram;
         }
 
+        /**
+        * Actualiza el transform de la camara
+        */
         void updateCameraTransform();
 
 
