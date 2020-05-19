@@ -13,38 +13,38 @@
   <Configuration name="shader_model_matrix"           value="model_matrix" />
   <Configuration name="shader_camera_position"        value="camera_pos" />
 
-  <Configuration name="postprocesing_shader_path"     value="postprocessing/lessColors/" />
-  <Configuration name="skybox_path"                   value="skybox/HD/sky-cube-map-" />
-  <Configuration name="texture_default_path"          value="default/texture.tga" />
-  <Configuration name="camera_shader_path"            value="camera/" />
-  <Configuration name="skybox_shader_path"            value="skybox/" />
+  <Configuration name="postprocesing_shader_path"     value="../assets/postprocessing/lessColors/" />
+  <Configuration name="skybox_path"                   value="../assets/skybox/HD/sky-cube-map-" />
+  <Configuration name="texture_default_path"          value="../assets/default/texture.tga" />
+  <Configuration name="camera_shader_path"            value="../assets/camera/" />
+  <Configuration name="skybox_shader_path"            value="../assets/skybox/" />
 
 
-  <Entity name="Terreno" type="Malla" texturePath="default/test.png" heightMap="height_map/city.png"  vertex="256" width="25" height="25" max-height="4" opacity="Opaco">
+  <Entity name="Terreno" type="Malla" texturePath="../assets/default/test.png" heightMap="../assets/height_map/city.png"  vertex="256" width="25" height="25" max-height="4" opacity="Opaco">
     <Position>0,0,-25</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>1,1,1</Scale>
   </Entity>
 
-  <Entity name="Calavera" type="Model3D" objPath ="models/osito/ChocoEasterBunny2.obj" opacity="Opaco" parent="Terreno">
+  <Entity name="Calavera" type="Model3D" objPath ="../assets/models/osito/ChocoEasterBunny2.obj" opacity="Opaco" parent="Terreno">
     <Position>0,2,0</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>10,10,10</Scale>
   </Entity>
   
-  <Entity name="La muerte" type="Model3D" objPath ="models/death/death.obj" opacity="Opaco" parent="Terreno">
+  <Entity name="La muerte" type="Model3D" objPath ="../assets/models/death/death.obj" opacity="Opaco" parent="Terreno">
     <Position>2,2,0</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>0.01,0.01,0.01</Scale>
   </Entity>
   
-  <Entity name="La casa" type="Model3D" objPath ="models/house/Building.obj" opacity="Opaco" parent="Terreno">
+  <Entity name="La casa" type="Model3D" objPath ="../assets/models/house/Building.obj" opacity="Opaco" parent="Terreno">
     <Position>-2,2,0</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>0.001,0.001,0.001</Scale>
   </Entity>
 
-  <Entity name="Cylindro" type="Cylinder" radius="2" height="4" sides="18" opacity="Translucid" texturePath="default/texture_alpha.tga" parent="Terreno">
+  <Entity name="Cylindro" type="Cylinder" radius="2" height="4" sides="18" opacity="Translucid" texturePath="../assets/default/texture_alpha.tga" parent="Terreno">
     <Position>0,0,0</Position>
     <Rotation>0,0,0</Rotation>
     <Scale>1,1,1</Scale>

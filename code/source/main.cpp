@@ -16,12 +16,11 @@
 
 int main(int argc, char* argv[])
 {
-    //"OpenGLRender3D --scene ../../assets/scene/scene-nocat.xml"
-    std::string path = "../../assets/scene-nocat.xml";
+    std::string path = "./scene.xml";
     
     if(argc == 3)
     {
-        path = (!strcmp(argv[1], "--scene")) ? argv[2] : "../../assets/scene/scene.xml";
+        path = (!strcmp(argv[1], "--scene")) ? argv[2] : "./scene.xml";
     }
 
     OpenGLRender3D::SFMLApplication app(path);

@@ -1,4 +1,5 @@
-
+** Este archivo lo he generado convirtiendo un archivo .md a pdf. En caso de que se quiera ver de manera
+correcta, verlo desde el link del repositorio.** https://github.com/JorgeBarcena3/OpenGL-Renderer/
 
 # OpenGL 3D Model Rendering - Jorge Bárcena Lumbreras
 
@@ -85,11 +86,7 @@ Respecto a la estructura del XML, se puede consultar desde [el siguiente archivo
     
 ## Arquitectura
 
-Respecto a la arquitectura de la herramienta, principalmente se puede visualizar a través de esta imagen.
-
-![Arquitectura de la herramienta](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/documents/Arquitectura_OpenGLRendering.png)
-
-He de mencionar dos clases mas. La primera de todas es la clase [**Scene**](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/code/header/Scene.hpp), que se encarga de manejar toda una escena. Esta escena contiene las demas clases y es la que gestiona los inputs del usuario.
+He de mencionar dos clases importantes. La primera de todas es la clase [**Scene**](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/code/header/Scene.hpp), que se encarga de manejar toda una escena. Esta escena contiene las demas clases y es la que gestiona los inputs del usuario.
 
 Tambien he de mencionar la clase de [**SFMLApplication**](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/code/header/SFMLApplication.hpp), esta clase abstrae la utilizacion de la libreria SMFL a nuestra herramienta. En caso de que no se quiera utilizar esta libreria, solamente se deberá emular esta clase con la nueva libreria.
 
@@ -144,9 +141,4 @@ Para cargar cualquier tipo de textura se utiliza la función estática de la cla
 ## Efecto de postproceso
 
 La escena tiene un modulo de postproceso que se puede activar o descativar en cualquier momento de la ejecución del programa. Actualmente hay 4 efectos de postproceso activados que se pueden elegir cambiando el path *"postprocesing_shader_path"* por la carpeta donde se encuentran los shaders.
-
-|  ![Shader01](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/documents/PostProcessingShader%20%281%29.png)| ![Shader02](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/documents/PostProcessingShader%20%282%29.png) |
-|--|--|
-| ![Shader03](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/documents/PostProcessingShader%20%283%29.png) | ![Shader04](https://github.com/JorgeBarcena3/OpenGL-Renderer/blob/master/documents/PostProcessingShader%20%284%29.png) |
-
 
