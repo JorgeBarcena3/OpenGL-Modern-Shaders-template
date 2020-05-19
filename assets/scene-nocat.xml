@@ -13,7 +13,7 @@
   <Configuration name="shader_model_matrix"           value="model_matrix" />
   <Configuration name="shader_camera_position"        value="camera_pos" />
 
-  <Configuration name="postprocesing_shader_path"     value="postprocessing/blur/" />
+  <Configuration name="postprocesing_shader_path"     value="postprocessing/lessColors/" />
   <Configuration name="skybox_path"                   value="skybox/HD/sky-cube-map-" />
   <Configuration name="texture_default_path"          value="default/texture.tga" />
   <Configuration name="camera_shader_path"            value="camera/" />

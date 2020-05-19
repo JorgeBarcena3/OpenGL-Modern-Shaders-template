@@ -323,7 +323,7 @@ void OpenGLRender3D::XMLParser::setDefaultConfiguration()
     ConfigOptions::ConfigPaths::configSettingsMap["shader_directionalLight_array"] = "directionalLight";
     ConfigOptions::ConfigPaths::configSettingsMap["camera_shader_path"] = "camera/";
     ConfigOptions::ConfigPaths::configSettingsMap["skybox_shader_path"] = "skybox/";
-    ConfigOptions::ConfigPaths::configSettingsMap["postprocesing_shader_path"] = "postprocessing/";
+    ConfigOptions::ConfigPaths::configSettingsMap["postprocesing_shader_path"] = "postprocessing/blur";
     ConfigOptions::ConfigPaths::configSettingsMap["vertexShader_name"] = "vertexShader.vglsl";
     ConfigOptions::ConfigPaths::configSettingsMap["fragmentShader_name"] = "fragmentShader.fglsl";
     ConfigOptions::ConfigPaths::configSettingsMap["shader_camera_matrix"] = "camera_matrix";
