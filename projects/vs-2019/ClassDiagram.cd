@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenGLRender3D::Skybox" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAChAAAAAAAAAAAAAAAAAAAAAAUAQA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\3DModels\Skybox.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::BaseModel3D" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASAIgAAACAAAAABEAAIAAAAAEEAAAAAAIAABWAAE=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\3DModels\BaseModel3D.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::DirectionalLight" Collapsed="true">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQgAAAAAIAAAAAAAAAAAAAAAAIAAIAAAEQAAAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\DirectionalLight.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::PointLight" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAAAAIAACAAAAAAAAoAAAMAAAAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\PointLight.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Light" Collapsed="true">
+    <Position X="4.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAgAgCAAiAAIAEAoIAAIAICAiAIgAAEABMQAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Light.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Texture2D" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Texture2D.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Cubemap" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Cubemap.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Texture" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAIAAgAAAAAAAAAAAAAAAAAABAAIAAAAAkAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Texture.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Cylinder" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAADAAAAAQAAAAAAEAAAIAAEAAAAAQAAAAQAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\3DModels\Cylinder.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Malla" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAIAACAQAQAgAAEAAAIAAUAAAAAAAAIAQAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\3DModels\Malla.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenGLRender3D::Model3D" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIEAAACAAAACAAAAAAAQAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\3DModels\Model3D.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShaderProgramHelper::Fragment_Shader" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Fragment_Shader.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShaderProgramHelper::Shader" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAQAAAAAAAAAgAAAAAKAAACAAAAAAABAAAAAAAAAE=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Shader.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShaderProgramHelper::Vertex_Shader" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\GitHub\OpenGL-Renderer\code\header\Vertex_Shader.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

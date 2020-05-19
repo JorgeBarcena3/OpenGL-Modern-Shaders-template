@@ -280,6 +280,7 @@
     <None Include="..\..\assets\postprocessing\radial_blur\vertexShader.vglsl">
       <Filter>shaders\postprocessing\lessColors</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\assets\scene.xml">

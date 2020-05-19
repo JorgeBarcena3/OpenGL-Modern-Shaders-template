@@ -99,6 +99,7 @@
     <None Include="..\..\assets\postprocessing\vertexShader.vglsl" />
     <None Include="..\..\assets\skybox\fragmentShader.fglsl" />
     <None Include="..\..\assets\skybox\vertexShader.vglsl" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\assets\scene-nocat.xml" />
