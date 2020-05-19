@@ -1,6 +1,3 @@
-** Este archivo lo he generado convirtiendo un archivo .md a pdf. En caso de que se quiera ver de manera
-correcta, verlo desde el link del repositorio.** https://github.com/JorgeBarcena3/OpenGL-Renderer/
-
 # OpenGL 3D Model Rendering - Jorge Bárcena Lumbreras
 
 
